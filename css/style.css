@@ -114,15 +114,33 @@ section h3 {
 }
 
 /* ----- FORMULARIO Y VALIDACIÓN VISUAL ----- */
+/* ----- FORMULARIO Y VALIDACIÓN VISUAL ----- */
 .form-label {
     font-weight: 600;
     color: #333;
+}
+
+/* Alarga de forma correcta los inputs y el select */
+.form-control, .form-select {
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+}
+
+/* Controla de forma exacta el ancho y disminuye la altura del cuadro de texto */
+#mensaje {
+    width: 100%;
+    max-width: 500px;
+    height: 80px;      /* Lo vuelve más delgado verticalmente */
+    resize: none;      /* Evita que el usuario lo deforme arrastrando la esquina */
+    box-sizing: border-box;
 }
 
 .form-control:focus {
     border-color: #EF6C00;
     box-shadow: 0 0 0 0.2rem rgba(239, 108, 0, 0.25); /* Foco naranjo en inputs */
 }
+
 
 .error-message {
     color: #dc3545;
