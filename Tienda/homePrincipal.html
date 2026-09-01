@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferretería Los Maestros - Contacto</title>
+
+    <!-- BOOTSTRAP CSS -->
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    
+    <!-- MATERIALIZE CSS -->
+    <link href="https://cloudflare.com" rel="stylesheet">
+    
+    <!-- MATERIALIZE ICONS -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    
+    <!-- BOOTSTRAP ICONS -->
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    
+    <!-- CSS EXTERNO -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Estilos específicos temporales para la vista de contacto */
+        .contact-info {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #EF6C00; /* Cambio a Naranja Construcción */
+        }
+        .contact-info h5 {
+            margin: 0 0 5px 0;
+        }
+        .contact-info h5 i {
+            color: #EF6C00; /* Íconos en color corporativo */
+            margin-right: 10px;
+        }
+        .contact-info p {
+            margin: 0;
+            padding-left: 30px;
+        }
+        .mapa-iframe {
+            width: 100%;
+            height: 250px;
+            border: none;
+            border-radius: 8px;
+        }
+        .btn-enviar, .btn-limpiar {
+            padding: 10px 30px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .btn-enviar {
+            background-color: #EF6C00; /* Naranja en vez de Verde PetShop */
+            color: white;
+        }
+        .btn-enviar:hover {
+            background-color: #E65100;
+        }
+        .btn-limpiar {
+            background-color: #6c757d;
+            color: white;
+        }
+        .btn-limpiar:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ===== ENCABEZADO (Adaptado a Ferretería) ===== -->
+        <header>
+            <h1>
+                <!-- Ícono de Material Icons cambiado de 'pets' a 'construction' -->
+                <i class="material-icons">construction</i>
+                <span id="logo-tienda">Los Maestros</span> - Contáctanos
+            </h1>
+            <p>Materiales de construcción, herramientas y ferretería general</p>
+
+            <!-- MENÚ DE NAVEGACIÓN TIENDA PÚBLICA -->
+            <nav class="nav-menu">
+                <a href="index.html">
+                    <i class="bi bi-house"></i> Inicio
+                </a>
+                <a href="productos.html">
+                    <i class="bi bi-tools"></i> Productos
+                </a>
+                <a href="contacto.html" class="active">
+                    <i class="bi bi-envelope"></i> Contacto
+                </a>
+            </nav>
+        </header>
+
+        <!-- ===== FORMULARIO DE CONTACTO ===== -->
+        <section>
+            <h2><i class="material-icons">contact_mail</i> Formulario de Contacto</h2>
+            <p>Completa el formulario para enviar un mensaje interno al área de administración.</p>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <!-- FORMULARIO -->
+                    <form id="formularioContacto">
+
+                        <div class="mb-3">
+                            <label class="form-label"><i class="bi bi-person"></i> Nombre Completo</label>
+                            <!-- El placeholder se usa en funciones.js para armar el mensaje de error -->
+                            <input type="text" class="form-control" id="nombre" placeholder="Nombre Completo">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label"><i class="bi bi-envelope"></i> Correo Electrónico</label>
+                            <input type="email" class="form-control" id="email" placeholder="Correo Electrónico">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label"><i class="bi bi-phone"></i> Teléfono de Contacto</label>
+                            <input type="tel" class="form-control" id="telefono" placeholder="Teléfono de Contacto">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label"><i class="bi bi-tag"></i> Asunto / Motivo</label>
+                            <select class="form-select" id="asunto">
+                                <option value="">Selecciona un motivo</option>
+                                <option value="consulta">Consulta de Stock General</option>
+                                <option value="pedido">Estado de mi Pedido / Cotización</option>
+                                <option value="cuenta">Cuenta Corriente Contratista</option>
+                                <option value="reclamo">Sugerencia o Reclamo</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label"><i class="bi bi-chat-dots"></i> Mensaje o Comentario</label>
+                            <textarea class="form-control" id="mensaje" rows="4" placeholder="Mensaje o Comentario"></textarea>
+                        </div>
+
+                        <!-- DONDE SE MUESTRA EL RESULTADO DE VALIDACIÓN (Dinamismo por JS) -->
+                        <div id="resultado-validacion"></div>
+
+                        <div class="d-flex gap-3 mt-3">
+                            <!-- BOTÓN VALIDAR - Llama a funciones.js -->
+                            <button type="button" class="btn-enviar" onclick="validarFormulario('formularioContacto')">
+                                <i class="bi bi-send"></i> Enviar Mensaje
+                            </button>
+                            
+                            <!-- BOTÓN LIMPIAR - Llama a funciones.js -->
+                            <button type="button" class="btn-limpiar" onclick="resetearFormulario('formularioContacto')">
+                                <i class="bi bi-eraser"></i> Limpiar Formulario
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- INFORMACIÓN DE CONTACTO REAL DE LA EMPRESA (La Serena) -->
+                <div class="col-md-4">
+                    <div class="contact-info">
+                        <h5><i class="bi bi-geo-alt"></i> Dirección</h5>
+                        <p>Av. Francisco de Aguirre 450<br>La Serena, Chile</p>
+                    </div>
+
+                    <div class="contact-info">
+                        <h5><i class="bi bi-telephone"></i> Teléfono Mesón</h5>
+                        <p>+56 51 2345 678</p>
+                    </div>
+
+                    <div class="contact-info">
+                        <h5><i class="bi bi-clock"></i> Horario de Atención</h5>
+                        <p>Lun-Vie: 8:30 - 18:30<br>Sáb: 9:00 - 14:00</p>
+                    </div>
+
+                    <div class="contact-info">
+                        <h5><i class="bi bi-envelope"></i> Correo Directo</h5>
+                        <p>contacto@losmaestros.cl</p>
+                    </div>
+
+                    <!-- IFRAME DE GOOGLE MAPS ACTUALIZADO A LA SERENA, CHILE -->
+                    <iframe class="mapa-iframe" 
+                            src="https://google.com">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PIE DE PÁGINA ===== -->
+        <footer>
+            <i class="material-icons">copyright</i>
+            © 2026 - Ferretería Los Maestros - Todos los derechos reservados
+        </footer>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://jquery.com"></script>
+    <script src="https://jsdelivr.net"></script>
+    <script src="https://cloudflare.com"></script>
+    <!-- VÍNCULO A TU ARCHIVO DE LÓGICA -->
+    <script src="funciones.js"></script>
+</body>
+</html>
