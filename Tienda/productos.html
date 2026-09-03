@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferretería Los Maestros - Productos</title>
+
+    <!-- BOOTSTRAP CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- MATERIALIZE ICONS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- BOOTSTRAP ICONS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- CSS EXTERNO -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+
+        <!-- ===== ENCABEZADO ===== -->
+        <header>
+            <h1>
+                <i class="material-icons">construction</i>
+                <span id="logo-tienda">Los Maestros</span> - Productos
+            </h1>
+            <p>Materiales de construcción, herramientas y ferretería general</p>
+
+            <nav class="nav-menu">
+                <a href="homePrincipal.html">
+                    <i class="bi bi-house"></i> Inicio
+                </a>
+                <a href="productos.html" class="active">
+                    <i class="bi bi-tools"></i> Productos
+                </a>
+                <a href="contacto.html">
+                    <i class="bi bi-envelope"></i> Contacto
+                </a>
+            </nav>
+        </header>
+
+        <!-- ===== LISTA DE PRODUCTOS ===== -->
+        <section>
+            <h2><i class="bi bi-box-seam"></i> Nuestros Productos</h2>
+            <p>Selecciona un producto y haz clic en "Comprar" para simular la compra.</p>
+
+            <div class="row" id="lista-productos">
+                <!-- Producto 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card producto-card">
+                        <div class="card-body text-center">
+                            <i class="bi bi-hammer" style="font-size: 3rem; color: #EF6C00;"></i>
+                            <h5 class="card-title">Martillo de Carpintero</h5>
+                            <p class="card-text">Martillo de acero forjado con mango de madera.</p>
+                            <p class="precio"><strong>$12.990</strong></p>
+                            <button class="btn btn-comprar" onclick="comprarProducto(this)">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card producto-card">
+                        <div class="card-body text-center">
+                            <i class="bi bi-wrench" style="font-size: 3rem; color: #EF6C00;"></i>
+                            <h5 class="card-title">Llave Ajustable</h5>
+                            <p class="card-text">Llave ajustable de acero cromado, 12 pulgadas.</p>
+                            <p class="precio"><strong>$8.490</strong></p>
+                            <button class="btn btn-comprar" onclick="comprarProducto(this)">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card producto-card">
+                        <div class="card-body text-center">
+                            <i class="bi bi-tools" style="font-size: 3rem; color: #EF6C00;"></i>
+                            <h5 class="card-title">Set de Destornilladores</h5>
+                            <p class="card-text">Set de 6 destornilladores de precisión con puntas intercambiables.</p>
+                            <p class="precio"><strong>$15.990</strong></p>
+                            <button class="btn btn-comprar" onclick="comprarProducto(this)">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card producto-card">
+                        <div class="card-body text-center">
+                            <i class="bi bi-rulers" style="font-size: 3rem; color: #EF6C00;"></i>
+                            <h5 class="card-title">Cinta Métrica 5m</h5>
+                            <p class="card-text">Cinta métrica de acero con bloqueo automático.</p>
+                            <p class="precio"><strong>$5.990</strong></p>
+                            <button class="btn btn-comprar" onclick="comprarProducto(this)">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card producto-card">
+                        <div class="card-body text-center">
+                            <i class="bi bi-droplet" style="font-size: 3rem; color: #EF6C00;"></i>
+                            <h5 class="card-title">Nivel de Burbuja</h5>
+                            <p class="card-text">Nivel de burbuja de aluminio con 3 viales.</p>
+                            <p class="precio"><strong>$7.490</strong></p>
+                            <button class="btn btn-comprar" onclick="comprarProducto(this)">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 6 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card producto-card">
+                        <div class="card-body text-center">
+                            <i class="bi bi-scissors" style="font-size: 3rem; color: #EF6C00;"></i>
+                            <h5 class="card-title">Tijeras de Corte</h5>
+                            <p class="card-text">Tijeras para metal y plástico, mango ergonómico.</p>
+                            <p class="precio"><strong>$9.990</strong></p>
+                            <button class="btn btn-comprar" onclick="comprarProducto(this)">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PIE DE PÁGINA ===== -->
+        <footer>
+            <i class="material-icons">copyright</i>
+            © 2026 - Ferretería Los Maestros - Todos los derechos reservados
+        </footer>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../funciones.js"></script>
+</body>
+</html>

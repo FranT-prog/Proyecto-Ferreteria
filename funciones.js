@@ -78,7 +78,9 @@ function validarFormulario(formId) {
     }
 } // Fin function validarFormulario
 
-
+// ============================================================
+//  FUNCIÓN PARA LIMPIAR FORMULARIO
+// ============================================================
 function resetearFormulario(formId) {
     // Paso 1: Obtener Formulario
     var formulario = document.getElementById(formId);
@@ -102,4 +104,32 @@ function resetearFormulario(formId) {
     resultado.innerHTML = '';
     resultado.className = '';
     resultado.style.display = 'none';
-} // Fin function resetearFormulario
+}
+
+// ============================================================
+//  FUNCIÓN PARA SIMULAR COMPRA DE PRODUCTO
+//  (ESTA DEBE ESTAR FUERA DE resetearFormulario)
+// ============================================================
+function comprarProducto(boton) {
+    // Verificar si el producto ya fue comprado
+    if (boton.textContent === 'Comprado ✓') {
+        alert('Este producto ya lo compraste.');
+        return;
+    }
+
+    // Cambiar el texto y estilo del botón
+    boton.textContent = 'Comprado ✓';
+    boton.style.backgroundColor = '#28a745';
+    boton.style.color = 'white';
+    boton.style.border = 'none';
+
+    // Mostrar mensaje de confirmación
+    alert('¡Producto agregado al carrito! 🛒');
+}
+
+// ============================================================
+//  FUNCIÓN PARA VALIDAR FORMULARIO (si la tienes)
+// ============================================================
+function validarFormulario(formId) {
+    // Tu código de validación aquí...
+}

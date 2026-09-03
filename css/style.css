@@ -286,6 +286,29 @@ footer {
 /* ==========================================================================
    3. REGLAS RESPONSIVAS
    ========================================================================== */
+/* ==========================================================================
+   3. ESTILOS DE LA IMAGEN BANNER
+   ========================================================================== */
+.imagen-contacto {
+    width: 100%;
+    max-width: 400px;       /* ← Ancho máximo del contenedor */
+
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.imagen-contacto img {
+    width: 100%;
+    height: 280px ;  /* ← Altura fija con !important */
+    object-fit: cover ; /* ← Recorta sin deformar */
+    display: block ;
+}
+
+/* ==========================================================================
+   4. REGLAS RESPONSIVAS
+   ========================================================================== */
 @media (max-width: 768px) {
     .container {
         width: 95%;
@@ -303,6 +326,9 @@ footer {
     }
     .mapa-iframe {
         height: 180px;
+    }
+    .imagen-contacto img {
+        height: 120px;  /* Más pequeño en tablets */
     }
 }
 
@@ -332,4 +358,79 @@ footer {
     .mapa-iframe {
         height: 160px;
     }
+    .imagen-contacto img {
+        height: 100px;  /* Más pequeño en celulares */
+    }
+
+/* ==========================================================================
+   6. HISTORIA DE LA TIENDA
+   ========================================================================== */
+.historia-tienda {
+    padding: 15px 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border-left: 4px solid #EF6C00;
+}
+
+.historia-tienda h3 {
+    color: #D84315;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.historia-tienda p {
+    color: #333;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.historia-tienda strong {
+    color: #EF6C00;
+}
+
+@media (max-width: 768px) {
+    .historia-tienda {
+        margin-top: 15px;
+        padding: 12px 15px;
+    }
+    .historia-tienda h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* ==========================================================================
+   7. ESTILOS DE PRODUCTOS
+   ========================================================================== */
+.producto-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 100%;
+}
+
+.producto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.producto-card .precio {
+    color: #EF6C00;
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.btn-comprar {
+    background-color: #EF6C00;
+    color: white;
+    padding: 8px 25px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btn-comprar:hover {
+    background-color: #D84315;
+}
 }
