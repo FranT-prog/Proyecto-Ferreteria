@@ -1,135 +1,252 @@
-function validarFormulario(formId) {
-    // Paso 1: Obtener Formulario
-    var formulario = document.getElementById(formId);
+// ============================================================
+//  CARRITO DE COMPRAS
+// ============================================================
+var carrito = [];
 
-    // Paso 2: Obtener todos los campos (input, select, textarea)
-    var campos = formulario.querySelectorAll('input, select, textarea');
+// ============================================================
+//  FUNCIÓN PARA COMPRAR/ELIMINAR PRODUCTO
+// ============================================================
+function comprarProducto(boton) {
+    var productoCard = boton.closest('.producto-card');
+    if (!productoCard) return;
+    
+    var nombre = productoCard.querySelector('.card-title').textContent;
+    var precioTexto = productoCard.querySelector('.precio').textContent;
+    var precio = parseInt(precioTexto.replace(/[^0-9]/g, ''));
 
-    // Paso 3: Contadores y arreglos para consolidar errores
-    var vacios = 0;
-    var erroresNegocio = [];
+    var index = carrito.findIndex(function(item) {
+        return item.nombre === nombre;
+    });
 
-    // Paso 4: Revisar cada campo con el bucle del docente
-    for (var i = 0; i < campos.length; i++) {
-        var campo = campos[i];
-
-        // Ignorar los botones
-        if (campo.type === 'button' || campo.type === 'submit') {
-            continue;
-        }
-
-        // Si el campo está vacío (Lógica original del Profesor)
-        if (campo.value.trim() === '') {
-            vacios++;
-            campo.style.borderColor = 'red'; // Resaltamos en rojo
-        } else {
-            campo.style.borderColor = ''; // Quitamos el rojo si tiene texto
-            
-            // =======================================================
-            // REGLAS DE NEGOCIO OBLIGATORIAS (EVALUACIÓN 1 - DUOCUC)
-            // =======================================================
-            
-            // A. Validación estricta del Correo Electrónico
-            if (campo.type === 'email' || campo.id === 'email') {
-                var correo = campo.value.trim().toLowerCase();
-                if (!correo.endsWith('@duoc.cl') && !correo.endsWith('@profesor.duoc.cl') && !correo.endsWith('@gmail.com')) {
-                    erroresNegocio.push('El correo debe ser @duoc.cl, @profesor.duoc.cl o @gmail.com.');
-                    campo.style.borderColor = 'red';
-                }
-            }
-
-            // B. Validación de largo máximo del Comentario/Mensaje (Max 500 caracteres)
-            if (campo.id === 'mensaje' || campo.tagName.toLowerCase() === 'textarea') {
-                if (campo.value.length > 500) {
-                    erroresNegocio.push('El mensaje no puede superar los 500 caracteres.');
-                    campo.style.borderColor = 'red';
-                }
-            }
-        }
-    } // Fin del bucle for
-
-    // Paso 5: Mostrar resultado utilizando los contenedores y alertas de tu CSS
-    var resultado = document.getElementById('resultado-validacion');
-
-    if (vacios > 0 || erroresNegocio.length > 0) {
-        // Creamos el mensaje acumulativo de errores
-        var mensajeFinal = '';
-        
-        if (vacios > 0) {
-            mensajeFinal += '<strong>Faltan ' + vacios + ' campo(s) obligatorio(s) por rellenar.</strong><br>';
-        }
-        
-        if (erroresNegocio.length > 0) {
-            mensajeFinal += '<strong>Errores de validación de negocio:</strong><br>';
-            for (var j = 0; j < erroresNegocio.length; j++) {
-                mensajeFinal += '- ' + erroresNegocio[j] + '<br>';
-            }
-        }
-
-        // Aplicamos la clase de error del archivo style.css
-        resultado.className = 'alert-error';
-        resultado.innerHTML = mensajeFinal;
-        resultado.style.display = 'block';
+    if (index !== -1) {
+        carrito.splice(index, 1);
+        boton.textContent = 'Comprar';
+        boton.style.backgroundColor = '#EF6C00';
+        boton.style.color = 'white';
+        alert('Producto removido del carrito 🗑️');
     } else {
-        // Formulario completamente válido
-        resultado.className = 'alert-success';
-        resultado.innerHTML = '<i class="bi bi-check-circle"></i> ¡Formulario validado con éxito! Mensaje listo para enviar.';
-        resultado.style.display = 'block';
+        carrito.push({ nombre: nombre, precio: precio });
+        boton.textContent = 'Comprado ✓';
+        boton.style.backgroundColor = '#28a745';
+        boton.style.color = 'white';
+        alert('¡Producto agregado al carrito! 🛒');
     }
-} // Fin function validarFormulario
+
+    actualizarContador();
+}
+
+// ============================================================
+//  FUNCIÓN PARA ACTUALIZAR CONTADOR DEL CARRITO
+// ============================================================
+function actualizarContador() {
+    var contador = document.getElementById('contador-carrito');
+    if (contador) {
+        contador.textContent = carrito.length;
+    }
+}
+
+// ============================================================
+//  FUNCIÓN PARA VER EL CARRITO
+// ============================================================
+function verCarrito() {
+    var lista = document.getElementById('lista-carrito');
+    var totalSpan = document.getElementById('total-carrito');
+
+    if (carrito.length === 0) {
+        lista.innerHTML = '<p class="text-center text-muted">No hay productos en el carrito.</p>';
+        totalSpan.textContent = '$0';
+    } else {
+        var html = '<ul class="list-group">';
+        var total = 0;
+
+        for (var i = 0; i < carrito.length; i++) {
+            var item = carrito[i];
+            total += item.precio;
+            html += '<li class="list-group-item d-flex justify-content-between align-items-center">';
+            html += item.nombre + ' - <strong>$' + item.precio.toLocaleString() + '</strong>';
+            html += '<button class="btn btn-sm btn-danger" onclick="eliminarDelCarrito(' + i + ')">';
+            html += '<i class="bi bi-trash"></i> Eliminar</button>';
+            html += '</li>';
+        }
+
+        html += '</ul>';
+        lista.innerHTML = html;
+        totalSpan.textContent = '$' + total.toLocaleString();
+    }
+
+    var modalElement = document.getElementById('modalCarrito');
+    var modal = bootstrap.Modal.getInstance(modalElement);
+    
+    if (modal) {
+        modal.show();
+    } else {
+        var newModal = new bootstrap.Modal(modalElement);
+        newModal.show();
+    }
+}
+
+// ============================================================
+//  FUNCIÓN PARA ELIMINAR PRODUCTO DEL CARRITO
+// ============================================================
+function eliminarDelCarrito(index) {
+    var productoEliminado = carrito[index];
+    carrito.splice(index, 1);
+
+    var botones = document.querySelectorAll('.btn-comprar');
+    for (var i = 0; i < botones.length; i++) {
+        var card = botones[i].closest('.producto-card');
+        if (card) {
+            var nombre = card.querySelector('.card-title').textContent;
+            if (nombre === productoEliminado.nombre) {
+                botones[i].textContent = 'Comprar';
+                botones[i].style.backgroundColor = '#EF6C00';
+                botones[i].style.color = 'white';
+                break;
+            }
+        }
+    }
+
+    actualizarContador();
+
+    var modal = bootstrap.Modal.getInstance(document.getElementById('modalCarrito'));
+    if (modal) {
+        modal.hide();
+    }
+
+    setTimeout(function() {
+        verCarrito();
+    }, 200);
+}
+
+// ============================================================
+//  FUNCIÓN PARA FINALIZAR COMPRA
+// ============================================================
+function finalizarCompra() {
+    if (carrito.length === 0) {
+        alert('El carrito está vacío.');
+        return;
+    }
+
+    var total = 0;
+    for (var i = 0; i < carrito.length; i++) {
+        total += carrito[i].precio;
+    }
+
+    alert('¡Compra finalizada! 🎉\nTotal: $' + total.toLocaleString() + '\nGracias por tu compra.');
+
+    carrito = [];
+
+    var botones = document.querySelectorAll('.btn-comprar');
+    for (var j = 0; j < botones.length; j++) {
+        botones[j].textContent = 'Comprar';
+        botones[j].style.backgroundColor = '#EF6C00';
+        botones[j].style.color = 'white';
+    }
+
+    actualizarContador();
+
+    var modal = bootstrap.Modal.getInstance(document.getElementById('modalCarrito'));
+    if (modal) {
+        modal.hide();
+    }
+}
 
 // ============================================================
 //  FUNCIÓN PARA LIMPIAR FORMULARIO
 // ============================================================
 function resetearFormulario(formId) {
-    // Paso 1: Obtener Formulario
     var formulario = document.getElementById(formId);
-
-    // Paso 2: Obtener todos los campos
+    if (!formulario) return;
+    
     var campos = formulario.querySelectorAll('input, select, textarea');
 
-    // Paso 3: Limpiar cada campo (Lógica original del Profesor)
     for (var i = 0; i < campos.length; i++) {
         var campo = campos[i];
-
-        // Ignorar los botones
         if (campo.type !== 'button' && campo.type !== 'submit') {
             campo.value = "";
-            campo.style.borderColor = ''; // Quitar los bordes rojos de error
+            campo.style.borderColor = '';
         }
     }
 
-    // Paso 4: Ocultar y limpiar el cuadro de resultados
     var resultado = document.getElementById('resultado-validacion');
-    resultado.innerHTML = '';
-    resultado.className = '';
-    resultado.style.display = 'none';
-}
-
-// ============================================================
-//  FUNCIÓN PARA SIMULAR COMPRA DE PRODUCTO
-//  (ESTA DEBE ESTAR FUERA DE resetearFormulario)
-// ============================================================
-function comprarProducto(boton) {
-    // Verificar si el producto ya fue comprado
-    if (boton.textContent === 'Comprado ✓') {
-        alert('Este producto ya lo compraste.');
-        return;
+    if (resultado) {
+        resultado.innerHTML = '';
+        resultado.className = '';
+        resultado.style.display = 'none';
     }
-
-    // Cambiar el texto y estilo del botón
-    boton.textContent = 'Comprado ✓';
-    boton.style.backgroundColor = '#28a745';
-    boton.style.color = 'white';
-    boton.style.border = 'none';
-
-    // Mostrar mensaje de confirmación
-    alert('¡Producto agregado al carrito! 🛒');
 }
 
 // ============================================================
-//  FUNCIÓN PARA VALIDAR FORMULARIO (si la tienes)
+//  FUNCIÓN PARA VALIDAR FORMULARIO
 // ============================================================
 function validarFormulario(formId) {
-    // Tu código de validación aquí...
+    var formulario = document.getElementById(formId);
+    
+    var nombre = document.getElementById('nombre').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var telefono = document.getElementById('telefono').value.trim();
+    var asunto = document.getElementById('asunto').value;
+    var mensaje = document.getElementById('mensaje').value.trim();
+    
+    var errores = [];
+    
+    if (nombre === '') {
+        errores.push('El nombre completo es obligatorio.');
+        document.getElementById('nombre').style.borderColor = '#dc3545';
+    } else {
+        document.getElementById('nombre').style.borderColor = '';
+    }
+    
+    if (email === '') {
+        errores.push('El correo electrónico es obligatorio.');
+        document.getElementById('email').style.borderColor = '#dc3545';
+    } else if (!email.includes('@') || !email.includes('.')) {
+        errores.push('Ingresa un correo electrónico válido (ej: correo@dominio.com).');
+        document.getElementById('email').style.borderColor = '#dc3545';
+    } else {
+        document.getElementById('email').style.borderColor = '';
+    }
+    
+    if (telefono === '') {
+        errores.push('El teléfono de contacto es obligatorio.');
+        document.getElementById('telefono').style.borderColor = '#dc3545';
+    } else {
+        document.getElementById('telefono').style.borderColor = '';
+    }
+    
+    if (asunto === '') {
+        errores.push('Debes seleccionar un motivo.');
+        document.getElementById('asunto').style.borderColor = '#dc3545';
+    } else {
+        document.getElementById('asunto').style.borderColor = '';
+    }
+    
+    if (mensaje === '') {
+        errores.push('El mensaje o comentario es obligatorio.');
+        document.getElementById('mensaje').style.borderColor = '#dc3545';
+    } else {
+        document.getElementById('mensaje').style.borderColor = '';
+    }
+    
+    var resultado = document.getElementById('resultado-validacion');
+    
+    if (errores.length > 0) {
+        var html = '<div class="alert-error">';
+        html += '<strong>⚠️ Por favor, corrige los siguientes errores:</strong><ul>';
+        for (var i = 0; i < errores.length; i++) {
+            html += '<li>' + errores[i] + '</li>';
+        }
+        html += '</ul></div>';
+        resultado.innerHTML = html;
+        resultado.style.display = 'block';
+    } else {
+        resultado.innerHTML = '<div class="alert-success">✅ ¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.</div>';
+        resultado.style.display = 'block';
+        
+        setTimeout(function() {
+            resetearFormulario(formId);
+            resultado.innerHTML = '';
+            resultado.style.display = 'none';
+        }, 3000);
+    }
 }

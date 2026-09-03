@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ferretería Los Maestros - Contacto</title>
+    <title>Ferretería don Juan - Inicio</title>
 
-    <!-- BOOTSTRAP CSS (CDN CORREGIDO) -->
+    <!-- BOOTSTRAP CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- MATERIALIZE ICONS -->
@@ -17,11 +17,6 @@
     <!-- CSS EXTERNO -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
-
-<!-- ===== IMAGEN + HISTORIA (lado a lado) ===== -->
-<div class="row align-items-center mb-4">
-    <!-- Columna de la imagen -->
-
 <body>
     <div class="container">
 
@@ -29,142 +24,102 @@
         <header>
             <h1>
                 <i class="material-icons">construction</i>
-                <span id="logo-tienda">Ferreteria don Juan</span> - Contáctanos
+                <span id="logo-tienda">Ferretería don Juan</span> - Inicio
             </h1>
             <p>Materiales de construcción, herramientas y ferretería general</p>
 
             <nav class="nav-menu">
-                <a href="index.html">
+                <a href="homePrincipal.html" class="active">
                     <i class="bi bi-house"></i> Inicio
                 </a>
                 <a href="productos.html">
                     <i class="bi bi-tools"></i> Productos
                 </a>
-                <a href="contacto.html" class="active">
+                <a href="contacto.html">
                     <i class="bi bi-envelope"></i> Contacto
                 </a>
             </nav>
-            
-            
         </header>
-        <div class="row align-items-center mb-4">
-    <!-- Columna de la imagen (izquierda) -->
-    <div class="col-md-5">
-        <div class="imagen-contacto">
-            <img src="img/const.webp" alt="Ferreteria don Juan - Materiales de construcción">
-        </div>
-    </div>
-    
-    <!-- Columna de la historia (derecha) -->
-    <div class="col-md-7">
-        <div class="historia-tienda">
-            <h3><i class="bi bi-building"></i> Nuestra Historia</h3>
-            <p>
-                <strong>Ferreteria don Juan</strong> nació hace más de 20 años en la ciudad de La Serena, 
-                con el sueño de ofrecer materiales de construcción y herramientas de la más alta calidad 
-                a todos los habitantes de la Región de Coquimbo.
-            </p>
-            <p>
-                Lo que comenzó como un pequeño local en el centro de la ciudad, hoy se ha convertido en 
-                una ferretería de referencia en la zona, gracias a la confianza de nuestros clientes y 
-                al compromiso de un equipo que entiende las necesidades de cada proyecto.
-            </p>
-            <p>
-                <i class="bi bi-tools"></i> <strong>Misión:</strong> Entregar soluciones en construcción 
-                y ferretería con productos de calidad, asesoría experta y un servicio cercano que 
-                supere las expectativas de nuestros clientes.
-            </p>
-            <p>
-                <i class="bi bi-eye"></i> <strong>Visión:</strong> Ser la ferretería líder en la Región de Coquimbo, 
-                reconocida por nuestra excelencia en servicio y variedad de productos.
-            </p>
-        </div>
-    </div>
 
+        <!-- ===== BANNER PRINCIPAL ===== -->
+        <div class="banner-principal" style="background-color: #EF6C00; color: white; padding: 40px 20px; border-radius: 8px; text-align: center; margin-bottom: 30px;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 10px;">🏗️ Materiales de Construcción</h1>
+            <p style="font-size: 1.2rem;">Todo lo que necesitas para tu proyecto, en un solo lugar</p>
+            <a href="productos.html" class="btn btn-light" style="margin-top: 15px; background-color: white; color: #EF6C00; font-weight: bold; padding: 10px 30px; border-radius: 4px; text-decoration: none;">
+                Ver Productos
+            </a>
+        </div>
 
-        <!-- ===== FORMULARIO DE CONTACTO ===== -->
+        <!-- ===== CATEGORÍAS DESTACADAS ===== -->
         <section>
-            <h2><i class="material-icons">contact_mail</i> Formulario de Contacto</h2>
-            <p>Completa el formulario para enviar un mensaje interno al área de administración.</p>
-
+            <h2><i class="bi bi-grid"></i> Categorías Destacadas</h2>
             <div class="row">
-                <div class="col-md-8">
-                    <form id="formularioContacto">
-
-                        <div class="mb-3">
-                            <label class="form-label"><i class="bi bi-person"></i> Nombre Completo</label>
-                            <input type="text" class="form-control" id="nombre" placeholder="Nombre Completo">
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center" style="border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <div class="card-body">
+                            <i class="bi bi-hammer" style="font-size: 3rem; color: #EF6C00;"></i>
+                            <h5 class="card-title">Herramientas</h5>
+                            <p class="card-text">Martillos, destornilladores, llaves y más.</p>
                         </div>
-
-                        <div class="mb-3">
-                            <label class="form-label"><i class="bi bi-envelope"></i> Correo Electrónico</label>
-                            <input type="email" class="form-control" id="email" placeholder="Correo Electrónico">
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label"><i class="bi bi-phone"></i> Teléfono de Contacto</label>
-                            <input type="tel" class="form-control" id="telefono" placeholder="Teléfono de Contacto">
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label"><i class="bi bi-tag"></i> Asunto / Motivo</label>
-                            <select class="form-select" id="asunto">
-                                <option value="">Selecciona un motivo</option>
-                                <option value="consulta">Consulta de Stock General</option>
-                                <option value="pedido">Estado de mi Pedido / Cotización</option>
-                                <option value="cuenta">Cuenta Corriente Contratista</option>
-                                <option value="reclamo">Sugerencia o Reclamo</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label"><i class="bi bi-chat-dots"></i> Mensaje o Comentario</label>
-                            <textarea class="form-control" id="mensaje" rows="4" placeholder="Mensaje o Comentario"></textarea>
-                        </div>
-
-                        <div id="resultado-validacion"></div>
-
-                        <div class="d-flex gap-3 mt-3">
-                            <button type="button" class="btn-enviar" onclick="validarFormulario('formularioContacto')">
-                                <i class="bi bi-send"></i> Enviar Mensaje
-                            </button>
-                            
-                            <button type="button" class="btn-limpiar" onclick="resetearFormulario('formularioContacto')">
-                                <i class="bi bi-eraser"></i> Limpiar Formulario
-                            </button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-
-                <!-- INFORMACIÓN DE CONTACTO -->
-                <div class="col-md-4">
-                    <div class="contact-info">
-                        <h5><i class="bi bi-geo-alt"></i> Dirección</h5>
-                        <p>Av. Francisco de Aguirre 450<br>La Serena, Chile</p>
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center" style="border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <div class="card-body">
+                            <i class="bi bi-bricks" style="font-size: 3rem; color: #EF6C00;"></i>
+                            <h5 class="card-title">Materiales</h5>
+                            <p class="card-text">Cemento, arena, ladrillos y mortero.</p>
+                        </div>
                     </div>
-
-                    <div class="contact-info">
-                        <h5><i class="bi bi-telephone"></i> Teléfono Mesón</h5>
-                        <p>+56 51 2345 678</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center" style="border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <div class="card-body">
+                            <i class="bi bi-paint-bucket" style="font-size: 3rem; color: #EF6C00;"></i>
+                            <h5 class="card-title">Pinturas</h5>
+                            <p class="card-text">Pinturas, barnices y selladores de calidad.</p>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </section>
 
-                    <div class="contact-info">
-                        <h5><i class="bi bi-clock"></i> Horario de Atención</h5>
-                        <p>Lun-Vie: 8:30 - 18:30<br>Sáb: 9:00 - 14:00</p>
+        <!-- ===== OFERTAS DEL MES ===== -->
+        <section>
+            <h2><i class="bi bi-tag"></i> Ofertas del Mes</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card producto-card" style="border: 1px solid #eee; border-radius: 8px; height: 100%;">
+                        <div class="card-body text-center">
+                            <i class="bi bi-hammer" style="font-size: 3rem; color: #EF6C00;"></i>
+                            <h5 class="card-title">Martillo Profesional</h5>
+                            <p class="card-text">Acero forjado, mango de madera.</p>
+                            <p class="precio"><strong>$9.990</strong> <span style="text-decoration: line-through; color: #999;">$12.990</span></p>
+                            <a href="productos.html" class="btn btn-comprar">Ver Oferta</a>
+                        </div>
                     </div>
-
-                    <div class="contact-info">
-                        <h5><i class="bi bi-envelope"></i> Correo Directo</h5>
-                        <p>Donjuan@hotmail.com</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card producto-card" style="border: 1px solid #eee; border-radius: 8px; height: 100%;">
+                        <div class="card-body text-center">
+                            <i class="bi bi-wrench" style="font-size: 3rem; color: #EF6C00;"></i>
+                            <h5 class="card-title">Llave Ajustable</h5>
+                            <p class="card-text">Acero cromado, 12 pulgadas.</p>
+                            <p class="precio"><strong>$6.990</strong> <span style="text-decoration: line-through; color: #999;">$8.490</span></p>
+                            <a href="productos.html" class="btn btn-comprar">Ver Oferta</a>
+                        </div>
                     </div>
-
-                    <!-- IFRAME DE GOOGLE MAPS (La Serena, Chile) -->
-                    <iframe class="mapa-iframe" 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1381.5!2d-71.25!3d-29.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9691b6e5e5e5e5e5%3A0x5e5e5e5e5e5e5e5e!2sAv.+Francisco+de+Aguirre+450%2C+La+Serena%2C+Chile!5e0!3m2!1ses!2scl!4v1699999999999!5m2!1ses!2scl" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card producto-card" style="border: 1px solid #eee; border-radius: 8px; height: 100%;">
+                        <div class="card-body text-center">
+                            <i class="bi bi-droplet" style="font-size: 3rem; color: #EF6C00;"></i>
+                            <h5 class="card-title">Nivel de Burbuja</h5>
+                            <p class="card-text">Aluminio con 3 viales.</p>
+                            <p class="precio"><strong>$5.990</strong> <span style="text-decoration: line-through; color: #999;">$7.490</span></p>
+                            <a href="productos.html" class="btn btn-comprar">Ver Oferta</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -172,14 +127,13 @@
         <!-- ===== PIE DE PÁGINA ===== -->
         <footer>
             <i class="material-icons">copyright</i>
-            © 2026 - Ferreteria don Juan - Todos los derechos reservados
+            © 2026 - Ferretería don Juan - Todos los derechos reservados
         </footer>
 
     </div>
 
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- VÍNCULO A TU ARCHIVO DE LÓGICA -->
     <script src="../funciones.js"></script>
 </body>
 </html>
