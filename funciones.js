@@ -249,4 +249,66 @@ function validarFormulario(formId) {
             resultado.style.display = 'none';
         }, 3000);
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+    var formRegistro = document.getElementById('registroForm');
+
+    // Verificamos que el formulario exista en la página actual antes de aplicar la lógica
+    if (formRegistro) {
+        formRegistro.addEventListener('submit', function(event) {
+            var isValid = true;
+            
+            // 1. Validar Nombre (Max 50 caracteres)
+            var nombre = document.getElementById('nombre').value;
+            if (nombre.length > 50) {
+                document.getElementById('error-nombre').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('error-nombre').style.display = 'none';
+            }
+
+            // 2. Validar Dominio de Correo
+            var correo = document.getElementById('correo').value;
+            var dominiosPermitidos = ['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'];
+            var correoValido = dominiosPermitidos.some(function(dominio) {
+                return correo.endsWith(dominio);
+            });
+            
+            if (!correoValido) {
+                document.getElementById('error-correo').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('error-correo').style.display = 'none';
+            }
+
+            // 3. Validar coincidencia de correos
+            var confirmarCorreo = document.getElementById('confirmar-correo').value;
+            if (correo !== confirmarCorreo) {
+                document.getElementById('error-correo-match').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('error-correo-match').style.display = 'none';
+            }
+
+            // 4. Validar coincidencia de contraseñas
+            var password = document.getElementById('password').value;
+            var confirmarPassword = document.getElementById('confirmar-password').value;
+            if (password !== confirmarPassword) {
+                document.getElementById('error-password-match').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('error-password-match').style.display = 'none';
+            }
+
+            // 5. Ejecutar acción final
+            if (!isValid) {
+                event.preventDefault(); // Detiene el envío si hay errores
+            } else {
+                event.preventDefault(); // Evita que la página se recargue para la demostración
+                alert('Cuenta registrada exitosamente.');
+                // formRegistro.submit(); // Descomenta esta línea cuando lo conectes a un backend real
+            }
+        });
+    }
+});
 }

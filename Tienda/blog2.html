@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caso Curioso #2 - Ferretería Don Juan</title>
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        .blog-post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .blog-post-title {
+            color: #D84315;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #EF6C00;
+            padding-bottom: 10px;
+        }
+
+        /* Contenedor responsivo para el video de YouTube */
+        .video-responsive {
+            position: relative;
+            padding-bottom: 56.25%; /* Proporción 16:9 */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .video-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .blog-post-content p {
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .btn-volver {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .btn-volver:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- ENCABEZADO -->
+        <header>
+            <h1 id="logo-tienda">Ferretería Don Juan</h1>
+            <p>Construyendo juntos desde hace 22 años en La Serena</p>
+        </header>
+
+        <!-- MENÚ DE NAVEGACIÓN -->
+        <nav class="nav-menu">
+            <a href="homePrincipal.html" class="active"><i class="bi bi-house"></i> Inicio</a>
+            <a href="productos.html"><i class="bi bi-tools"></i> Productos</a>
+            <a href="contacto.html"><i class="bi bi-envelope"></i> Contacto</a>
+            <a href="nosotros.html"><i class="bi bi-"></i> Nosotros</a>
+            <a href="blogs.html"><i class="bi bi-"></i> Blogs</a>
+        </nav>
+
+        <!-- CONTENIDO DEL BLOG -->
+        <section style="background-color: transparent; border: none; box-shadow: none;">
+            <div class="blog-post-container">
+                <h1 class="blog-post-title">CASO CURIOSO #2: De patio abandonado a taller de carpintería</h1>
+                
+                <!-- VIDEO RESPONSIVO -->
+                <div class="video-responsive">
+                    <!-- Aquí pones el iframe de tu video. -->
+                    <iframe src="https://www.youtube.com/embed/tPI48O242D0" title="Video de carpintería" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+
+                <div class="blog-post-content">
+                    <p>Uno de nuestros contratistas habituales, junto con un cliente entusiasta del "hágalo usted mismo", se propusieron un gran desafío: transformar un rincón olvidado y lleno de maleza en el patio en un taller de carpintería completamente funcional y seguro.</p>
+                    
+                    <p><strong>Herramientas y materiales eléctricos utilizados:</strong></p>
+                    <ul>
+                        <li>Sierra circular de banco de 1800W</li>
+                        <li>Taladro percutor inalámbrico 20V</li>
+                        <li>Tablero de distribución eléctrica, automáticos y cableado libre de halógenos</li>
+                        <li>Luminarias LED de alta potencia para interiores</li>
+                    </ul>
+
+                    <p>En el video de referencia se puede apreciar la importancia de una correcta instalación eléctrica para soportar el encendido simultáneo de maquinaria pesada. Gracias al asesoramiento de nuestro equipo en Ferretería Los Maestros, el cliente pudo dimensionar correctamente los cables y disyuntores, logrando un espacio seguro y profesional para trabajar la madera.</p>
+                </div>
+
+                <a href="blogs.html" class="btn-volver">&#8592; Volver a Noticias</a>
+            </div>
+        </section>
+
+        <!-- PIE DE PÁGINA -->
+        <footer>
+            <p>&copy; 2026 Ferretería Don Juan. Todos los derechos reservados. | La Serena, Región de Coquimbo.</p>
+        </footer>
+    </div>
+
+</body>
+</html>

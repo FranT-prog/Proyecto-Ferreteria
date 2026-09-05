@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario - Ferretería Don Juan</title>
+
+    <!-- BOOTSTRAP CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- MATERIALIZE ICONS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- BOOTSTRAP ICONS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- CSS EXTERNO -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        /* Estilos estructurales para ordenar el formulario manteniendo tu diseño */
+        .form-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 10px 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        /* Ajuste de los inputs para complementar tu style.css */
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        /* Estructura para la fila de Región y Comuna */
+        .row-selects {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .row-selects .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+
+        /* Mensajes de error ocultos por defecto para el JavaScript */
+        .error-msg {
+            color: #D84315; /* Usando tu tono naranja/rojo para los errores */
+            font-size: 0.85rem;
+            display: none;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        /* Diseño responsivo para celulares */
+        @media (max-width: 480px) {
+            .row-selects {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- ENCABEZADO -->
+        <header>
+            <h1>
+                <i class="material-icons">construction</i>
+                <span id="logo-tienda">Ferretería Don Juan</span> - Registro
+            </h1>
+            <p>Construyendo juntos desde hace 22 años en La Serena</p>
+
+        <!-- MENÚ DE NAVEGACIÓN -->
+            <nav class="nav-menu">
+                <a href="homePrincipal.html"><i class="bi bi-house"></i> Inicio</a>
+                <a href="productos.html"><i class="bi bi-tools"></i> Productos</a>
+                <a href="contacto.html" class="active"><i class="bi bi-envelope"></i> Contacto</a>
+                <a href="nosotros.html"><i class="bi bi-"></i> Nosotros</a>
+                <a href="blogs.html"><i class="bi bi-"></i> Blogs</a>
+            </nav>
+        </header>
+
+        <!-- BOTONES DE ACCESO ALINEADOS A LA DERECHA -->
+        <div class="user-actions" style="text-align: right; padding: 15px 20px 0 0; margin-bottom: 10px;">
+            <a href="login.html" style="color: #EF6C00; text-decoration: none; font-weight: bold; font-size: 0.95rem;">Iniciar sesión</a>
+            <span style="color: #333; margin: 0 8px;">|</span>
+            <a href="registroUsuario.html" style="color: #EF6C00; text-decoration: none; font-weight: bold; font-size: 0.95rem;">Registrar usuario</a>
+        </div>
+
+        <!-- SECCIÓN DE REGISTRO (Usa el estilo nativo de tu CSS) -->
+        <section>
+            <h2>Registro de Usuario</h2>
+            
+            <div class="form-wrapper">
+                <form id="registroForm" action="#" method="POST">
+                    
+                    <div class="form-group">
+                        <label for="nombre" class="form-label">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control" maxlength="50" placeholder="Ej: Juan Pérez" required>
+                        <div id="error-nombre" class="error-msg">El nombre no puede superar los 50 caracteres.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="correo" class="form-label">Correo Electrónico</label>
+                        <input type="email" id="correo" name="correo" class="form-control" maxlength="100" placeholder="ejemplo@correo.com" required>
+                        <div id="error-correo" class="error-msg">Solo se permiten correos @duoc.cl, @profesor.duoc.cl o @gmail.com.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmar-correo" class="form-label">Confirmar Correo</label>
+                        <input type="email" id="confirmar-correo" name="confirmar-correo" class="form-control" maxlength="100" required>
+                        <div id="error-correo-match" class="error-msg">Los correos no coinciden.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" id="password" name="password" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmar-password" class="form-label">Confirmar Contraseña</label>
+                        <input type="password" id="confirmar-password" name="confirmar-password" class="form-control" required>
+                        <div id="error-password-match" class="error-msg">Las contraseñas no coinciden.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefono" class="form-label">Teléfono (Opcional)</label>
+                        <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="+56 9 1234 5678">
+                    </div>
+
+                    <!-- Fila con dos columnas para Región y Comuna -->
+                    <div class="row-selects">
+                        <div class="form-group">
+                            <label for="region" class="form-label">Región</label>
+                            <select id="region" name="region" class="form-control" required>
+                                <option value="" disabled selected>-- Seleccione --</option>
+                                <option value="coquimbo">Región de Coquimbo</option>
+                                <option value="metropolitana">Región Metropolitana</option>
+                                <option value="araucania">Región de la Araucanía</option>
+                                <option value="nuble">Región de Ñuble</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="comuna" class="form-label">Comuna</label>
+                            <select id="comuna" name="comuna" class="form-control" required>
+                                <option value="" disabled selected>-- Seleccione --</option>
+                                <option value="la-serena">La Serena</option>
+                                <option value="coquimbo">Coquimbo</option>
+                                <option value="concepcion">Concepción</option>
+                                <option value="linares">Linares</option>
+                            </select>
+                        </div>
+                    </div>
+
+                
+                        <div class="d-flex gap-3 mt-3">
+                            <button type="button" class="btn-limpiar" onclick="resetearFormulario('registroForm')"><i class="bi bi-eraser"></i> Limpiar Formulario</button>
+                            <button type="submit" class="btn-enviar">Crear Cuenta</button>
+                        </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- PIE DE PÁGINA -->
+        <footer>
+            <p>&copy; 2026 Ferretería Los Maestros. Todos los derechos reservados. | La Serena, Región de Coquimbo.</p>
+        </footer>
+    </div>
+
+    <!-- Enlace al archivo JavaScript externo -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../funciones.js"></script>
+
+</body>
+</html>
