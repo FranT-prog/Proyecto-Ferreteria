@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Ferretería Los Maestros</title>
+    <!-- Enlace a tu archivo de estilos principal -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        /* Estilos específicos para el Dashboard del Administrador */
+        .admin-dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            padding: 20px 0 40px 0;
+        }
+
+        .admin-card {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 30px 20px;
+            width: 100%;
+            max-width: 280px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .admin-card:hover {
+            transform: translateY(-5px);
+            border-color: #EF6C00;
+        }
+
+        .admin-card h3 {
+            color: #333;
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+
+        .admin-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            min-height: 40px;
+        }
+
+        /* Reutilizamos el estilo de tu botón btn-enviar pero adaptado para enlaces */
+        .btn-admin {
+            display: inline-block;
+            width: 100%;
+            font-size: 1rem;
+            padding: 10px;
+            box-sizing: border-box;
+            text-decoration: none;
+            text-align: center;
+            background-color: #EF6C00;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .btn-admin:hover {
+            background-color: #e65c00;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- ENCABEZADO -->
+        <header>
+            <h1 id="logo-tienda">Ferretería Los Maestros</h1>
+            <p>Construyendo juntos desde hace 22 años en La Serena</p>
+            
+            <!-- MENÚ DE NAVEGACIÓN (Versión Administrador) -->
+            <nav class="nav-menu">
+                <a href="homeAdmin.html" class="active">Inicio Admin</a>
+                <a href="adminProductos.html">Gestionar Productos</a>
+                <a href="adminUsuarios.html">Gestionar Usuarios</a>
+                <a href="adminVentas.html">Reporte de Ventas</a>
+            </nav>
+        </header>
+
+        <!-- BOTONES DE ACCESO ALINEADOS A LA DERECHA -->
+        <div class="user-actions" style="text-align: right; padding: 15px 20px 0 0; margin-bottom: 10px;">
+            <span style="color: #333; font-weight: bold; font-size: 0.95rem; margin-right: 15px;">👤 Hola, Administrador</span>
+            <a href="index.html" style="color: #D84315; text-decoration: none; font-weight: bold; font-size: 0.95rem;">Cerrar sesión</a>
+        </div>
+
+        <!-- SECCIÓN DE DASHBOARD -->
+        <section>
+            <h2>Panel de Control</h2>
+            <p style="text-align: center; color: #555; margin-bottom: 30px;">Selecciona la acción que deseas realizar en el sistema.</p>
+            
+            <div class="admin-dashboard">
+                
+                <!-- Tarjeta: Gestión de Productos -->
+                <div class="admin-card">
+                    <h3>📦 Productos</h3>
+                    <p>Agrega, edita o elimina productos del catálogo de la ferretería.</p>
+                    <a href="adminProductos.html" class="btn-admin">Gestionar Productos</a>
+                </div>
+
+                <!-- Tarjeta: Gestión de Usuarios -->
+                <div class="admin-card">
+                    <h3>👥 Usuarios</h3>
+                    <p>Administra las cuentas de clientes y los niveles de acceso.</p>
+                    <a href="adminUsuarios.html" class="btn-admin">Gestionar Usuarios</a>
+                </div>
+
+                <!-- Tarjeta: Visualización de Ventas/Pedidos -->
+                <div class="admin-card">
+                    <h3>🛒 Ventas y Pedidos</h3>
+                    <p>Revisa el historial de compras y el estado de los despachos.</p>
+                    <a href="adminVentas.html" class="btn-admin">Ver Reportes</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PIE DE PÁGINA -->
+        <footer>
+            <p>&copy; 2026 Ferretería Los Maestros. Todos los derechos reservados. | Sistema de Administración Interna.</p>
+        </footer>
+    </div>
+
+    <!-- Enlace a tu archivo JavaScript -->
+    <script src="funciones.js"></script>
+
+</body>
+</html>

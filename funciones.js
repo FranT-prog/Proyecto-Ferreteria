@@ -311,4 +311,50 @@ function validarFormulario(formId) {
         });
     }
 });
+
+// ============================================================
+//  VALIDACIÓN DE REGISTRO DE USUARIO (PANEL ADMINISTRADOR)
+// ============================================================
+document.addEventListener('DOMContentLoaded', function() {
+    var adminRegistroForm = document.getElementById('adminRegistroForm');
+
+    if (adminRegistroForm) {
+        adminRegistroForm.addEventListener('submit', function(event) {
+            var isValid = true;
+            
+            // 1. Validar Nombre (Max 50 caracteres)
+            var nombre = document.getElementById('admin-nombre').value;
+            if (nombre.length > 50) {
+                document.getElementById('error-admin-nombre').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('error-admin-nombre').style.display = 'none';
+            }
+
+            // 2. Validar Dominio de Correo
+            var correo = document.getElementById('admin-correo').value;
+            var dominiosPermitidos = ['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'];
+            var correoValido = dominiosPermitidos.some(function(dominio) {
+                return correo.endsWith(dominio);
+            });
+            
+            if (!correoValido) {
+                document.getElementById('error-admin-correo').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('error-admin-correo').style.display = 'none';
+            }
+
+            // 3. Ejecutar acción final
+            if (!isValid) {
+                event.preventDefault(); // Detiene el envío si hay errores
+            } else {
+                event.preventDefault(); // Evita recarga para la demostración
+                alert('Usuario creado exitosamente desde el panel de administración.');
+                // adminRegistroForm.submit(); // Descomentar al integrar base de datos
+            }
+        });
+    }
+});
+
 }

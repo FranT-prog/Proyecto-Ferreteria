@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios - Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        /* Estructura para dividir la pantalla entre tabla y formulario */
+        .admin-layout {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .admin-list-section {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .admin-form-section {
+            flex: 1;
+            min-width: 300px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        /* Estilos de la tabla de usuarios */
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .admin-table th, .admin-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .admin-table th {
+            background-color: #333;
+            color: white;
+        }
+
+        .admin-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Estilos del formulario alineados a tu style.css */
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .btn-enviar {
+            width: 100%;
+            font-size: 1rem;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #EF6C00;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .btn-enviar:hover {
+            background-color: #e65c00;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .error-msg {
+            color: #D84315;
+            font-size: 0.85rem;
+            display: none;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- ENCABEZADO -->
+        <header>
+            <h1 id="logo-tienda">Ferretería Don Juan</h1>
+            <p>Panel de Administración</p>
+
+            <!-- MENÚ DE NAVEGACIÓN (Versión Administrador) -->
+            <nav class="nav-menu">
+                <a href="homeAdmin.html">Inicio Admin</a>
+                <a href="adminProductos.html">Gestionar Productos</a>
+                <a href="adminUsuarios.html" class="active">Gestionar Usuarios</a>
+                <a href="adminVentas.html">Reporte de Ventas</a>
+            </nav>
+        </header>
+
+
+        <section>
+            <h2>Gestión de Usuarios</h2>
+            
+            <div class="admin-layout">
+                <!-- COLUMNA IZQUIERDA: TABLA DE USUARIOS -->
+                <div class="admin-list-section">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Rol</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Juan Pérez</td>
+                                <td>juan.perez@gmail.com</td>
+                                <td>Cliente</td>
+                                <td><button class="btn-danger">Eliminar</button></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Admin Principal</td>
+                                <td>admin@duoc.cl</td>
+                                <td>Administrador</td>
+                                <td><button class="btn-danger" disabled>Eliminar</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- COLUMNA DERECHA: FORMULARIO DE CREACIÓN -->
+                <div class="admin-form-section">
+                    <h3>Agregar Usuario</h3>
+                    <form id="adminRegistroForm" action="#" method="POST">
+                        
+                        <div class="form-group">
+                            <label class="form-label">Nombre Completo</label>
+                            <input type="text" id="admin-nombre" class="form-control" maxlength="50" required>
+                            <div id="error-admin-nombre" class="error-msg">El nombre no puede superar los 50 caracteres.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Correo Electrónico</label>
+                            <input type="email" id="admin-correo" class="form-control" maxlength="100" required>
+                            <div id="error-admin-correo" class="error-msg">Solo correos @duoc.cl, @profesor.duoc.cl o @gmail.com.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Rol del Usuario</label>
+                            <select id="admin-rol" class="form-control" required>
+                                <option value="cliente">Cliente</option>
+                                <option value="administrador">Administrador</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Contraseña Temporal</label>
+                            <input type="password" id="admin-password" class="form-control" required>
+                        </div>
+
+                        <button type="submit" class="btn-enviar">Crear Usuario</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- PIE DE PÁGINA -->
+        <footer>
+            <p>&copy; 2026 Ferretería Don Juan.</p>
+        </footer>
+    </div>
+
+    <script src="funciones.js"></script>
+</body>
+</html>
