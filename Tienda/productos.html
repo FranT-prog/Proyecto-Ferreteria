@@ -5,22 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ferretería don Juan - Productos</title>
 
-    <!-- BOOTSTRAP CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- MATERIALIZE ICONS -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
-    <!-- BOOTSTRAP ICONS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    
-    <!-- CSS EXTERNO -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div class="container">
 
-        <!-- ===== ENCABEZADO ===== -->
         <header>
             <h1>
                 <i class="material-icons">construction</i>
@@ -32,134 +24,146 @@
                 <a href="homePrincipal.html"><i class="bi bi-house"></i> Inicio</a>
                 <a href="productos.html" class="active"><i class="bi bi-tools"></i> Productos</a>
                 <a href="contacto.html"><i class="bi bi-envelope"></i> Contacto</a>
-                <a href="nosotros.html"><i class="bi bi-"></i> Nosotros</a>
-                <a href="blogs.html"><i class="bi bi-"></i> Blogs</a>
-                </a>
+                <a href="nosotros.html"><i class="bi bi-people"></i> Nosotros</a>
+                <a href="blogs.html"><i class="bi bi-newspaper"></i> Blogs</a>
             </nav>
         </header>
 
-        <!-- ===== LISTA DE PRODUCTOS ===== -->
         <section>
-            <section>
-    <h2><i class="bi bi-box-seam"></i> Nuestros Productos</h2>
-    <p>Selecciona un producto y haz clic en "Comprar" para realizar la compra</p>
+            <h2><i class="bi bi-box-seam"></i> Nuestros Productos</h2>
+            <p>Encuentra herramientas eléctricas y manuales, materiales de carpintería y artículos de ferretería general para tu próximo proyecto.</p>
 
-    <!-- ===== BOTÓN PARA VER CARRITO ===== -->
-    <div class="text-end mb-3">
-        <button class="btn btn-carrito" onclick="verCarrito()">
-            <i class="bi bi-cart"></i> Ver Carrito (<span id="contador-carrito">0</span>)
-        </button>
-    </div>
+            <div class="text-end mb-3">
+                <button class="btn btn-carrito" onclick="verCarrito()">
+                    <i class="bi bi-cart"></i> Ver Carrito (<span id="contador-carrito">0</span>)
+                </button>
+            </div>
 
-    <div class="row" id="lista-productos">
-        <!-- ... productos ... -->
-    </div>
-</section>
             <div class="row" id="lista-productos">
-                <!-- Producto 1 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card producto-card">
-                        <div class="card-body text-center">
-                            <i class="bi bi-hammer" style="font-size: 3rem; color: #EF6C00;"></i>
-                            <h5 class="card-title">Martillo de Carpintero</h5>
-                            <p class="card-text">Martillo de acero forjado con mango de madera.</p>
+
+                <!-- Producto 1: Martillo -->
+                <div class="col-md-4 mb-4 d-flex align-items-stretch">
+                    <div class="card producto-card w-100">
+                        <div class="card-body text-center d-flex flex-column">
+                            <img src="img/martillo.webp" alt="Martillo de Carpintero" class="producto-imagen">
+                            <h5 class="card-title mt-2">Martillo de Carpintero</h5>
+                            <p class="card-text flex-grow-1">Martillo de acero forjado con mango de madera.</p>
                             <p class="precio"><strong>$12.990</strong></p>
-                            <button class="btn btn-comprar" onclick="comprarProducto(this)">Comprar</button>
+                            <div class="d-flex gap-2">
+                                <a href="detalleProductos.html?producto=martillo" class="btn btn-sm btn-outline-primary flex-fill">Ver detalle</a>
+                                <button class="btn btn-sm btn-comprar flex-fill" onclick="comprarProducto(this)">Comprar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Producto 2 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card producto-card">
-                        <div class="card-body text-center">
-                            <i class="bi bi-wrench" style="font-size: 3rem; color: #EF6C00;"></i>
-                            <h5 class="card-title">Llave Ajustable</h5>
-                            <p class="card-text">Llave ajustable de acero cromado, 12 pulgadas.</p>
+                <!-- Producto 2: Llave Ajustable -->
+                <div class="col-md-4 mb-4 d-flex align-items-stretch">
+                    <div class="card producto-card w-100">
+                        <div class="card-body text-center d-flex flex-column">
+                            <img src="img/llave_ajustable.webp" alt="Llave Ajustable" class="producto-imagen">
+                            <h5 class="card-title mt-2">Llave Ajustable</h5>
+                            <p class="card-text flex-grow-1">Llave ajustable de acero cromado, 12 pulgadas.</p>
                             <p class="precio"><strong>$8.490</strong></p>
-                            <button class="btn btn-comprar" onclick="comprarProducto(this)">Comprar</button>
+                            <div class="d-flex gap-2">
+                                <a href="detalleProductos.html?producto=llave" class="btn btn-sm btn-outline-primary flex-fill">Ver detalle</a>
+                                <button class="btn btn-sm btn-comprar flex-fill" onclick="comprarProducto(this)">Comprar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Producto 3 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card producto-card">
-                        <div class="card-body text-center">
-                            <i class="bi bi-tools" style="font-size: 3rem; color: #EF6C00;"></i>
-                            <h5 class="card-title">Set de Destornilladores</h5>
-                            <p class="card-text">Set de 6 destornilladores de precisión con puntas intercambiables.</p>
+                <!-- Producto 3: Set de Destornilladores -->
+                <div class="col-md-4 mb-4 d-flex align-items-stretch">
+                    <div class="card producto-card w-100">
+                        <div class="card-body text-center d-flex flex-column">
+                            <img src="img/destornillador.webp" alt="Set de Destornilladores" class="producto-imagen">
+                            <h5 class="card-title mt-2">Set de Destornilladores</h5>
+                            <p class="card-text flex-grow-1">Set de 6 destornilladores de precisión con puntas intercambiables.</p>
                             <p class="precio"><strong>$15.990</strong></p>
-                            <button class="btn btn-comprar" onclick="comprarProducto(this)">Comprar</button>
+                            <div class="d-flex gap-2">
+                                <a href="detalleProductos.html?producto=destornillador" class="btn btn-sm btn-outline-primary flex-fill">Ver detalle</a>
+                                <button class="btn btn-sm btn-comprar flex-fill" onclick="comprarProducto(this)">Comprar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Producto 4 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card producto-card">
-                        <div class="card-body text-center">
-                            <i class="bi bi-rulers" style="font-size: 3rem; color: #EF6C00;"></i>
-                            <h5 class="card-title">Cinta Métrica </h5>
-                            <p class="card-text">Cinta métrica de acero con bloqueo automático.</p>
+                <!-- Producto 4: Cinta Métrica -->
+                <div class="col-md-4 mb-4 d-flex align-items-stretch">
+                    <div class="card producto-card w-100">
+                        <div class="card-body text-center d-flex flex-column">
+                            <img src="img/cinta metrica.webp" alt="Cinta Métrica" class="producto-imagen">
+                            <h5 class="card-title mt-2">Cinta Métrica</h5>
+                            <p class="card-text flex-grow-1">Cinta métrica de acero con bloqueo automático.</p>
                             <p class="precio"><strong>$5.990</strong></p>
-                            <button class="btn btn-comprar" onclick="comprarProducto(this)">Comprar</button>
+                            <div class="d-flex gap-2">
+                                <a href="detalleProductos.html?producto=cinta" class="btn btn-sm btn-outline-primary flex-fill">Ver detalle</a>
+                                <button class="btn btn-sm btn-comprar flex-fill" onclick="comprarProducto(this)">Comprar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Producto 5 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card producto-card">
-                        <div class="card-body text-center">
-                            <i class="bi bi-droplet" style="font-size: 3rem; color: #EF6C00;"></i>
-                            <h5 class="card-title">Nivel de Burbuja</h5>
-                            <p class="card-text">Nivel de burbuja de aluminio con 3 viales.</p>
+                <!-- Producto 5: Nivel de Burbuja -->
+                <div class="col-md-4 mb-4 d-flex align-items-stretch">
+                    <div class="card producto-card w-100">
+                        <div class="card-body text-center d-flex flex-column">
+                            <img src="img/nivel_burbuja.webp" alt="Nivel de Burbuja" class="producto-imagen">
+                            <h5 class="card-title mt-2">Nivel de Burbuja</h5>
+                            <p class="card-text flex-grow-1">Nivel de burbuja de aluminio con 3 viales.</p>
                             <p class="precio"><strong>$7.490</strong></p>
-                            <button class="btn btn-comprar" onclick="comprarProducto(this)">Comprar</button>
+                            <div class="d-flex gap-2">
+                                <a href="detalleProductos.html?producto=nivel" class="btn btn-sm btn-outline-primary flex-fill">Ver detalle</a>
+                                <button class="btn btn-sm btn-comprar flex-fill" onclick="comprarProducto(this)">Comprar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Producto 6 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card producto-card">
-                        <div class="card-body text-center">
-                            <i class="bi bi-scissors" style="font-size: 3rem; color: #EF6C00;"></i>
-                            <h5 class="card-title">Tijeras de Corte</h5>
-                            <p class="card-text">Tijeras para metal y plástico, mango ergonómico.</p>
+                <!-- Producto 6: Tijeras de Corte -->
+                <div class="col-md-4 mb-4 d-flex align-items-stretch">
+                    <div class="card producto-card w-100">
+                        <div class="card-body text-center d-flex flex-column">
+                            <img src="img/tijeras.webp" alt="Tijeras de Corte" class="producto-imagen">
+                            <h5 class="card-title mt-2">Tijeras de Corte</h5>
+                            <p class="card-text flex-grow-1">Tijeras para metal y plástico, mango ergonómico.</p>
                             <p class="precio"><strong>$9.990</strong></p>
-                            <button class="btn btn-comprar" onclick="comprarProducto(this)">Comprar</button>
+                            <div class="d-flex gap-2">
+                                <a href="detalleProductos.html?producto=tijeras" class="btn btn-sm btn-outline-primary flex-fill">Ver detalle</a>
+                                <button class="btn btn-sm btn-comprar flex-fill" onclick="comprarProducto(this)">Comprar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
-        <!-- ===== MODAL DEL CARRITO ===== -->
-<div class="modal fade" id="modalCarrito" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color: #EF6C00; color: white;">
-                <h5 class="modal-title"><i class="bi bi-cart"></i> Mi Carrito</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body">
-                <div id="lista-carrito">
-                    <p class="text-center text-muted">No hay productos en el carrito.</p>
+
+        <!-- MODAL DEL CARRITO -->
+        <div class="modal fade" id="modalCarrito" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #EF6C00; color: white;">
+                        <h5 class="modal-title"><i class="bi bi-cart"></i> Mi Carrito</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="lista-carrito">
+                            <p class="text-center text-muted">No hay productos en el carrito.</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <h5 class="me-auto">Total: <span id="total-carrito">$0</span></h5>
+                        <button class="btn btn-success" onclick="finalizarCompra()">
+                            <i class="bi bi-check-circle"></i> Finalizar Compra
+                        </button>
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <h5 class="me-auto">Total: <span id="total-carrito">$0</span></h5>
-                <button class="btn btn-success" onclick="finalizarCompra()">
-                    <i class="bi bi-check-circle"></i> Finalizar Compra
-                </button>
-                <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            </div>
         </div>
-    </div>
-</div>
 
-        <!-- ===== PIE DE PÁGINA ===== -->
         <footer>
             <i class="material-icons">copyright</i>
             © 2026 - Ferretería don Juan - Todos los derechos reservados
@@ -167,7 +171,6 @@
 
     </div>
 
-    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../funciones.js"></script>
 </body>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferretería don Juan - Detalle Producto</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <h1>
+                <i class="material-icons">construction</i>
+                <span id="logo-tienda">Ferretería don Juan</span> - Detalle Producto
+            </h1>
+            <p>Materiales de construcción, herramientas y ferretería general</p>
+
+            <nav class="nav-menu">
+                <a href="homePrincipal.html"><i class="bi bi-house"></i> Inicio</a>
+                <a href="productos.html"><i class="bi bi-tools"></i> Productos</a>
+                <a href="contacto.html"><i class="bi bi-envelope"></i> Contacto</a>
+                <a href="nosotros.html"><i class="bi bi-people"></i> Nosotros</a>
+                <a href="blogs.html"><i class="bi bi-newspaper"></i> Blogs</a>
+            </nav>
+        </header>
+
+        <!-- ===== DETALLE DEL PRODUCTO ===== -->
+        <section id="detalle-producto">
+            <div class="row">
+                <div class="col-md-5">
+                    <img id="producto-imagen" src="" alt="Producto" class="img-fluid" style="border-radius: 8px; border: 1px solid #ddd; width: 100%;">
+                </div>
+                <div class="col-md-7">
+                    <h2 id="producto-nombre" style="color: #D84315;"></h2>
+                    <p class="text-muted">Código: <strong id="producto-codigo"></strong></p>
+                    
+                    <div class="mb-3">
+                        <span class="badge bg-success">En Stock</span>
+                        <span class="badge bg-warning text-dark">Oferta</span>
+                    </div>
+
+                    <h3 style="color: #EF6C00; font-size: 2rem;" id="producto-precio"></h3>
+                    <p class="text-muted"><s id="producto-precio-antiguo"></s> <span class="text-success" id="producto-ahorro"></span></p>
+
+                    <hr>
+
+                    <h5><i class="bi bi-info-circle"></i> Descripción</h5>
+                    <p id="producto-descripcion"></p>
+
+                    <h5><i class="bi bi-list-check"></i> Características</h5>
+                    <ul id="producto-caracteristicas"></ul>
+
+                    <h5><i class="bi bi-truck"></i> Información de envío</h5>
+                    <p>Envío a toda la Región de Coquimbo. Tiempo de entrega: 24-48 horas hábiles.</p>
+
+                    <hr>
+
+                    <div class="d-flex gap-3">
+                        <button class="btn btn-comprar" onclick="alert('Producto agregado al carrito 🛒')">
+                            <i class="bi bi-cart-plus"></i> Agregar al Carrito
+                        </button>
+                        <a href="productos.html" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Volver a Productos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PRODUCTOS RELACIONADOS ===== -->
+        <section>
+            <h3><i class="bi bi-link-45deg"></i> Productos Relacionados</h3>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <div class="card producto-card text-center">
+                        <div class="card-body">
+                            <img src="img/llave_ajustable.webp" alt="Llave Ajustable" style="width: 100%; height: 120px; object-fit: cover; border-radius: 4px;">
+                            <h6 class="mt-2">Llave Ajustable</h6>
+                            <p class="precio"><strong>$8.490</strong></p>
+                            <a href="detalleProductos.html?producto=llave" class="btn btn-sm btn-outline-primary">Ver</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card producto-card text-center">
+                        <div class="card-body">
+                            <img src="img/destornillador.webp" alt="Set Destornilladores" style="width: 100%; height: 120px; object-fit: cover; border-radius: 4px;">
+                            <h6 class="mt-2">Set Destornilladores</h6>
+                            <p class="precio"><strong>$15.990</strong></p>
+                            <a href="detalleProductos.html?producto=destornillador" class="btn btn-sm btn-outline-primary">Ver</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card producto-card text-center">
+                        <div class="card-body">
+                            <img src="img/nivel_burbuja.webp" alt="Nivel Burbuja" style="width: 100%; height: 120px; object-fit: cover; border-radius: 4px;">
+                            <h6 class="mt-2">Nivel de Burbuja</h6>
+                            <p class="precio"><strong>$7.490</strong></p>
+                            <a href="detalleProductos.html?producto=nivel" class="btn btn-sm btn-outline-primary">Ver</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card producto-card text-center">
+                        <div class="card-body">
+                            <img src="img/tijeras.webp" alt="Tijeras Corte" style="width: 100%; height: 120px; object-fit: cover; border-radius: 4px;">
+                            <h6 class="mt-2">Tijeras de Corte</h6>
+                            <p class="precio"><strong>$9.990</strong></p>
+                            <a href="detalleProductos.html?producto=tijeras" class="btn btn-sm btn-outline-primary">Ver</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <i class="material-icons">copyright</i>
+            © 2026 - Ferretería don Juan - Todos los derechos reservados
+        </footer>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../funciones.js"></script>
+
+    <script>
+        // ============================================================
+        //  BASE DE DATOS DE PRODUCTOS
+        // ============================================================
+        const productos = {
+            martillo: {
+                nombre: "Martillo de Carpintero",
+                codigo: "MART-001",
+                precio: "$12.990",
+                precioAntiguo: "$15.990",
+                ahorro: "Ahorras $3.000",
+                imagen: "img/martillo.webp",
+                descripcion: "Martillo de carpintero fabricado en acero forjado de alta resistencia. Su mango de madera proporciona un agarre cómodo y seguro, reduciendo la fatiga durante trabajos prolongados. Ideal para carpintería, construcción y trabajos de bricolaje.",
+                caracteristicas: [
+                    "<strong>Material:</strong> Acero forjado",
+                    "<strong>Mango:</strong> Madera de haya",
+                    "<strong>Peso:</strong> 1.2 kg",
+                    "<strong>Longitud:</strong> 35 cm",
+                    "<strong>Garantía:</strong> 2 años"
+                ]
+            },
+            llave: {
+                nombre: "Llave Ajustable",
+                codigo: "LLAV-002",
+                precio: "$8.490",
+                precioAntiguo: "$10.990",
+                ahorro: "Ahorras $2.500",
+                imagen: "img/llave_ajustable.webp",
+                descripcion: "Llave ajustable de acero cromado con sistema de ajuste preciso. Ideal para trabajos de fontanería, mecánica y mantenimiento general.",
+                caracteristicas: [
+                    "<strong>Material:</strong> Acero cromado",
+                    "<strong>Tamaño:</strong> 12 pulgadas",
+                    "<strong>Apertura máxima:</strong> 35 mm",
+                    "<strong>Garantía:</strong> 1 año"
+                ]
+            },
+            destornillador: {
+                nombre: "Set de Destornilladores",
+                codigo: "DEST-003",
+                precio: "$15.990",
+                precioAntiguo: "$19.990",
+                ahorro: "Ahorras $4.000",
+                imagen: "img/destornillador.webp",
+                descripcion: "Set de 6 destornilladores de precisión con puntas intercambiables. Incluye puntas planas y de estrella de diferentes tamaños, ideal para trabajos electrónicos y de precisión.",
+                caracteristicas: [
+                    "<strong>Puntas:</strong> 6 puntas intercambiables",
+                    "<strong>Tipos:</strong> Plana y estrella",
+                    "<strong>Material:</strong> Acero al cromo-vanadio",
+                    "<strong>Estuche:</strong> Incluye estuche organizador"
+                ]
+            },
+            cinta: {
+                nombre: "Cinta Métrica",
+                codigo: "CINT-004",
+                precio: "$5.990",
+                precioAntiguo: "$7.990",
+                ahorro: "Ahorras $2.000",
+                imagen: "img/cinta metrica.webp",
+                descripcion: "Cinta métrica de acero con bloqueo automático y sistema de retracción suave. Ideal para mediciones precisas en construcción y carpintería.",
+                caracteristicas: [
+                    "<strong>Longitud:</strong> 5 metros",
+                    "<strong>Material:</strong> Acero con recubrimiento",
+                    "<strong>Bloqueo:</strong> Automático",
+                    "<strong>Garantía:</strong> 1 año"
+                ]
+            },
+            nivel: {
+                nombre: "Nivel de Burbuja",
+                codigo: "NIVE-005",
+                precio: "$7.490",
+                precioAntiguo: "$9.990",
+                ahorro: "Ahorras $2.500",
+                imagen: "img/nivel_burbuja.webp",
+                descripcion: "Nivel de burbuja de aluminio con 3 viales de alta precisión. Perfecto para trabajos de albañilería, carpintería y nivelación de superficies.",
+                caracteristicas: [
+                    "<strong>Material:</strong> Aluminio",
+                    "<strong>Viales:</strong> 3 (horizontal, vertical y 45°)",
+                    "<strong>Longitud:</strong> 60 cm",
+                    "<strong>Garantía:</strong> 1 año"
+                ]
+            },
+            tijeras: {
+                nombre: "Tijeras de Corte",
+                codigo: "TIJE-006",
+                precio: "$9.990",
+                precioAntiguo: "$12.990",
+                ahorro: "Ahorras $3.000",
+                imagen: "img/tijeras.webp",
+                descripcion: "Tijeras para metal y plástico con mango ergonómico y sistema de palanca para mayor fuerza de corte. Ideal para trabajos de metalurgia y bricolaje.",
+                caracteristicas: [
+                    "<strong>Material:</strong> Acero endurecido",
+                    "<strong>Mango:</strong> Ergonómico con recubrimiento",
+                    "<strong>Uso:</strong> Metal, plástico y materiales duros",
+                    "<strong>Garantía:</strong> 2 años"
+                ]
+            }
+        };
+
+        // ============================================================
+        //  OBTENER PRODUCTO DE LA URL
+        // ============================================================
+        function obtenerProducto() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productoId = urlParams.get('producto');
+            
+            if (productoId && productos[productoId]) {
+                return productos[productoId];
+            }
+            return null;
+        }
+
+        // ============================================================
+        //  CARGAR DATOS EN LA PÁGINA
+        // ============================================================
+        function cargarDetalle() {
+            const producto = obtenerProducto();
+            
+            if (!producto) {
+                document.getElementById('detalle-producto').innerHTML = `
+                    <div class="alert alert-danger">
+                        <h4>Producto no encontrado</h4>
+                        <p>El producto que buscas no existe en nuestro catálogo.</p>
+                        <a href="productos.html" class="btn btn-secondary">Volver a Productos</a>
+                    </div>
+                `;
+                return;
+            }
+
+            document.getElementById('producto-imagen').src = producto.imagen;
+            document.getElementById('producto-imagen').alt = producto.nombre;
+            document.getElementById('producto-nombre').textContent = producto.nombre;
+            document.getElementById('producto-codigo').textContent = producto.codigo;
+            document.getElementById('producto-precio').textContent = producto.precio;
+            document.getElementById('producto-precio-antiguo').textContent = producto.precioAntiguo;
+            document.getElementById('producto-ahorro').textContent = producto.ahorro;
+            document.getElementById('producto-descripcion').textContent = producto.descripcion;
+
+            const listaCaracteristicas = document.getElementById('producto-caracteristicas');
+            listaCaracteristicas.innerHTML = '';
+            producto.caracteristicas.forEach(function(caracteristica) {
+                const li = document.createElement('li');
+                li.innerHTML = caracteristica;
+                listaCaracteristicas.appendChild(li);
+            });
+
+            document.title = `Ferretería don Juan - ${producto.nombre}`;
+        }
+
+        // ============================================================
+        //  EJECUTAR AL CARGAR LA PÁGINA
+        // ============================================================
+        window.onload = cargarDetalle;
+    </script>
+</body>
+</html>
