@@ -1,57 +1,114 @@
 <!DOCTYPE html>
+<!-- Declara que el documento es HTML5 -->
 <html lang="en">
+<!-- El idioma de la página es inglés (podría ser "es" para español) -->
+
 <head>
+    <!-- ============================================================
+    CABECERA (META DATOS Y RECURSOS EXTERNOS)
+    ============================================================ -->
+
+    <!-- Codificación de caracteres: permite usar tildes y la ñ correctamente -->
     <meta charset="UTF-8">
+    
+    <!-- Viewport: Hace que el sitio sea responsive en móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Título que aparece en la pestaña del navegador -->
     <title>Nosotros - Ferretería Don Juan</title>
+
+    <!-- ============================================================
+    RECURSOS EXTERNOS (CDN)
+    ============================================================ -->
+
+    <!-- CSS personalizado: Estilos propios de la ferretería -->
     <link rel="stylesheet" href="../css/style.css">
 
-    <!-- BOOTSTRAP CSS -->
+    <!-- Bootstrap 5 CSS: Sistema de grillas, componentes y diseño responsive -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- MATERIALIZE ICONS -->
+    <!-- Material Icons: Íconos de Google (ej: construction) -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
-    <!-- BOOTSTRAP ICONS -->
+    <!-- Bootstrap Icons: Íconos de Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 </head>
+
 <body>
+    <!-- ============================================================
+    CONTENEDOR PRINCIPAL
+    ============================================================ -->
+    <!-- Contenedor que agrupa todo el contenido y lo centra en la página -->
     <div class="container">
-        <!-- ENCABEZADO -->
+
+        <!-- ============================================================
+        ENCABEZADO (HEADER)
+        ============================================================ -->
+        <!-- Encabezado con fondo naranjo y menú de navegación -->
         <header>
+            <!-- Título principal: Ícono + nombre de la tienda + página actual -->
             <h1>
-            <i class="material-icons">construction</i>
-            <span id="logo-tienda">Ferretería Don Juan</span> - ¿Quiénes Somos?
+                <!-- Ícono de construcción de Material Icons -->
+                <i class="material-icons">construction</i>
+                <!-- Nombre de la tienda (resaltado en blanco) -->
+                <span id="logo-tienda">Ferretería Don Juan</span>
+                <!-- Texto que indica la página actual -->
+                - ¿Quiénes Somos?
             </h1>
+            <!-- Subtítulo / eslogan de la tienda -->
             <p>Construyendo juntos desde hace 22 años en La Serena</p>
-        
+
+            <!-- ============================================================
+            MENÚ DE NAVEGACIÓN
+            ============================================================ -->
+            <!-- Barra de navegación con enlaces a todas las páginas -->
             <nav class="nav-menu">
+                <!-- Enlace a Inicio -->
                 <a href="homePrincipal.html"><i class="bi bi-house"></i> Inicio</a>
+                <!-- Enlace a Productos -->
                 <a href="productos.html"><i class="bi bi-tools"></i> Productos</a>
+                <!-- Enlace a Contacto -->
                 <a href="contacto.html"><i class="bi bi-envelope"></i> Contacto</a>
-                <a href="nosotros.html" class="active"><i class="bi bi-"></i> Nosotros</a>
-                <a href="blogs.html"><i class="bi bi-"></i> Blogs</a>
-                </a>
+                <!-- Enlace a Nosotros (activo, con clase "active") -->
+                <a href="nosotros.html" class="active"><i class="bi bi-people"></i> Nosotros</a>
+                <!-- Enlace a Blogs -->
+                <a href="blogs.html"><i class="bi bi-newspaper"></i> Blogs</a>
             </nav>
         </header>
 
+        <!-- ============================================================
+        SECCIÓN: SOBRE NOSOTROS
+        ============================================================ -->
+        <!-- Bloque de contenido con borde naranjo a la izquierda -->
         <section>
+            <!-- Título de la sección -->
             <h2>Sobre Nosotros</h2>
             
+            <!-- ============================================================
+            CONTENEDOR DE LA HISTORIA
+            ============================================================ -->
+            <!-- Div con estilo de "historia-tienda" (fondo gris claro, borde naranjo a la izquierda) -->
             <div class="historia-tienda">
+                
+                <!-- Subtítulo: Nuestra Historia -->
                 <h3>Nuestra Historia</h3>
+                <!-- Párrafo con información de la empresa -->
                 <p>
+                    <!-- Texto en negrita para resaltar el nombre y datos importantes -->
                     <strong>Ferretería Don Juan</strong> es un negocio familiar ubicado orgullosamente en <strong>La Serena, Región de Coquimbo</strong>. Con <strong>22 años de trayectoria</strong> en el rubro, nos hemos consolidado como un pilar fundamental para los proyectos de nuestra comunidad.
                 </p>
+                <!-- Segundo párrafo -->
                 <p>
                     Creemos en el trato cercano y personalizado. Por eso, nuestra ferretería es atendida directamente por su dueño, su hijo y 2 empleados de planta, quienes están siempre dispuestos a brindar la mejor asesoría técnica.
                 </p>
 
+                <!-- Subtítulo: Nuestros Productos -->
                 <h3>Nuestros Productos</h3>
                 <p>
                     Contamos con un catálogo en constante crecimiento que actualmente supera las <strong>800 referencias</strong>. Nos especializamos en la venta de materiales de construcción, herramientas eléctricas y manuales, gasfitería, electricidad y artículos de ferretería en general, asegurando que encuentres todo en un solo lugar.
                 </p>
 
+                <!-- Subtítulo: A Quiénes Servimos -->
                 <h3>A Quiénes Servimos</h3>
                 <p>
                     Nos enorgullece atender a una gran variedad de clientes. Nuestros mostradores reciben diariamente a <strong>clientes particulares</strong> que buscan mejorar sus hogares, así como a <strong>contratistas y maestros de obra</strong> que confían en nosotros para adquirir insumos con mayor frecuencia y en grandes volúmenes para sus proyectos profesionales.
@@ -59,7 +116,10 @@
             </div>
         </section>
 
-        <!-- PIE DE PÁGINA -->
+        <!-- ============================================================
+        PIE DE PÁGINA (FOOTER)
+        ============================================================ -->
+        <!-- Pie de página con fondo gris oscuro y derechos reservados -->
         <footer>
             <p>&copy; 2026 Ferretería Don Juan. Todos los derechos reservados. | La Serena, Región de Coquimbo.</p>
         </footer>

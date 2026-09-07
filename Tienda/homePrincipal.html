@@ -1,100 +1,204 @@
 <!DOCTYPE html>
+<!-- Declara que el documento es HTML5 -->
 <html lang="es">
+<!-- El idioma de la página es español -->
+
 <head>
+    <!-- ============================================================
+    CABECERA (META DATOS Y RECURSOS EXTERNOS)
+    ============================================================ -->
+
+    <!-- Codificación de caracteres: permite usar tildes y la ñ correctamente -->
     <meta charset="UTF-8">
+    
+    <!-- Viewport: Hace que el sitio sea responsive en móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Título que aparece en la pestaña del navegador -->
     <title>Ferretería don Juan - Inicio</title>
 
+    <!-- ============================================================
+    RECURSOS EXTERNOS (CDN)
+    ============================================================ -->
+
+    <!-- Bootstrap 5 CSS: Sistema de grillas, componentes y diseño responsive -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Material Icons: Íconos de Google (ej: construction) -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Bootstrap Icons: Íconos de Bootstrap (ej: bi-house, bi-cart) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- CSS personalizado: Estilos propios de la ferretería (colores, sombras, etc.) -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
+    <!-- ============================================================
+    CONTENEDOR PRINCIPAL
+    ============================================================ -->
+    <!-- Contenedor que agrupa todo el contenido y lo centra en la página -->
     <div class="container">
 
+        <!-- ============================================================
+        ENCABEZADO (HEADER)
+        ============================================================ -->
+        <!-- Encabezado con fondo naranjo y menú de navegación -->
         <header>
+            <!-- Título principal: Ícono + nombre de la tienda + página actual -->
             <h1>
+                <!-- Ícono de construcción de Material Icons -->
                 <i class="material-icons">construction</i>
-                <span id="logo-tienda">Ferretería don Juan</span> - Inicio
+                <!-- Nombre de la tienda (resaltado en blanco) -->
+                <span id="logo-tienda">Ferretería don Juan</span>
+                <!-- Texto que indica la página actual -->
+                - Inicio
             </h1>
+            <!-- Subtítulo / eslogan de la tienda -->
             <p>Materiales de construcción, herramientas y ferretería general</p>
 
+            <!-- ============================================================
+            MENÚ DE NAVEGACIÓN
+            ============================================================ -->
+            <!-- Barra de navegación con enlaces a todas las páginas -->
             <nav class="nav-menu">
-                <a href="homePrincipal.html" class="active"><i class="bi bi-house"></i> Inicio</a>
-                <a href="productos.html"><i class="bi bi-tools"></i> Productos</a>
-                <a href="contacto.html"><i class="bi bi-envelope"></i> Contacto</a>
-                <a href="nosotros.html"><i class="bi bi-people"></i> Nosotros</a>
-                <a href="blogs.html"><i class="bi bi-newspaper"></i> Blogs</a>
+                <!-- Enlace a Inicio (activo, con clase "active") -->
+                <a href="homePrincipal.html" class="active">
+                    <i class="bi bi-house"></i> Inicio
+                </a>
+                <!-- Enlace a Productos -->
+                <a href="productos.html">
+                    <i class="bi bi-tools"></i> Productos
+                </a>
+                <!-- Enlace a Contacto -->
+                <a href="contacto.html">
+                    <i class="bi bi-envelope"></i> Contacto
+                </a>
+                <!-- Enlace a Nosotros -->
+                <a href="nosotros.html">
+                    <i class="bi bi-people"></i> Nosotros
+                </a>
+                <!-- Enlace a Blogs -->
+                <a href="blogs.html">
+                    <i class="bi bi-newspaper"></i> Blogs
+                </a>
             </nav>
         </header>
 
-        <!-- ===== BANNER PRINCIPAL ===== -->
-        <div class="banner-principal" style="background-color: #EF6C00; color: white; padding: 40px 20px; border-radius: 8px; text-align: center; margin-bottom: 30px;">
+        <!-- ============================================================
+        BANNER PRINCIPAL
+        ============================================================ -->
+        <!-- Banner de bienvenida con fondo naranjo y llamado a la acción -->
+        <div class="banner-principal" 
+             style="background-color: #EF6C00; color: white; padding: 40px 20px; border-radius: 8px; text-align: center; margin-bottom: 30px;">
+            
+            <!-- Título del banner con emoji -->
             <h1 style="font-size: 2.5rem; margin-bottom: 10px;">🏗️ Materiales de Construcción</h1>
+            
+            <!-- Texto de descripción -->
             <p style="font-size: 1.2rem;">Todo lo que necesitas para tu proyecto, en un solo lugar</p>
-            <a href="productos.html" class="btn btn-light" style="margin-top: 15px; background-color: white; color: #EF6C00; font-weight: bold; padding: 10px 30px; border-radius: 4px; text-decoration: none;">
+            
+            <!-- Botón que lleva a la página de productos -->
+            <a href="productos.html" class="btn btn-light" 
+               style="margin-top: 15px; background-color: white; color: #EF6C00; font-weight: bold; padding: 10px 30px; border-radius: 4px; text-decoration: none;">
                 Ver Productos
             </a>
         </div>
 
-        <!-- ===== CATEGORÍAS DESTACADAS ===== -->
+        <!-- ============================================================
+        SECCIÓN: CATEGORÍAS DESTACADAS
+        ============================================================ -->
+        <!-- Bloque de contenido con borde naranjo a la izquierda -->
         <section>
+            <!-- Título de la sección con ícono -->
             <h2><i class="bi bi-grid"></i> Categorías Destacadas</h2>
+            
+            <!-- Fila de Bootstrap con 3 columnas -->
             <div class="row">
+                
+                <!-- Categoría 1: Herramientas -->
                 <div class="col-md-4 mb-4">
+                    <!-- Tarjeta sin borde con sombra suave -->
                     <div class="card text-center" style="border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                         <div class="card-body">
+                            <!-- Ícono de martillo en naranjo -->
                             <i class="bi bi-hammer" style="font-size: 3rem; color: #EF6C00;"></i>
                             <h5 class="card-title">Herramientas</h5>
                             <p class="card-text">Martillos, destornilladores, llaves y más.</p>
                         </div>
                     </div>
                 </div>
+
+                <!-- Categoría 2: Materiales -->
                 <div class="col-md-4 mb-4">
                     <div class="card text-center" style="border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                         <div class="card-body">
+                            <!-- Ícono de ladrillos -->
                             <i class="bi bi-bricks" style="font-size: 3rem; color: #EF6C00;"></i>
                             <h5 class="card-title">Materiales</h5>
                             <p class="card-text">Cemento, arena, ladrillos y mortero.</p>
                         </div>
                     </div>
                 </div>
+
+                <!-- Categoría 3: Pinturas -->
                 <div class="col-md-4 mb-4">
                     <div class="card text-center" style="border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                         <div class="card-body">
+                            <!-- Ícono de cubeta de pintura -->
                             <i class="bi bi-paint-bucket" style="font-size: 3rem; color: #EF6C00;"></i>
                             <h5 class="card-title">Pinturas</h5>
                             <p class="card-text">Pinturas, barnices y selladores de calidad.</p>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- ===== OFERTAS DEL MES ===== -->
+        <!-- ============================================================
+        SECCIÓN: OFERTAS DEL MES
+        ============================================================ -->
         <section>
             <h2><i class="bi bi-tag"></i> Ofertas del Mes</h2>
+            
             <div class="row">
+
                 <!-- Oferta 1: Martillo Profesional -->
                 <div class="col-md-4 mb-4">
-                    <div class="card producto-card h-100" style="cursor: pointer;" onclick="window.location.href='detalleProductos.html?producto=martillo'">
+                    <!-- Tarjeta clicable (onclick redirige al detalle del producto) -->
+                    <div class="card producto-card h-100" style="cursor: pointer;" 
+                         onclick="window.location.href='detalleProductos.html?producto=martillo'">
+                        
                         <div class="card-body text-center d-flex flex-column">
+                            <!-- Imagen del producto -->
                             <img src="img/martillo.webp" alt="Martillo Profesional" class="producto-imagen">
+                            
+                            <!-- Nombre del producto -->
                             <h5 class="card-title mt-2">Martillo Profesional</h5>
+                            
+                            <!-- Descripción corta que ocupa el espacio disponible -->
                             <p class="card-text flex-grow-1">Acero forjado, mango de madera.</p>
+                            
+                            <!-- Precio: oferta en naranjo y precio original tachado -->
                             <p class="precio">
                                 <strong style="color: #EF6C00; font-size: 1.3rem;">$9.990</strong>
                                 <span style="text-decoration: line-through; color: #999; margin-left: 10px;">$12.990</span>
                             </p>
-                            <a href="detalleProductos.html?producto=martillo" class="btn btn-comprar w-100">Ver Oferta</a>
+                            
+                            <!-- Botón que redirige al detalle del producto -->
+                            <a href="detalleProductos.html?producto=martillo" class="btn btn-comprar w-100">
+                                Ver Oferta
+                            </a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Oferta 2: Llave Ajustable -->
                 <div class="col-md-4 mb-4">
-                    <div class="card producto-card h-100" style="cursor: pointer;" onclick="window.location.href='detalleProductos.html?producto=llave'">
+                    <div class="card producto-card h-100" style="cursor: pointer;" 
+                         onclick="window.location.href='detalleProductos.html?producto=llave'">
                         <div class="card-body text-center d-flex flex-column">
                             <img src="img/llave_ajustable.webp" alt="Llave Ajustable" class="producto-imagen">
                             <h5 class="card-title mt-2">Llave Ajustable</h5>
@@ -110,7 +214,8 @@
 
                 <!-- Oferta 3: Nivel de Burbuja -->
                 <div class="col-md-4 mb-4">
-                    <div class="card producto-card h-100" style="cursor: pointer;" onclick="window.location.href='detalleProductos.html?producto=nivel'">
+                    <div class="card producto-card h-100" style="cursor: pointer;" 
+                         onclick="window.location.href='detalleProductos.html?producto=nivel'">
                         <div class="card-body text-center d-flex flex-column">
                             <img src="img/nivel_burbuja.webp" alt="Nivel de Burbuja" class="producto-imagen">
                             <h5 class="card-title mt-2">Nivel de Burbuja</h5>
@@ -123,18 +228,30 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- ===== PIE DE PÁGINA ===== -->
+        <!-- ============================================================
+        PIE DE PÁGINA (FOOTER)
+        ============================================================ -->
+        <!-- Pie de página con fondo gris oscuro y derechos reservados -->
         <footer>
+            <!-- Ícono de copyright de Material Icons -->
             <i class="material-icons">copyright</i>
             © 2026 - Ferretería don Juan - Todos los derechos reservados
         </footer>
 
     </div>
 
+    <!-- ============================================================
+    SCRIPTS (JAVASCRIPT)
+    ============================================================ -->
+
+    <!-- Bootstrap 5 JavaScript: Necesario para el funcionamiento del modal y otros componentes -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript personalizado: Lógica del carrito, validación de formularios, etc. -->
     <script src="../funciones.js"></script>
 </body>
 </html>

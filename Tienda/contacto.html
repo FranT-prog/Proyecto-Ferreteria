@@ -1,69 +1,122 @@
 <!DOCTYPE html>
+<!-- Declara que el documento es HTML5 -->
 <html lang="es">
+<!-- El idioma de la página es español -->
+
 <head>
+    <!-- ============================================================
+    CABECERA (META DATOS Y RECURSOS EXTERNOS)
+    ============================================================ -->
+
+    <!-- Codificación de caracteres: permite usar tildes y la ñ correctamente -->
     <meta charset="UTF-8">
+    
+    <!-- Viewport: Hace que el sitio sea responsive en móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Título que aparece en la pestaña del navegador -->
     <title>Ferretería Don Juan - Contacto</title>
 
-    <!-- BOOTSTRAP CSS -->
+    <!-- ============================================================
+    RECURSOS EXTERNOS (CDN)
+    ============================================================ -->
+
+    <!-- Bootstrap 5 CSS: Sistema de grillas, componentes y diseño responsive -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- MATERIALIZE ICONS -->
+    <!-- Material Icons: Íconos de Google (ej: construction, contact_mail) -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
-    <!-- BOOTSTRAP ICONS -->
+    <!-- Bootstrap Icons: Íconos de Bootstrap (ej: bi-person, bi-envelope) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     
-    <!-- CSS EXTERNO -->
+    <!-- CSS personalizado: Estilos propios de la ferretería -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
+    <!-- ============================================================
+    CONTENEDOR PRINCIPAL
+    ============================================================ -->
     <div class="container">
 
-        <!-- ===== ENCABEZADO ===== -->
+        <!-- ============================================================
+        ENCABEZADO (HEADER)
+        ============================================================ -->
         <header>
+            <!-- Título principal: Ícono + nombre de la tienda + página actual -->
             <h1>
                 <i class="material-icons">construction</i>
-                <span id="logo-tienda">Ferretería Don Juan</span> - Contáctanos
+                <span id="logo-tienda">Ferretería Don Juan</span>
+                - Contáctanos
             </h1>
+            <!-- Subtítulo / eslogan de la tienda -->
             <p>Materiales de construcción, herramientas y ferretería general</p>
 
+            <!-- ============================================================
+            MENÚ DE NAVEGACIÓN
+            ============================================================ -->
             <nav class="nav-menu">
+                <!-- Enlace a Inicio -->
                 <a href="homePrincipal.html"><i class="bi bi-house"></i> Inicio</a>
+                <!-- Enlace a Productos -->
                 <a href="productos.html"><i class="bi bi-tools"></i> Productos</a>
+                <!-- Enlace a Contacto (activo, con clase "active") -->
                 <a href="contacto.html" class="active"><i class="bi bi-envelope"></i> Contacto</a>
-                <a href="nosotros.html"><i class="bi bi-"></i> Nosotros</a>
-                <a href="blogs.html"><i class="bi bi-"></i> Blogs</a>
+                <!-- Enlace a Nosotros -->
+                <a href="nosotros.html"><i class="bi bi-people"></i> Nosotros</a>
+                <!-- Enlace a Blogs -->
+                <a href="blogs.html"><i class="bi bi-newspaper"></i> Blogs</a>
             </nav>
         </header>
 
-        <!-- ===== FORMULARIO DE CONTACTO ===== -->
+        <!-- ============================================================
+        SECCIÓN: FORMULARIO DE CONTACTO
+        ============================================================ -->
         <section>
+            <!-- Título de la sección con ícono -->
             <h2><i class="material-icons">contact_mail</i> Formulario de Contacto</h2>
+            <!-- Descripción -->
             <p>Completa el formulario para enviar un mensaje interno al área de administración.</p>
 
+            <!-- ============================================================
+            FILA: FORMULARIO (izquierda) + INFORMACIÓN (derecha)
+            ============================================================ -->
             <div class="row">
+                
+                <!-- ============================================================
+                COLUMNA IZQUIERDA: FORMULARIO (8 columnas en pantallas medianas)
+                ============================================================ -->
                 <div class="col-md-8">
+                    <!-- Formulario con ID para JavaScript -->
                     <form id="formularioContacto">
+                        
+                        <!-- Campo 1: Nombre Completo -->
                         <div class="mb-3">
                             <label class="form-label"><i class="bi bi-person"></i> Nombre Completo</label>
+                            <!-- input de texto con id "nombre" para JS -->
                             <input type="text" class="form-control" id="nombre" placeholder="Nombre Completo">
                         </div>
 
+                        <!-- Campo 2: Correo Electrónico -->
                         <div class="mb-3">
                             <label class="form-label"><i class="bi bi-envelope"></i> Correo Electrónico</label>
+                            <!-- input de tipo email (validación básica del navegador) -->
                             <input type="email" class="form-control" id="email" placeholder="Correo Electrónico">
                         </div>
 
+                        <!-- Campo 3: Teléfono de Contacto -->
                         <div class="mb-3">
                             <label class="form-label"><i class="bi bi-phone"></i> Teléfono de Contacto</label>
                             <input type="tel" class="form-control" id="telefono" placeholder="Teléfono de Contacto">
                         </div>
 
+                        <!-- Campo 4: Asunto / Motivo (select) -->
                         <div class="mb-3">
                             <label class="form-label"><i class="bi bi-tag"></i> Asunto / Motivo</label>
+                            <!-- Select con opciones predefinidas -->
                             <select class="form-select" id="asunto">
-                                <option value="">Selecciona un motivo</option>
+                                <option value="">Selecciona un motivo</option> <!-- Opción por defecto -->
                                 <option value="consulta">Consulta de Stock General</option>
                                 <option value="pedido">Estado de mi Pedido / Cotización</option>
                                 <option value="cuenta">Cuenta Corriente Contratista</option>
@@ -71,17 +124,27 @@
                             </select>
                         </div>
 
+                        <!-- Campo 5: Mensaje o Comentario (textarea) -->
                         <div class="mb-3">
                             <label class="form-label"><i class="bi bi-chat-dots"></i> Mensaje o Comentario</label>
                             <textarea class="form-control" id="mensaje" rows="4" placeholder="Mensaje o Comentario"></textarea>
                         </div>
 
+                        <!-- ============================================================
+                        DIV PARA RESULTADOS DE VALIDACIÓN (mensajes de error/éxito)
+                        ============================================================ -->
+                        <!-- Aquí JavaScript mostrará los mensajes de validación -->
                         <div id="resultado-validacion"></div>
 
+                        <!-- ============================================================
+                        BOTONES: Enviar y Limpiar
+                        ============================================================ -->
                         <div class="d-flex gap-3 mt-3">
+                            <!-- Botón "Enviar Mensaje": ejecuta validarFormulario() desde funciones.js -->
                             <button type="button" class="btn-enviar" onclick="validarFormulario('formularioContacto')">
                                 <i class="bi bi-send"></i> Enviar Mensaje
                             </button>
+                            <!-- Botón "Limpiar Formulario": ejecuta resetearFormulario() desde funciones.js -->
                             <button type="button" class="btn-limpiar" onclick="resetearFormulario('formularioContacto')">
                                 <i class="bi bi-eraser"></i> Limpiar Formulario
                             </button>
@@ -89,28 +152,39 @@
                     </form>
                 </div>
 
-                <!-- INFORMACIÓN DE CONTACTO -->
+                <!-- ============================================================
+                COLUMNA DERECHA: INFORMACIÓN DE CONTACTO (4 columnas en pantallas medianas)
+                ============================================================ -->
                 <div class="col-md-4">
+                    
+                    <!-- Bloque 1: Dirección -->
                     <div class="contact-info">
                         <h5><i class="bi bi-geo-alt"></i> Dirección</h5>
                         <p>Av. Francisco de Aguirre 450<br>La Serena, Chile</p>
                     </div>
 
+                    <!-- Bloque 2: Teléfono -->
                     <div class="contact-info">
                         <h5><i class="bi bi-telephone"></i> Teléfono Mesón</h5>
                         <p>+569 1234 5678</p>
                     </div>
 
+                    <!-- Bloque 3: Horario de Atención -->
                     <div class="contact-info">
                         <h5><i class="bi bi-clock"></i> Horario de Atención</h5>
                         <p>Lun-Vie: 8:30 - 18:30<br>Sáb: 9:00 - 14:00</p>
                     </div>
 
+                    <!-- Bloque 4: Correo Directo -->
                     <div class="contact-info">
                         <h5><i class="bi bi-envelope"></i> Correo Directo</h5>
                         <p>contacto@donjuan.cl</p>
                     </div>
 
+                    <!-- ============================================================
+                    MAPA DE GOOGLE (IFRAME)
+                    ============================================================ -->
+                    <!-- Mapa incrustado de Google Maps mostrando la ubicación de la tienda -->
                     <iframe class="mapa-iframe" 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1381.5!2d-71.25!3d-29.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9691b6e5e5e5e5e5%3A0x5e5e5e5e5e5e5e5e!2sAv.+Francisco+de+Aguirre+450%2C+La+Serena%2C+Chile!5e0!3m2!1ses!2scl!4v1699999999999!5m2!1ses!2scl" 
                             allowfullscreen="" 
@@ -121,7 +195,9 @@
             </div>
         </section>
 
-        <!-- ===== PIE DE PÁGINA ===== -->
+        <!-- ============================================================
+        PIE DE PÁGINA (FOOTER)
+        ============================================================ -->
         <footer>
             <i class="material-icons">copyright</i>
             © 2026 - Ferretería Don Juan - Todos los derechos reservados
@@ -129,8 +205,14 @@
 
     </div>
 
-    <!-- SCRIPTS -->
+    <!-- ============================================================
+    SCRIPTS (JAVASCRIPT)
+    ============================================================ -->
+
+    <!-- Bootstrap 5 JavaScript: Necesario para el funcionamiento del modal -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript personalizado: Validación del formulario, limpieza, etc. -->
     <script src="../funciones.js"></script>
 </body>
 </html>

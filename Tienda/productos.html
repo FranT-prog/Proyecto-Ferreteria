@@ -1,63 +1,146 @@
 <!DOCTYPE html>
+<!-- Declara que el documento es HTML5 -->
 <html lang="es">
+<!-- El idioma de la página es español -->
+
 <head>
+    <!-- ============================================================
+    CABECERA (META DATOS Y RECURSOS EXTERNOS)
+    ============================================================ -->
+
+    <!-- Codificación de caracteres: permite usar tildes y la ñ correctamente -->
     <meta charset="UTF-8">
+    
+    <!-- Viewport: Hace que el sitio sea responsive en móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Título que aparece en la pestaña del navegador -->
     <title>Ferretería don Juan - Productos</title>
 
+    <!-- ============================================================
+    RECURSOS EXTERNOS (CDN)
+    ============================================================ -->
+
+    <!-- Bootstrap 5 CSS: Sistema de grillas, componentes y diseño responsive -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Material Icons: Íconos de Google (ej: construction) -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Bootstrap Icons: Íconos de Bootstrap (ej: bi-house, bi-cart) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- CSS personalizado: Estilos propios de la ferretería -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
+    <!-- ============================================================
+    CONTENEDOR PRINCIPAL
+    ============================================================ -->
     <div class="container">
 
+        <!-- ============================================================
+        ENCABEZADO (HEADER)
+        ============================================================ -->
+        <!-- Encabezado con fondo naranjo y menú de navegación -->
         <header>
+            <!-- Título principal: Ícono + nombre de la tienda + página actual -->
             <h1>
                 <i class="material-icons">construction</i>
-                <span id="logo-tienda">Ferretería don Juan</span> - Productos
+                <span id="logo-tienda">Ferretería don Juan</span>
+                - Productos
             </h1>
+            <!-- Subtítulo / eslogan de la tienda -->
             <p>Materiales de construcción, herramientas y ferretería general</p>
 
+            <!-- ============================================================
+            MENÚ DE NAVEGACIÓN
+            ============================================================ -->
+            <!-- Barra de navegación con enlaces a todas las páginas -->
             <nav class="nav-menu">
+                <!-- Enlace a Inicio -->
                 <a href="homePrincipal.html"><i class="bi bi-house"></i> Inicio</a>
+                <!-- Enlace a Productos (activo, con clase "active") -->
                 <a href="productos.html" class="active"><i class="bi bi-tools"></i> Productos</a>
+                <!-- Enlace a Contacto -->
                 <a href="contacto.html"><i class="bi bi-envelope"></i> Contacto</a>
+                <!-- Enlace a Nosotros -->
                 <a href="nosotros.html"><i class="bi bi-people"></i> Nosotros</a>
+                <!-- Enlace a Blogs -->
                 <a href="blogs.html"><i class="bi bi-newspaper"></i> Blogs</a>
             </nav>
         </header>
 
+        <!-- ============================================================
+        SECCIÓN: LISTA DE PRODUCTOS
+        ============================================================ -->
+        <!-- Bloque de contenido con borde naranjo a la izquierda -->
         <section>
+            <!-- Título de la sección con ícono -->
             <h2><i class="bi bi-box-seam"></i> Nuestros Productos</h2>
+            
+            <!-- Descripción de la sección -->
             <p>Encuentra herramientas eléctricas y manuales, materiales de carpintería y artículos de ferretería general para tu próximo proyecto.</p>
 
+            <!-- ============================================================
+            BOTÓN "VER CARRITO"
+            ============================================================ -->
+            <!-- Botón que abre el modal del carrito -->
             <div class="text-end mb-3">
+                <!-- Al hacer clic, ejecuta la función verCarrito() desde funciones.js -->
                 <button class="btn btn-carrito" onclick="verCarrito()">
-                    <i class="bi bi-cart"></i> Ver Carrito (<span id="contador-carrito">0</span>)
+                    <i class="bi bi-cart"></i> Ver Carrito (
+                    <!-- Contador que muestra el número de productos en el carrito -->
+                    <span id="contador-carrito">0</span>)
                 </button>
             </div>
 
+            <!-- ============================================================
+            GRID DE PRODUCTOS (FILA DE BOOTSTRAP)
+            ============================================================ -->
             <div class="row" id="lista-productos">
 
-                <!-- Producto 1: Martillo -->
+                <!-- ============================================================
+                PRODUCTO 1: MARTILLO
+                ============================================================ -->
+                <!-- Cada producto ocupa 4 columnas en pantallas medianas (3 por fila) -->
                 <div class="col-md-4 mb-4 d-flex align-items-stretch">
+                    <!-- Tarjeta del producto con altura uniforme -->
                     <div class="card producto-card w-100">
+                        <!-- Cuerpo de la tarjeta con flex column para alinear verticalmente -->
                         <div class="card-body text-center d-flex flex-column">
+                            
+                            <!-- Imagen del producto -->
                             <img src="img/martillo.webp" alt="Martillo de Carpintero" class="producto-imagen">
+                            
+                            <!-- Nombre del producto -->
                             <h5 class="card-title mt-2">Martillo de Carpintero</h5>
+                            
+                            <!-- Descripción (ocupa el espacio disponible con flex-grow-1) -->
                             <p class="card-text flex-grow-1">Martillo de acero forjado con mango de madera.</p>
+                            
+                            <!-- Precio del producto -->
                             <p class="precio"><strong>$12.990</strong></p>
+                            
+                            <!-- Contenedor de botones (Ver detalle + Comprar) -->
                             <div class="d-flex gap-2">
-                                <a href="detalleProductos.html?producto=martillo" class="btn btn-sm btn-outline-primary flex-fill">Ver detalle</a>
-                                <button class="btn btn-sm btn-comprar flex-fill" onclick="comprarProducto(this)">Comprar</button>
+                                <!-- Botón "Ver detalle": redirige a detalleProductos.html con el parámetro del producto -->
+                                <a href="detalleProductos.html?producto=martillo" class="btn btn-sm btn-outline-primary flex-fill">
+                                    Ver detalle
+                                </a>
+                                <!-- Botón "Comprar": ejecuta la función comprarProducto(this) desde funciones.js -->
+                                <button class="btn btn-sm btn-comprar flex-fill" onclick="comprarProducto(this)">
+                                    Comprar
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Producto 2: Llave Ajustable -->
+                <!-- ============================================================
+                PRODUCTO 2: LLAVE AJUSTABLE
+                ============================================================ -->
                 <div class="col-md-4 mb-4 d-flex align-items-stretch">
                     <div class="card producto-card w-100">
                         <div class="card-body text-center d-flex flex-column">
@@ -73,7 +156,9 @@
                     </div>
                 </div>
 
-                <!-- Producto 3: Set de Destornilladores -->
+                <!-- ============================================================
+                PRODUCTO 3: SET DE DESTORNILLADORES
+                ============================================================ -->
                 <div class="col-md-4 mb-4 d-flex align-items-stretch">
                     <div class="card producto-card w-100">
                         <div class="card-body text-center d-flex flex-column">
@@ -89,7 +174,9 @@
                     </div>
                 </div>
 
-                <!-- Producto 4: Cinta Métrica -->
+                <!-- ============================================================
+                PRODUCTO 4: CINTA MÉTRICA
+                ============================================================ -->
                 <div class="col-md-4 mb-4 d-flex align-items-stretch">
                     <div class="card producto-card w-100">
                         <div class="card-body text-center d-flex flex-column">
@@ -105,7 +192,9 @@
                     </div>
                 </div>
 
-                <!-- Producto 5: Nivel de Burbuja -->
+                <!-- ============================================================
+                PRODUCTO 5: NIVEL DE BURBUJA
+                ============================================================ -->
                 <div class="col-md-4 mb-4 d-flex align-items-stretch">
                     <div class="card producto-card w-100">
                         <div class="card-body text-center d-flex flex-column">
@@ -121,7 +210,9 @@
                     </div>
                 </div>
 
-                <!-- Producto 6: Tijeras de Corte -->
+                <!-- ============================================================
+                PRODUCTO 6: TIJERAS DE CORTE
+                ============================================================ -->
                 <div class="col-md-4 mb-4 d-flex align-items-stretch">
                     <div class="card producto-card w-100">
                         <div class="card-body text-center d-flex flex-column">
@@ -140,30 +231,49 @@
             </div>
         </section>
 
-        <!-- MODAL DEL CARRITO -->
+        <!-- ============================================================
+        MODAL DEL CARRITO (VENTANA EMERGENTE)
+        ============================================================ -->
+        <!-- Modal de Bootstrap que se activa con verCarrito() -->
         <div class="modal fade" id="modalCarrito" tabindex="-1" aria-hidden="true">
+            <!-- Diálogo del modal (tamaño grande: modal-lg) -->
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
+                    
+                    <!-- Encabezado del modal (fondo naranjo) -->
                     <div class="modal-header" style="background-color: #EF6C00; color: white;">
                         <h5 class="modal-title"><i class="bi bi-cart"></i> Mi Carrito</h5>
+                        <!-- Botón para cerrar el modal -->
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                     </div>
+                    
+                    <!-- Cuerpo del modal: aquí se muestra la lista de productos -->
                     <div class="modal-body">
+                        <!-- Div que se actualiza dinámicamente con JavaScript -->
                         <div id="lista-carrito">
                             <p class="text-center text-muted">No hay productos en el carrito.</p>
                         </div>
                     </div>
+                    
+                    <!-- Pie del modal: total y botones de acción -->
                     <div class="modal-footer">
+                        <!-- Total de la compra -->
                         <h5 class="me-auto">Total: <span id="total-carrito">$0</span></h5>
+                        <!-- Botón "Finalizar Compra": ejecuta finalizarCompra() -->
                         <button class="btn btn-success" onclick="finalizarCompra()">
                             <i class="bi bi-check-circle"></i> Finalizar Compra
                         </button>
+                        <!-- Botón "Cerrar": cierra el modal -->
                         <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- ============================================================
+        PIE DE PÁGINA (FOOTER)
+        ============================================================ -->
+        <!-- Pie de página con fondo gris oscuro y derechos reservados -->
         <footer>
             <i class="material-icons">copyright</i>
             © 2026 - Ferretería don Juan - Todos los derechos reservados
@@ -171,7 +281,14 @@
 
     </div>
 
+    <!-- ============================================================
+    SCRIPTS (JAVASCRIPT)
+    ============================================================ -->
+
+    <!-- Bootstrap 5 JavaScript: Necesario para el funcionamiento del modal -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript personalizado: Lógica del carrito, compras, etc. -->
     <script src="../funciones.js"></script>
 </body>
 </html>
