@@ -16,7 +16,7 @@
         <header>
             <h1>
                 <i class="material-icons">construction</i>
-                <span id="logo-tienda">Ferretería don Juan</span> - Productos
+                <span id="logo-tienda">Ferretería Don Juan</span> - Productos
             </h1>
             <p>Materiales de construcción, herramientas y ferretería general</p>
 
@@ -28,6 +28,16 @@
                 <a href="blogs.html"><i class="bi bi-newspaper"></i> Blogs</a>
             </nav>
         </header>
+
+        <!-- CATÁLOGO PRODUCTOS -->
+        <section>
+            <h2>Catálogo de Productos</h2>
+            <!-- Aquí Javascript inyectará los productos -->
+            <div id="contenedor-productos" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px;">
+            <!-- Los productos aparecerán aquí automáticamente -->
+            </div>
+        </section>
+
 
         <section>
             <h2><i class="bi bi-box-seam"></i> Nuestros Productos</h2>
@@ -173,5 +183,43 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../funciones.js"></script>
+
+    <!-- Script para mostrar los productos guardados por el admin -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var contenedorProductos = document.getElementById('contenedor-productos');
+
+            // Si el contenedor existe en la página, ejecutamos el código
+            if (contenedorProductos) {
+                // Traer los productos desde localStorage
+                var productosGuardados = JSON.parse(localStorage.getItem('listaProductos')) || [];
+
+                // Si no hay productos guardados
+                if (productosGuardados.length === 0) {
+                    contenedorProductos.innerHTML = '<p style="text-align:center; width:100%;">No hay productos disponibles en este momento.</p>';
+                } else {
+                    // Limpiar el contenedor por si acaso
+                    contenedorProductos.innerHTML = '';
+
+                    // Recorrer cada producto guardado y crear su tarjeta HTML
+                    productosGuardados.forEach(function(producto) {
+                        var tarjetaHTML = `
+                            <div class="producto-card" style="border: 1px solid #ddd; padding: 15px; width: 250px; text-align: center; border-radius: 8px; background-color: white;">
+                                <img src="${producto.imagen}" alt="${producto.nombre}" style="width: 220px; height: 220px; object-fit: cover; margin-bottom: 10px;">
+                                <h3 style="font-size: 1.1rem; margin-bottom: 5px; color: #333;">${producto.nombre}</h3>
+                                <p style="color: #666; font-size: 0.9rem; margin-bottom: 5px;">Código: ${producto.codigo}</p>
+                                <p style="color: #666; font-size: 0.9rem; margin-bottom: 10px;">Stock: ${producto.stock}</p>
+                                <p style="font-size: 1.3rem; color: #EF6C00; font-weight: bold; margin-bottom: 15px;">$${producto.precio}</p>
+                                <button class="btn-enviar" style="width: 100%; padding: 10px; background-color: #EF6C00; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Agregar al Carrito</button>
+                            </div>
+                        `;
+                        
+                        // Inyectar la tarjeta en la página
+                        contenedorProductos.innerHTML += tarjetaHTML;
+                    });
+                }
+            }
+        });
+    </script>
 </body>
 </html>

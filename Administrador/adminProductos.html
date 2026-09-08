@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Productos - Admin</title>
+    <!-- Enlace a tu archivo de estilos principal -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        /* Reutilizamos la estructura de la pantalla de gestión de usuarios */
+        .admin-layout {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .admin-list-section {
+            flex: 2;
+            min-width: 300px;
+            overflow-x: auto; /* Para que la tabla no rompa el diseño en pantallas pequeñas */
+        }
+
+        .admin-form-section {
+            flex: 1;
+            min-width: 300px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        /* Estilos de la tabla de productos */
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .admin-table th, .admin-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        .admin-table th {
+            background-color: #333;
+            color: white;
+        }
+
+        .admin-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Miniatura de imagen en la tabla */
+        .img-thumbnail {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        /* Estilos del formulario alineados a tu style.css */
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        /* Botones de acción */
+        .btn-enviar {
+            width: 100%;
+            font-size: 1rem;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #EF6C00;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .btn-enviar:hover {
+            background-color: #e65c00;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .btn-edit {
+            background-color: #ffc107;
+            color: #000;
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- ENCABEZADO -->
+        <header>
+            <h1 id="logo-tienda">Ferretería Don Juan</h1>
+            <p>Panel de Administración</p>
+
+            <!-- MENÚ DE NAVEGACIÓN (Versión Administrador) -->
+            <nav class="nav-menu">
+                <a href="homeAdmin.html">Inicio Admin</a>
+                <a href="adminProductos.html" style="font-weight: bold; color: #EF6C00;">Gestionar Productos</a>
+                <a href="adminUsuarios.html">Gestionar Usuarios</a>
+                <a href="adminVentas.html">Reporte de Ventas</a>
+            </nav>
+        </header>
+
+        <section>
+            <h2>Gestión de Productos</h2>
+            
+            <div class="admin-layout">
+                <!-- COLUMNA IZQUIERDA: TABLA DE PRODUCTOS -->
+                <div class="admin-list-section">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Img</th>
+                                <th>Código</th>
+                                <th>Nombre del Producto</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-productos-admin">
+                            <!-- Javascript inyectará los productos aquí -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- COLUMNA DERECHA: FORMULARIO DE CREACIÓN/EDICIÓN -->
+                <div class="admin-form-section">
+                    <h3>Agregar/Editar Producto</h3>
+                    <form id="adminProductoForm">
+                        
+                        <div class="form-group">
+                            <label class="form-label">Código del Producto</label>
+                            <input type="text" id="prod-codigo" class="form-control" placeholder="Ej: PRD-003" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Nombre del Producto</label>
+                            <input type="text" id="prod-nombre" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Precio ($)</label>
+                            <input type="number" id="prod-precio" class="form-control" min="1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Stock Inicial</label>
+                            <input type="number" id="prod-stock" class="form-control" min="0" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Categoría</label>
+                            <select id="prod-categoria" class="form-control" required>
+                                <option value="" disabled selected>-- Seleccione Categoría --</option>
+                                <option value="herramientas-electricas">Herramientas Eléctricas</option>
+                                <option value="herramientas-manuales">Herramientas Manuales</option>
+                                <option value="materiales">Materiales de Construcción</option>
+                                <option value="pinturas">Pinturas y Accesorios</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Descripción</label>
+                            <textarea id="prod-desc" class="form-control" rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Imagen del Producto</label>
+                            <input type="file" id="prod-img" class="form-control" accept="image/*">
+                        </div>
+
+                        <button type="submit" class="btn-enviar">Guardar Producto</button>
+                        <button type="reset" class="btn-enviar" style="background-color: #6c757d; margin-top: 5px;">Limpiar Formulario</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- PIE DE PÁGINA -->
+        <footer>
+            <p>&copy; 2026 Ferretería Don Juan. Todos los derechos reservados. | Sistema de Administración.</p>
+        </footer>
+    </div>
+
+    <!-- Script directo para Gestión de Productos -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.getElementById('adminProductoForm');
+            
+            // Función para dibujar los productos en la tabla del administrador
+            function cargarTablaProductos() {
+                var tbody = document.getElementById('tabla-productos-admin');
+                if (!tbody) return;
+
+                var productosGuardados = JSON.parse(localStorage.getItem('listaProductos')) || [];
+                tbody.innerHTML = ''; // Limpiar la tabla antes de cargar
+
+                if (productosGuardados.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No hay productos registrados.</td></tr>';
+                    return;
+                }
+
+                // Recorrer el arreglo y crear las filas
+                productosGuardados.forEach(function(producto, index) {
+                    var fila = `
+                        <tr>
+                            <td><img src="${producto.imagen}" alt="${producto.nombre}" class="img-thumbnail" style="width:50px; height:50px; object-fit:cover;"></td>
+                            <td>${producto.codigo}</td>
+                            <td>${producto.nombre}</td>
+                            <td>$${producto.precio}</td>
+                            <td>${producto.stock}</td>
+                            <td>
+                                <!-- Se pasa el 'index' para saber exactamente qué producto eliminar -->
+                                <button class="btn-danger" onclick="eliminarProducto(${index})">Eliminar</button>
+                            </td>
+                        </tr>
+                    `;
+                    tbody.innerHTML += fila;
+                });
+            }
+
+            // 1. CARGAR LA TABLA AL ABRIR LA PÁGINA
+            cargarTablaProductos();
+
+            // 2. GUARDAR PRODUCTO NUEVO
+            if (form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault(); 
+
+                    var codigo = document.getElementById('prod-codigo').value;
+                    var nombre = document.getElementById('prod-nombre').value;
+                    var precio = document.getElementById('prod-precio').value;
+                    var stock = document.getElementById('prod-stock').value;
+                    var categoria = document.getElementById('prod-categoria').value;
+                    var inputImagen = document.getElementById('prod-img');
+
+                    // Función interna para guardar el producto una vez tengamos la imagen
+                    function finalizarGuardado(imagenFinal) {
+                        var nuevoProducto = {
+                            codigo: codigo,
+                            nombre: nombre,
+                            precio: precio,
+                            stock: stock,
+                            categoria: categoria,
+                            imagen: imagenFinal
+                        };
+
+                        var productosGuardados = JSON.parse(localStorage.getItem('listaProductos')) || [];
+                        productosGuardados.push(nuevoProducto);
+                        localStorage.setItem('listaProductos', JSON.stringify(productosGuardados));
+
+                        alert('¡Producto guardado exitosamente!');
+                        form.reset(); 
+                        cargarTablaProductos(); // Actualizar la tabla
+                    }
+
+                    // Verificar si el usuario seleccionó un archivo de imagen
+                    if (inputImagen.files && inputImagen.files[0]) {
+                        var lector = new FileReader();
+                        
+                        // Cuando termine de leer el archivo, lo guardamos
+                        lector.onload = function(e) {
+                            var imagenBase64 = e.target.result; // Esta es la imagen convertida
+                            finalizarGuardado(imagenBase64);
+                        };
+                        
+                        // Leer el archivo como URL de datos (Base64)
+                        lector.readAsDataURL(inputImagen.files[0]);
+                    } else {
+                        // Si el usuario no sube ninguna imagen, ponemos una imagen de respaldo genérica que no se bloquee
+                        var imagenPorDefecto = "https://cdn-icons-png.flaticon.com/512/1178/1178428.png";
+                        finalizarGuardado(imagenPorDefecto);
+                    }
+                });
+            }
+
+            // 3. FUNCIÓN PARA ELIMINAR (Debe estar disponible globalmente)
+            window.eliminarProducto = function(index) {
+                // Confirmación de seguridad
+                var confirmar = confirm("¿Estás seguro de que deseas eliminar este producto?");
+                
+                if (confirmar) {
+                    var productosGuardados = JSON.parse(localStorage.getItem('listaProductos')) || [];
+                    
+                    // Eliminar 1 elemento en la posición 'index'
+                    productosGuardados.splice(index, 1);
+                    
+                    // Guardar el nuevo arreglo en la memoria
+                    localStorage.setItem('listaProductos', JSON.stringify(productosGuardados));
+                    
+                    // Volver a dibujar la tabla
+                    cargarTablaProductos();
+                }
+            };
+        });
+    </script>
+
+</body>
+</html>
