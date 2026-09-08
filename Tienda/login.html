@@ -1,126 +1,206 @@
 <!DOCTYPE html>
+<!-- Declara que el documento es HTML5 -->
 <html lang="es">
+<!-- El idioma de la página es español -->
+
 <head>
+    <!-- ============================================================
+    CABECERA (META DATOS Y RECURSOS EXTERNOS)
+    ============================================================ -->
+
+    <!-- Codificación de caracteres: permite usar tildes y la ñ correctamente -->
     <meta charset="UTF-8">
+    
+    <!-- Viewport: Hace que el sitio sea responsive en móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Título que aparece en la pestaña del navegador -->
     <title>Iniciar Sesión - Ferretería Don Juan</title>
 
-    <!-- BOOTSTRAP CSS -->
+    <!-- ============================================================
+    RECURSOS EXTERNOS (CDN)
+    ============================================================ -->
+
+    <!-- Bootstrap 5 CSS: Sistema de grillas, componentes y diseño responsive -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- MATERIALIZE ICONS -->
+    <!-- Material Icons: Íconos de Google -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
-    <!-- BOOTSTRAP ICONS -->
+    <!-- Bootstrap Icons: Íconos de Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Enlace a tu archivo de estilos principal -->
+    <!-- CSS personalizado: Estilos propios de la ferretería -->
     <link rel="stylesheet" href="../css/style.css">
     
+    <!-- ============================================================
+    ESTILOS INTERNOS (SOLO PARA ESTA PÁGINA)
+    ============================================================ -->
+    <!-- Estos estilos son específicos para el login y no están en style.css -->
     <style>
-        /* Estilos estructurales para el login manteniendo tu diseño */
+        /* Contenedor del formulario: más compacto (400px de ancho máximo) */
         .form-wrapper {
-            max-width: 400px; /* Más compacto que el registro */
-            margin: 0 auto;
-            padding: 20px 0 40px 0;
+            max-width: 400px;      /* Ancho máximo reducido para mejor legibilidad */
+            margin: 0 auto;        /* Centrado horizontal */
+            padding: 20px 0 40px 0; /* Relleno superior e inferior */
         }
 
+        /* Cada grupo de campo del formulario */
         .form-group {
-            margin-bottom: 20px;
-            text-align: left;
+            margin-bottom: 20px;   /* Separación entre campos */
+            text-align: left;      /* Alinea las etiquetas a la izquierda */
         }
 
+        /* Campos del formulario (input) */
         .form-control {
-            width: 100%;
-            padding: 10px 12px;
-            margin-top: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 1rem;
-            font-family: inherit;
-            transition: all 0.2s;
+            width: 100%;           /* Ocupa todo el ancho disponible */
+            padding: 10px 12px;    /* Relleno interior */
+            margin-top: 8px;       /* Separación con la etiqueta */
+            border: 1px solid #ccc; /* Borde gris claro */
+            border-radius: 4px;    /* Bordes ligeramente redondeados */
+            box-sizing: border-box; /* Incluye el padding en el ancho total */
+            font-size: 1rem;       /* Tamaño de fuente estándar */
+            font-family: inherit;  /* Hereda la fuente del body */
+            transition: all 0.2s;  /* Efecto suave al enfocar */
         }
 
+        /* Contenedor del botón */
         .btn-container {
-            text-align: center;
-            margin-top: 30px;
+            text-align: center;    /* Centra el botón */
+            margin-top: 30px;      /* Separación superior */
         }
 
+        /* Botón "Ingresar" */
         .btn-enviar {
-            width: 100%;
-            font-size: 1.1rem;
-            padding: 12px;
-            cursor: pointer;
+            width: 100%;           /* Ocupa todo el ancho */
+            font-size: 1.1rem;     /* Texto ligeramente más grande */
+            padding: 12px;         /* Relleno grande para que sea clicable */
+            cursor: pointer;       /* El cursor cambia a mano */
         }
 
-        /* Enlaces adicionales de ayuda */
+        /* Enlaces adicionales (¿Olvidaste tu contraseña?) */
         .enlaces-login {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9rem;
+            text-align: center;    /* Centra los enlaces */
+            margin-top: 20px;      /* Separación superior */
+            font-size: 0.9rem;     /* Texto más pequeño */
         }
 
+        /* Estilo de los enlaces */
         .enlaces-login a {
-            color: #EF6C00;
-            text-decoration: none;
-            font-weight: bold;
+            color: #EF6C00;        /* Color naranjo (corporativo) */
+            text-decoration: none; /* Sin subrayado */
+            font-weight: bold;     /* Texto en negrita */
         }
 
+        /* Efecto al pasar el mouse sobre los enlaces */
         .enlaces-login a:hover {
-            text-decoration: underline;
+            text-decoration: underline; /* Subrayado al pasar el mouse */
         }
     </style>
 </head>
-<body>
 
+<body>
+    <!-- ============================================================
+    CONTENEDOR PRINCIPAL
+    ============================================================ -->
     <div class="container">
-        <!-- ENCABEZADO -->
+
+        <!-- ============================================================
+        ENCABEZADO (HEADER)
+        ============================================================ -->
+        <!-- Encabezado con fondo naranjo y menú de navegación -->
         <header>
+            <!-- Título principal: Nombre de la tienda -->
             <h1 id="logo-tienda">Ferretería Don Juan</h1>
+            <!-- Subtítulo / eslogan -->
             <p>Construyendo juntos desde hace 22 años en La Serena</p>
 
-            <!-- MENÚ DE NAVEGACIÓN -->
+            <!-- ============================================================
+            MENÚ DE NAVEGACIÓN
+            ============================================================ -->
+            <!-- Barra de navegación con enlaces a todas las páginas -->
             <nav class="nav-menu">
                 <a href="homePrincipal.html"><i class="bi bi-house"></i> Inicio</a>
                 <a href="productos.html"><i class="bi bi-tools"></i> Productos</a>
                 <a href="contacto.html"><i class="bi bi-envelope"></i> Contacto</a>
-                <a href="nosotros.html"><i class="bi bi-"></i> Nosotros</a>
-                <a href="blogs.html"><i class="bi bi-"></i> Blogs</a>
+                <a href="nosotros.html"><i class="bi bi-people"></i> Nosotros</a>
+                <a href="blogs.html"><i class="bi bi-newspaper"></i> Blogs</a>
             </nav>
         </header>
 
-        <!-- BOTONES DE ACCESO ALINEADOS A LA DERECHA -->
+        <!-- ============================================================
+        BOTONES DE ACCESO (Iniciar sesión | Registrar usuario)
+        ============================================================ -->
+        <!-- Enlaces alineados a la derecha para navegación rápida entre login y registro -->
         <div class="user-actions" style="text-align: right; padding: 15px 20px 0 0; margin-bottom: 10px;">
-            <a href="login.html" style="color: #EF6C00; text-decoration: none; font-weight: bold; font-size: 0.95rem;">Iniciar sesión</a>
+            <!-- Enlace a Iniciar sesión (página actual) -->
+            <a href="login.html" style="color: #EF6C00; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
+                Iniciar sesión
+            </a>
+            <!-- Separador -->
             <span style="color: #333; margin: 0 8px;">|</span>
-            <a href="registroUsuario.html" style="color: #EF6C00; text-decoration: none; font-weight: bold; font-size: 0.95rem;">Registrar usuario</a>
+            <!-- Enlace a Registrar usuario -->
+            <a href="registroUsuario.html" style="color: #EF6C00; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
+                Registrar usuario
+            </a>
         </div>
 
-        <!-- SECCIÓN DE LOGIN -->
+        <!-- ============================================================
+        SECCIÓN: INICIAR SESIÓN
+        ============================================================ -->
+        <!-- Bloque de contenido con borde naranjo a la izquierda -->
         <section>
+            <!-- Título de la sección -->
             <h2>Iniciar Sesión</h2>
             
+            <!-- ============================================================
+            FORMULARIO DE LOGIN
+            ============================================================ -->
+            <!-- Contenedor del formulario (compacto, centrado) -->
             <div class="form-wrapper">
+                <!-- Formulario: al enviar, usa el método POST -->
                 <form id="loginForm" action="#" method="POST">
                     
+                    <!-- ============================================================
+                    CAMPO 1: CORREO ELECTRÓNICO
+                    ============================================================ -->
                     <div class="form-group">
+                        <!-- Etiqueta del campo -->
                         <label for="login-correo" class="form-label">Correo Electrónico</label>
-                        <input type="email" id="login-correo" name="correo" class="form-control" placeholder="ejemplo@correo.com" required>
+                        <!-- Input de tipo email (validación básica del navegador) -->
+                        <input type="email" id="login-correo" name="correo" class="form-control" 
+                               placeholder="ejemplo@correo.com" required>
+                        <!-- required = campo obligatorio -->
                     </div>
 
+                    <!-- ============================================================
+                    CAMPO 2: CONTRASEÑA
+                    ============================================================ -->
                     <div class="form-group">
+                        <!-- Etiqueta del campo -->
                         <label for="login-password" class="form-label">Contraseña</label>
-                        <input type="password" id="login-password" name="password" class="form-control" placeholder="Ingresa tu contraseña" required>
+                        <!-- Input de tipo password (oculta los caracteres) -->
+                        <input type="password" id="login-password" name="password" class="form-control" 
+                               placeholder="Ingresa tu contraseña" required>
                     </div>
 
-                    <!-- Botón Enviar usando la clase btn-enviar de tu CSS -->
+                    <!-- ============================================================
+                    BOTÓN "INGRESAR"
+                    ============================================================ -->
+                    <!-- Contenedor centrado para el botón -->
                     <div class="btn-container">
+                        <!-- Botón de tipo submit (envía el formulario) -->
                         <button type="submit" class="btn-enviar">Ingresar</button>
                     </div>
 
+                    <!-- ============================================================
+                    ENLACES ADICIONALES
+                    ============================================================ -->
+                    <!-- Enlaces para recuperar contraseña y registrarse -->
                     <div class="enlaces-login">
+                        <!-- Enlace a "¿Olvidaste tu contraseña?" (sin funcionalidad real) -->
                         <p><a href="#">¿Olvidaste tu contraseña?</a></p>
+                        <!-- Enlace a "Regístrate aquí" -->
                         <p>¿No tienes cuenta? <a href="registroUsuario.html">Regístrate aquí</a></p>
                     </div>
 
@@ -128,14 +208,19 @@
             </div>
         </section>
 
-        <!-- PIE DE PÁGINA -->
+        <!-- ============================================================
+        PIE DE PÁGINA (FOOTER)
+        ============================================================ -->
+        <!-- Pie de página con fondo gris oscuro y derechos reservados -->
         <footer>
             <p>&copy; 2026 Ferretería Don Juan. Todos los derechos reservados. | La Serena, Región de Coquimbo.</p>
         </footer>
     </div>
 
-    <!-- Enlace a tu archivo JavaScript unificado -->
+    <!-- ============================================================
+    SCRIPTS (JAVASCRIPT)
+    ============================================================ -->
+    <!-- JavaScript personalizado: Lógica de validación, etc. -->
     <script src="funciones.js"></script>
-
 </body>
 </html>

@@ -1,491 +1,475 @@
 /* ==========================================================================
    1. ESTILOS BASE Y GENERALES
    ========================================================================== */
+
+/* Estilos aplicados a todo el cuerpo de la página */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
-    margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif;      /* Fuente de texto: Arial o similar */
+    background-color: #f5f5f5;           /* Fondo gris claro para toda la página */
+    color: #333;                         /* Color del texto: gris oscuro */
+    margin: 0;                           /* Elimina el margen exterior */
+    padding: 0;                          /* Elimina el relleno interior */
 }
 
+/* Contenedor principal que envuelve todo el contenido */
 .container {
-    width: 80%;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;                          /* Ocupa el 80% del ancho de la pantalla */
+    max-width: 1200px;                   /* No crece más de 1200px en pantallas grandes */
+    margin: 20px auto;                   /* Centrado horizontal con margen superior/inferior de 20px */
+    padding: 20px;                       /* Relleno interior de 20px */
+    background-color: white;             /* Fondo blanco */
+    border-radius: 10px;                 /* Bordes redondeados de 10px */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Sombra suave: 0px horizontal, 2px vertical, 10px difuminado */
 }
 
-/* ----- ENCABEZADO ----- */
+/* ==========================================================================
+   ENCABEZADO (HEADER)
+   ========================================================================== */
+
+/* Estilos del encabezado naranjo */
 header {
-    background-color: #EF6C00;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    border-radius: 8px 8px 0 0;
-    margin-bottom: 20px;
+    background-color: #EF6C00;           /* Fondo naranjo (color corporativo) */
+    color: white;                        /* Texto en blanco */
+    padding: 20px;                       /* Relleno interior de 20px */
+    text-align: center;                 /* Centra todo el texto */
+    border-radius: 8px 8px 0 0;         /* Bordes redondeados solo arriba */
+    margin-bottom: 20px;                /* Separación con el contenido de abajo */
 }
 
+/* Título principal dentro del encabezado */
 header h1 {
-    font-size: 2.2rem;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+    font-size: 2.2rem;                  /* Tamaño grande para el título */
+    margin: 0;                          /* Elimina el margen */
+    display: flex;                      /* Usa Flexbox para alinear ícono y texto */
+    align-items: center;               /* Centra verticalmente */
+    justify-content: center;            /* Centra horizontalmente */
+    gap: 10px;                         /* Espacio entre el ícono y el texto */
 }
 
+/* Párrafo debajo del título */
 header p {
-    font-size: 1.1rem;
-    margin: 5px 0 0 0;
+    font-size: 1.1rem;                 /* Tamaño de fuente mediano */
+    margin: 5px 0 0 0;                 /* Margen superior pequeño */
 }
 
+/* Nombre de la tienda (resaltado en blanco) */
 #logo-tienda {
-    color: #FFFFFF;
-    font-weight: bold;
+    color: #FFFFFF;                    /* Texto blanco */
+    font-weight: bold;                 /* Texto en negrita */
 }
 
-/* ----- MENÚ DE NAVEGACIÓN ----- */
+/* ==========================================================================
+   MENÚ DE NAVEGACIÓN
+   ========================================================================== */
+
+/* Contenedor del menú */
 .nav-menu {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 10px 0;
-    margin-top: 15px;
-    border-top: 2px solid rgba(255, 255, 255, 0.2);
-    flex-wrap: wrap;
+    display: flex;                     /* Organiza los enlaces en una fila */
+    justify-content: center;           /* Centra los enlaces horizontalmente */
+    gap: 20px;                         /* Espacio de 20px entre cada enlace */
+    padding: 10px 0;                   /* Relleno vertical de 10px */
+    margin-top: 15px;                  /* Separación con el título */
+    border-top: 2px solid rgba(255,255,255,0.2); /* Línea blanca semitransparente arriba */
+    flex-wrap: wrap;                   /* Permite que los enlaces bajen a otra línea si no caben */
 }
 
+/* Cada enlace del menú */
 .nav-menu a {
-    color: white;
-    text-decoration: none;
-    padding: 6px 20px;
-    font-size: 1rem;
-    border-radius: 4px;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    color: white;                      /* Texto blanco */
+    text-decoration: none;             /* Elimina el subrayado */
+    padding: 6px 20px;                /* Relleno vertical/horizontal */
+    font-size: 1rem;                  /* Tamaño de fuente estándar */
+    border-radius: 4px;               /* Bordes ligeramente redondeados */
+    transition: all 0.2s;             /* Efecto suave al pasar el mouse (0.2 segundos) */
+    display: flex;                    /* Alinea ícono y texto */
+    align-items: center;              /* Centra verticalmente */
+    gap: 6px;                         /* Espacio entre ícono y texto */
 }
 
+/* Efecto al pasar el mouse sobre un enlace */
 .nav-menu a:hover {
-    background: rgba(255, 255, 255, 0.15);
-    color: #FFE082;
+    background: rgba(255,255,255,0.15); /* Fondo blanco con 15% de opacidad */
+    color: #FFE082;                   /* Texto amarillo claro */
 }
 
+/* Enlace activo (página actual) */
 .nav-menu a.active {
-    background: rgba(255, 255, 255, 0.25);
-    color: #FFFFFF;
-    font-weight: 600;
-    border-bottom: 2px solid #FFFFFF;
+    background: rgba(255,255,255,0.25); /* Fondo blanco con 25% de opacidad (más visible) */
+    color: #FFFFFF;                   /* Texto blanco */
+    font-weight: 600;                 /* Texto en negrita */
+    border-bottom: 2px solid #FFFFFF; /* Línea blanca debajo para resaltar */
 }
 
+/* Íconos dentro del menú */
 .nav-menu a i {
-    font-size: 1.1rem;
+    font-size: 1.1rem;                /* Tamaño del ícono */
 }
 
 /* ==========================================================================
-   2. COMPONENTES Y ELEMENTOS DE SECCIÓN
+   SECCIONES DE CONTENIDO
    ========================================================================== */
+
+/* Cada sección (bloque de contenido) */
 section {
-    background-color: white;
-    padding: 15px 20px;
-    margin-bottom: 20px;
-    border-left: 4px solid #EF6C00;
-    border-radius: 4px;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    background-color: white;           /* Fondo blanco */
+    padding: 15px 20px;               /* Relleno interior */
+    margin-bottom: 20px;              /* Separación entre secciones */
+    border-left: 4px solid #EF6C00;   /* Línea naranja a la izquierda (detalle decorativo) */
+    border-radius: 4px;               /* Bordes redondeados */
+    box-shadow: 0 1px 5px rgba(0,0,0,0.05); /* Sombra muy suave */
 }
 
+/* Títulos de sección (h2) */
 section h2 {
-    color: #D84315;
-    font-size: 1.6rem;
-    border-bottom: 2px solid #EF6C00;
-    padding-bottom: 8px;
-    margin-top: 0;
+    color: #D84315;                   /* Naranjo oscuro */
+    font-size: 1.6rem;               /* Tamaño grande */
+    border-bottom: 2px solid #EF6C00; /* Línea naranja debajo del título */
+    padding-bottom: 8px;             /* Separación entre el texto y la línea */
+    margin-top: 0;                   /* Elimina el margen superior */
 }
 
+/* Subtítulos de sección (h3) */
 section h3 {
-    color: #E65100;
-    font-size: 1.2rem;
-    margin-top: 15px;
+    color: #E65100;                   /* Naranjo */
+    font-size: 1.2rem;               /* Tamaño mediano */
+    margin-top: 15px;                /* Separación superior */
 }
 
-/* ----- FORMULARIO Y VALIDACIÓN VISUAL ----- */
+/* ==========================================================================
+   FORMULARIO Y VALIDACIÓN
+   ========================================================================== */
+
+/* Etiquetas de los campos del formulario */
 .form-label {
-    font-weight: 600;
-    color: #333;
+    font-weight: 600;                 /* Texto en negrita */
+    color: #333;                      /* Gris oscuro */
 }
 
+/* Campos del formulario cuando tienen el foco (el usuario está escribiendo) */
 .form-control:focus {
-    border-color: #EF6C00;
-    box-shadow: 0 0 0 0.2rem rgba(239, 108, 0, 0.25);
+    border-color: #EF6C00;           /* Borde naranjo */
+    box-shadow: 0 0 0 0.2rem rgba(239, 108, 0, 0.25); /* Sombra naranja suave */
 }
 
+/* Mensajes de error (JS) */
 .error-message {
-    color: #dc3545;
-    font-size: 0.85rem;
-    display: block;
-    margin-top: 5px;
+    color: #dc3545;                   /* Rojo (estándar de Bootstrap para errores) */
+    font-size: 0.85rem;              /* Texto más pequeño */
+    display: block;                  /* Ocupa toda la línea */
+    margin-top: 5px;                 /* Separación con el campo */
 }
 
-/* ----- ALERTAS ----- */
+/* ==========================================================================
+   ALERTAS (MENSAJES DE ÉXITO Y ERROR)
+   ========================================================================== */
+
+/* Mensaje de éxito (verde) */
 .alert-success {
-    background-color: #d4edda;
-    color: #155724;
-    padding: 12px;
-    border-radius: 4px;
-    border-left: 4px solid #28a745;
-    margin-top: 15px;
+    background-color: #d4edda;        /* Fondo verde claro */
+    color: #155724;                   /* Texto verde oscuro */
+    padding: 12px;                   /* Relleno interior */
+    border-radius: 4px;              /* Bordes redondeados */
+    border-left: 4px solid #28a745;  /* Línea verde a la izquierda */
+    margin-top: 15px;                /* Separación superior */
 }
 
+/* Mensaje de error (rojo) */
 .alert-error {
-    background-color: #f8d7da;
-    color: #721c24;
-    padding: 12px;
-    border-radius: 4px;
-    border-left: 4px solid #dc3545;
-    margin-top: 15px;
+    background-color: #f8d7da;        /* Fondo rojo claro */
+    color: #721c24;                   /* Texto rojo oscuro */
+    padding: 12px;                   /* Relleno interior */
+    border-radius: 4px;              /* Bordes redondeados */
+    border-left: 4px solid #dc3545;  /* Línea roja a la izquierda */
+    margin-top: 15px;                /* Separación superior */
 }
 
-/* ----- INFO DE CONTACTO (BLOQUES LATERALES) ----- */
+/* ==========================================================================
+   INFO DE CONTACTO (BLOQUES LATERALES)
+   ========================================================================== */
+
+/* Cada bloque de información (dirección, teléfono, horario) */
 .contact-info {
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;             /* Separación entre bloques */
+    padding-bottom: 15px;            /* Relleno inferior */
+    border-bottom: 1px solid #eee;   /* Línea gris separadora */
 }
 
+/* Último bloque (sin línea separadora) */
 .contact-info:last-of-type {
-    border-bottom: none;
+    border-bottom: none;             /* Elimina la línea del último bloque */
 }
 
+/* Títulos de los bloques de contacto */
 .contact-info h5 {
-    color: #EF6C00;
-    font-size: 1rem;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    color: #EF6C00;                  /* Naranjo */
+    font-size: 1rem;                /* Tamaño estándar */
+    margin-bottom: 8px;             /* Separación con el texto */
+    display: flex;                  /* Alinea ícono y texto */
+    align-items: center;            /* Centra verticalmente */
+    gap: 6px;                       /* Espacio entre ícono y texto */
 }
 
+/* Texto de los bloques de contacto */
 .contact-info p {
-    margin: 0;
-    color: #555;
-    font-size: 0.95rem;
-    line-height: 1.5;
+    margin: 0;                      /* Elimina el margen */
+    color: #555;                    /* Gris medio */
+    font-size: 0.95rem;            /* Tamaño ligeramente más pequeño */
+    line-height: 1.5;              /* Espaciado entre líneas */
 }
 
-/* ----- MAPA ----- */
+/* ==========================================================================
+   MAPA DE GOOGLE
+   ========================================================================== */
+
 .mapa-iframe {
-    width: 100%;
-    height: 200px;
-    border: 2px solid #EF6C00;
-    border-radius: 8px;
-    margin-top: 10px;
+    width: 100%;                     /* Ocupa todo el ancho */
+    height: 200px;                  /* Altura fija */
+    border: 2px solid #EF6C00;      /* Borde naranjo */
+    border-radius: 8px;             /* Bordes redondeados */
+    margin-top: 10px;               /* Separación superior */
 }
 
-/* ----- COMPONENTES VISUALES DESTACADOS ----- */
-.destacado {
-    background-color: #FFF3E0;
-    padding: 15px;
-    border-radius: 8px;
-    font-weight: bold;
-    text-align: center;
-    font-size: 1.2rem;
-    border: 1px solid #FFE0B2;
-}
+/* ==========================================================================
+   BOTONES
+   ========================================================================== */
 
-.promocion {
-    background-color: #00BCD4;
-    color: white;
-    padding: 12px;
-    border-radius: 4px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.1rem;
-}
-
-/* ----- BOTONES ----- */
+/* Botón "Enviar" (naranjo) */
 .btn-enviar {
-    background-color: #EF6C00;
-    color: white;
-    padding: 10px 30px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.2s;
+    background-color: #EF6C00;       /* Fondo naranjo */
+    color: white;                   /* Texto blanco */
+    padding: 10px 30px;            /* Relleno grande para que el botón sea visible */
+    border: none;                   /* Sin borde */
+    border-radius: 4px;             /* Bordes redondeados */
+    cursor: pointer;               /* El cursor cambia a mano */
+    font-weight: 600;              /* Texto en negrita */
+    transition: background-color 0.2s; /* Cambio suave al pasar el mouse */
 }
 
+/* Efecto al pasar el mouse sobre "Enviar" */
 .btn-enviar:hover {
-    background-color: #D84315;
+    background-color: #D84315;      /* Naranjo más oscuro */
 }
 
+/* Botón "Limpiar" (gris) */
 .btn-limpiar {
-    background-color: #6c757d;
-    color: white;
-    padding: 10px 30px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.2s;
+    background-color: #6c757d;      /* Fondo gris */
+    color: white;                   /* Texto blanco */
+    padding: 10px 30px;            /* Relleno grande */
+    border: none;                   /* Sin borde */
+    border-radius: 4px;             /* Bordes redondeados */
+    cursor: pointer;               /* El cursor cambia a mano */
+    font-weight: 600;              /* Texto en negrita */
+    transition: background-color 0.2s; /* Cambio suave */
 }
 
+/* Efecto al pasar el mouse sobre "Limpiar" */
 .btn-limpiar:hover {
-    background-color: #5a6268;
-}
-
-/* ----- IMÁGENES ----- */
-section img {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    border: 2px solid #EF6C00;
-    border-radius: 8px;
-    margin: 10px 0;
-    display: block;
-}
-
-/* ----- BADGES ----- */
-.badge-estado {
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-}
-
-.badge-estado.entregado { background-color: #28a745; color: white; }
-.badge-estado.pendiente { background-color: #ffc107; color: #333; }
-.badge-estado.procesando { background-color: #17a2b8; color: white; }
-.badge-estado.cancelado { background-color: #dc3545; color: white; }
-
-.badge-pago {
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-}
-
-.badge-pago.pagado { background-color: #28a745; color: white; }
-.badge-pago.pendiente { background-color: #ffc107; color: #333; }
-
-/* ----- PIE DE PÁGINA ----- */
-footer {
-    background-color: #333333;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    border-radius: 0 0 8px 8px;
-    margin-top: 20px;
-    font-size: 0.9rem;
+    background-color: #5a6268;      /* Gris más oscuro */
 }
 
 /* ==========================================================================
-   3. REGLAS RESPONSIVAS
+   IMAGEN BANNER
    ========================================================================== */
-/* ==========================================================================
-   3. ESTILOS DE LA IMAGEN BANNER
-   ========================================================================== */
+
+/* Contenedor de la imagen en la página de contacto */
 .imagen-contacto {
-    width: 100%;
-    max-width: 400px;       /* ← Ancho máximo del contenedor */
-
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    text-align: left;
+    width: 100%;                     /* Ocupa todo el ancho disponible */
+    max-width: 400px;               /* No crece más de 400px */
+    border-radius: 8px;             /* Bordes redondeados */
+    overflow: hidden;               /* Oculta cualquier parte de la imagen que sobresalga */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra suave */
+    text-align: left;              /* Alinea la imagen a la izquierda */
 }
 
+/* La imagen dentro del contenedor */
 .imagen-contacto img {
-    width: 100%;
-    height: 280px ;  /* ← Altura fija con !important */
-    object-fit: cover ; /* ← Recorta sin deformar */
-    display: block ;
+    width: 100%;                     /* Ocupa todo el ancho del contenedor */
+    height: 280px;                  /* Altura fija de 280px */
+    object-fit: cover;              /* La imagen se recorta para llenar sin deformarse */
+    display: block;                 /* Elimina el espacio extra debajo de la imagen */
 }
 
 /* ==========================================================================
-   4. REGLAS RESPONSIVAS
+   HISTORIA DE LA TIENDA
    ========================================================================== */
+
+/* Contenedor de la historia en la página de contacto */
+.historia-tienda {
+    padding: 15px 20px;            /* Relleno interior */
+    background-color: #f9f9f9;      /* Fondo gris muy claro */
+    border-radius: 8px;             /* Bordes redondeados */
+    border-left: 4px solid #EF6C00; /* Línea naranja a la izquierda */
+}
+
+/* Título de la historia */
+.historia-tienda h3 {
+    color: #D84315;                 /* Naranjo oscuro */
+    margin-top: 0;                  /* Elimina el margen superior */
+    margin-bottom: 15px;            /* Separación con el texto */
+    font-size: 1.4rem;             /* Tamaño mediano-grande */
+}
+
+/* Párrafos de la historia */
+.historia-tienda p {
+    color: #333;                    /* Gris oscuro */
+    line-height: 1.7;              /* Espaciado entre líneas (más aireado) */
+    margin-bottom: 12px;           /* Separación entre párrafos */
+}
+
+/* Texto en negrita dentro de la historia */
+.historia-tienda strong {
+    color: #EF6C00;                /* Naranjo para resaltar */
+}
+
+/* ==========================================================================
+   TARJETAS DE PRODUCTOS
+   ========================================================================== */
+
+/* Cada tarjeta de producto */
+.producto-card {
+    border: 1px solid #eee;        /* Borde gris claro */
+    border-radius: 8px;            /* Bordes redondeados */
+    transition: transform 0.2s, box-shadow 0.2s; /* Efecto suave al pasar el mouse */
+    height: 100%;                  /* Todas las tarjetas tienen la misma altura */
+    display: flex;                 /* Organiza el contenido verticalmente */
+    flex-direction: column;        /* Apila los elementos de arriba a abajo */
+}
+
+/* Efecto al pasar el mouse sobre una tarjeta */
+.producto-card:hover {
+    transform: translateY(-5px);   /* La tarjeta se levanta 5px */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Sombra más grande y pronunciada */
+}
+
+/* Cuerpo de la tarjeta (donde está el contenido) */
+.producto-card .card-body {
+    flex: 1;                       /* Ocupa todo el espacio disponible */
+    display: flex;                 /* Organiza el contenido verticalmente */
+    flex-direction: column;        /* Apila los elementos */
+    justify-content: space-between; /* Distribuye el espacio entre elementos */
+    padding: 15px;                /* Relleno interior */
+}
+
+/* Descripción del producto */
+.producto-card .card-text {
+    flex: 1;                       /* Ocupa el espacio extra para mantener altura uniforme */
+    font-size: 0.9rem;            /* Texto ligeramente más pequeño */
+    color: #555;                  /* Gris medio */
+}
+
+/* Imagen del producto */
+.producto-imagen {
+    width: 100%;                   /* Ocupa todo el ancho */
+    height: 180px;                /* Altura fija para que todas sean iguales */
+    object-fit: cover;            /* Recorta la imagen para llenar sin deformarse */
+    border-radius: 8px;           /* Bordes redondeados */
+    border: 1px solid #eee;       /* Borde gris claro */
+}
+
+/* Precio del producto */
+.producto-card .precio {
+    margin: 10px 0;              /* Separación superior e inferior */
+    font-size: 1.2rem;           /* Tamaño más grande para resaltar */
+    color: #EF6C00;              /* Naranjo */
+}
+
+/* Botón "Comprar" dentro de la tarjeta */
+.producto-card .btn-comprar {
+    width: 100%;                  /* Ocupa todo el ancho */
+}
+
+/* Botón "Ver detalle" dentro de la tarjeta */
+.producto-card .btn-outline-primary {
+    width: 100%;                  /* Ocupa todo el ancho */
+}
+
+/* Contenedor de los botones (Ver detalle + Comprar) */
+.producto-card .d-flex {
+    width: 100%;                  /* Ocupa todo el ancho */
+}
+
+/* Cada botón dentro del contenedor */
+.producto-card .d-flex .btn {
+    flex: 1;                      /* Ambos botones ocupan el mismo espacio */
+}
+
+/* ==========================================================================
+   PIE DE PÁGINA (FOOTER)
+   ========================================================================== */
+
+footer {
+    background-color: #333333;     /* Fondo gris oscuro */
+    color: white;                  /* Texto blanco */
+    text-align: center;            /* Centra el texto */
+    padding: 15px;                /* Relleno interior */
+    border-radius: 0 0 8px 8px;   /* Bordes redondeados solo abajo */
+    margin-top: 20px;             /* Separación con el contenido */
+    font-size: 0.9rem;            /* Texto ligeramente más pequeño */
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (DISEÑO RESPONSIVE)
+   ========================================================================== */
+
+/* Para tablets y celulares grandes (pantallas de hasta 768px) */
 @media (max-width: 768px) {
     .container {
-        width: 95%;
-        padding: 10px;
-        margin: 10px auto;
+        width: 95%;                /* Más ancho que en PC para aprovechar mejor el espacio */
+        padding: 10px;             /* Menos relleno */
+        margin: 10px auto;         /* Menos margen */
     }
     header h1 {
-        font-size: 1.8rem;
+        font-size: 1.8rem;         /* Título más pequeño */
     }
     section {
-        padding: 10px 15px;
+        padding: 10px 15px;        /* Menos relleno */
     }
     section img {
-        max-width: 100%;
+        max-width: 100%;           /* Las imágenes no se salen del contenedor */
     }
     .mapa-iframe {
-        height: 180px;
+        height: 180px;             /* Mapa más bajo */
     }
     .imagen-contacto img {
-        height: 120px;  /* Más pequeño en tablets */
+        height: 120px;             /* Imagen banner más baja en tablets */
+    }
+    .historia-tienda {
+        margin-top: 15px;          /* Separación adicional */
+        padding: 12px 15px;        /* Menos relleno */
+    }
+    .historia-tienda h3 {
+        font-size: 1.2rem;         /* Título más pequeño */
     }
 }
 
+/* Para celulares pequeños (pantallas de hasta 480px) */
 @media (max-width: 480px) {
     body {
-        font-size: 14px;
+        font-size: 14px;           /* Texto más pequeño en celulares */
     }
     header h1 {
-        font-size: 1.4rem;
+        font-size: 1.4rem;         /* Título más pequeño */
     }
     .container {
-        width: 98%;
-        padding: 5px;
-        margin: 5px auto;
+        width: 98%;                /* Casi todo el ancho */
+        padding: 5px;              /* Relleno mínimo */
+        margin: 5px auto;          /* Margen mínimo */
     }
     .nav-menu {
-        gap: 8px;
+        gap: 8px;                  /* Menos espacio entre enlaces */
     }
     .nav-menu a {
-        font-size: 0.8rem;
-        padding: 4px 10px;
+        font-size: 0.8rem;         /* Texto más pequeño */
+        padding: 4px 10px;         /* Menos relleno */
     }
     .btn-enviar, .btn-limpiar {
-        padding: 8px 20px;
+        padding: 8px 20px;         /* Botones más pequeños */
         font-size: 0.9rem;
     }
     .mapa-iframe {
-        height: 160px;
+        height: 160px;             /* Mapa aún más bajo */
     }
     .imagen-contacto img {
-        height: 100px;  /* Más pequeño en celulares */
+        height: 100px;             /* Imagen banner más baja en celulares */
     }
-
-/* ==========================================================================
-   6. HISTORIA DE LA TIENDA
-   ========================================================================== */
-.historia-tienda {
-    padding: 15px 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    border-left: 4px solid #EF6C00;
-}
-
-.historia-tienda h3 {
-    color: #D84315;
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.4rem;
-}
-
-.historia-tienda p {
-    color: #333;
-    line-height: 1.7;
-    margin-bottom: 12px;
-}
-
-.historia-tienda strong {
-    color: #EF6C00;
-}
-
-@media (max-width: 768px) {
-    .historia-tienda {
-        margin-top: 15px;
-        padding: 12px 15px;
-    }
-    .historia-tienda h3 {
-        font-size: 1.2rem;
-    }
-}
-
-/* ==========================================================================
-   7. ESTILOS DE PRODUCTOS
-   ========================================================================== */
-.producto-card {
-    border: 1px solid #eee;
-    border-radius: 8px;
-    transition: transform 0.2s, box-shadow 0.2s;
-    height: 100%;
-}
-
-.producto-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.producto-card .precio {
-    color: #EF6C00;
-    font-size: 1.2rem;
-    margin: 10px 0;
-}
-
-.btn-comprar {
-    background-color: #EF6C00;
-    color: white;
-    padding: 8px 25px;
-    border: none;
-    border-radius: 4px;
-    font-weight: 600;
-    transition: background-color 0.2s;
-}
-
-.btn-comprar:hover {
-    background-color: #D84315;
-}
-/* ==========================================================================
-   11. TARJETAS DE PRODUCTOS - MISMA ALTURA
-   ========================================================================== */
-.producto-card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.producto-card .card-body {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 15px;
-}
-
-.producto-card .card-text {
-    flex: 1;
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.producto-imagen {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid #eee;
-}
-
-.producto-card .precio {
-    margin: 10px 0;
-    font-size: 1.2rem;
-    color: #EF6C00;
-}
-
-.producto-card .btn-comprar {
-    width: 100%;
-}
-
-.producto-card .btn-outline-primary {
-    width: 100%;
-}
-
-.producto-card .d-flex {
-    width: 100%;
-}
-
-.producto-card .d-flex .btn {
-    flex: 1;
-}
 }
