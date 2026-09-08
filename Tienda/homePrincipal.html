@@ -30,6 +30,16 @@
     
     <!-- CSS personalizado: Estilos propios de la ferretería (colores, sombras, etc.) -->
     <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        .imagen-banner {
+        width: 100%;          /* Hace que ocupe todo el ancho del contenedor */
+        height: auto;         /* Mantiene la proporción inicial... */
+        max-height: 450px;    /* ...pero evita que sea excesivamente alta en pantallas grandes */
+        object-fit: cover;    /* ¡La magia! Recorta la imagen para que encaje perfecto sin aplastarse ni estirarse */
+        display: block;       /* Elimina un pequeño margen blanco que los navegadores suelen dejar debajo de las imágenes */
+    }
+    </style>
 </head>
 
 <body>
@@ -71,10 +81,10 @@
             </nav>
         </header>
 
-        <img src="https://www.misterworker.com/it/img/cms/Construction%20tools/constr%200%20(1)%20(1).png" alt="Construcción">
+        <img src="https://www.misterworker.com/it/img/cms/Construction%20tools/constr%200%20(1)%20(1).png" alt="Herramientas de construcción" class="imagen-banner">
 
         <!-- ===== BANNER PRINCIPAL ===== -->
-        <div class="banner-principal" style="background-color: #EF6C00; color: white; padding: 40px 20px; border-radius: 8px; text-align: center; margin-bottom: 30px;">
+        <div class="banner-principal" style="background-color: #EF6C00; color: white; padding: 20px 20px; border-radius: 8px; text-align: center; margin-bottom: 20px;">
             <h1 style="font-size: 2.5rem; margin-bottom: 10px;">🏗️ Materiales de Construcción</h1>
             
             <!-- Texto de descripción -->
