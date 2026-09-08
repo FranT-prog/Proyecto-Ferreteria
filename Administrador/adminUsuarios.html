@@ -112,7 +112,7 @@
             <nav class="nav-menu">
                 <a href="homeAdmin.html">Inicio Admin</a>
                 <a href="adminProductos.html">Gestionar Productos</a>
-                <a href="adminUsuarios.html" class="active">Gestionar Usuarios</a>
+                <a href="adminUsuarios.html" style="font-weight: bold; color: #EF6C00;">Gestionar Usuarios</a>
                 <a href="adminVentas.html">Reporte de Ventas</a>
             </nav>
         </header>
@@ -127,28 +127,14 @@
                     <table class="admin-table">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Correo</th>
                                 <th>Rol</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Juan Pérez</td>
-                                <td>juan.perez@gmail.com</td>
-                                <td>Cliente</td>
-                                <td><button class="btn-danger">Eliminar</button></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Admin Principal</td>
-                                <td>admin@duoc.cl</td>
-                                <td>Administrador</td>
-                                <td><button class="btn-danger" disabled>Eliminar</button></td>
-                            </tr>
+                        <tbody id="tabla-usuarios-admin">
+                            <!-- Javascript inyectará los usuarios aquí automáticamente -->
                         </tbody>
                     </table>
                 </div>
@@ -195,6 +181,116 @@
         </footer>
     </div>
 
-    <script src="funciones.js"></script>
+    <!-- Script directo para Gestión de Usuarios -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var formUsuario = document.getElementById('adminRegistroForm');
+            
+            // Función para dibujar los usuarios en la tabla
+            function cargarTablaUsuarios() {
+                var tbody = document.getElementById('tabla-usuarios-admin');
+                if (!tbody) return;
+
+                // Traer datos de localStorage o crear arreglo vacío
+                var usuariosGuardados = JSON.parse(localStorage.getItem('listaUsuarios')) || [];
+                tbody.innerHTML = ''; // Limpiar la tabla antes de cargar
+
+                if (usuariosGuardados.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">No hay usuarios registrados.</td></tr>';
+                    return;
+                }
+
+                // Recorrer el arreglo y crear las filas
+                usuariosGuardados.forEach(function(usuario, index) {
+                    // Si es administrador, le ponemos un color diferente al texto para destacarlo
+                    var colorRol = usuario.rol === 'administrador' ? '#EF6C00' : '#333';
+                    
+                    var fila = `
+                        <tr>
+                            <td>${usuario.nombre}</td>
+                            <td>${usuario.correo}</td>
+                            <td style="font-weight: bold; color: ${colorRol}; text-transform: capitalize;">${usuario.rol}</td>
+                            <td>
+                                <button class="btn-danger" onclick="eliminarUsuario(${index})">Eliminar</button>
+                            </td>
+                        </tr>
+                    `;
+                    tbody.innerHTML += fila;
+                });
+            }
+
+            // 1. CARGAR LA TABLA AL ABRIR LA PÁGINA
+            cargarTablaUsuarios();
+
+            // 2. VALIDAR Y GUARDAR USUARIO NUEVO
+            if (formUsuario) {
+                // Quitamos la acción por defecto para que no recargue
+                formUsuario.removeAttribute('action');
+                formUsuario.removeAttribute('method');
+
+                formUsuario.addEventListener('submit', function(event) {
+                    event.preventDefault(); 
+                    var isValid = true;
+
+                    // Capturar valores
+                    var nombre = document.getElementById('admin-nombre').value.trim();
+                    var correo = document.getElementById('admin-correo').value.trim();
+                    var rol = document.getElementById('admin-rol').value;
+                    var password = document.getElementById('admin-password').value;
+
+                    // Validar Nombre (Max 50 caracteres)
+                    if (nombre.length > 50) {
+                        document.getElementById('error-admin-nombre').style.display = 'block';
+                        isValid = false;
+                    } else {
+                        document.getElementById('error-admin-nombre').style.display = 'none';
+                    }
+
+                    // Validar Correo (Dominios permitidos)
+                    var dominiosPermitidos = ['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'];
+                    var correoValido = dominiosPermitidos.some(function(dominio) {
+                        return correo.endsWith(dominio);
+                    });
+                    
+                    if (!correoValido) {
+                        document.getElementById('error-admin-correo').style.display = 'block';
+                        isValid = false;
+                    } else {
+                        document.getElementById('error-admin-correo').style.display = 'none';
+                    }
+
+                    // Si pasa las validaciones, se guarda
+                    if (isValid) {
+                        var nuevoUsuario = {
+                            nombre: nombre,
+                            correo: correo,
+                            rol: rol,
+                            password: password // En un proyecto real esto nunca se guarda en texto plano
+                        };
+
+                        var usuariosGuardados = JSON.parse(localStorage.getItem('listaUsuarios')) || [];
+                        usuariosGuardados.push(nuevoUsuario);
+                        localStorage.setItem('listaUsuarios', JSON.stringify(usuariosGuardados));
+
+                        alert('¡Usuario creado exitosamente!');
+                        formUsuario.reset(); 
+                        cargarTablaUsuarios(); // Refrescar la tabla al instante
+                    }
+                });
+            }
+
+            // 3. FUNCIÓN PARA ELIMINAR USUARIO
+            window.eliminarUsuario = function(index) {
+                var confirmar = confirm("¿Estás seguro de que deseas eliminar a este usuario del sistema?");
+                
+                if (confirmar) {
+                    var usuariosGuardados = JSON.parse(localStorage.getItem('listaUsuarios')) || [];
+                    usuariosGuardados.splice(index, 1); // Quitar de la lista
+                    localStorage.setItem('listaUsuarios', JSON.stringify(usuariosGuardados)); // Guardar cambios
+                    cargarTablaUsuarios(); // Refrescar tabla
+                }
+            };
+        });
+    </script>
 </body>
 </html>
