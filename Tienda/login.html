@@ -158,8 +158,8 @@
             ============================================================ -->
             <!-- Contenedor del formulario (compacto, centrado) -->
             <div class="form-wrapper">
-                <!-- Formulario: al enviar, usa el método POST -->
-                <form id="loginForm" action="#" method="POST">
+                <!-- Formulario: al enviar, usa el método POST action="#" method="POST"-->
+                <form id="loginForm">
                     
                     <!-- ============================================================
                     CAMPO 1: CORREO ELECTRÓNICO
@@ -221,6 +221,47 @@
     SCRIPTS (JAVASCRIPT)
     ============================================================ -->
     <!-- JavaScript personalizado: Lógica de validación, etc. -->
-    <script src="funciones.js"></script>
+    <!--<script src="funciones.js"></script>-->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var formLogin = document.getElementById('loginForm');
+
+        if (formLogin) {
+            formLogin.addEventListener('submit', function(event) {
+                // 1. Evita la recarga de página y el error 405
+                event.preventDefault();
+
+                // 2. Captura los datos ingresados
+                var correoIngresado = document.getElementById('login-correo').value.trim();
+                var passwordIngresada = document.getElementById('login-password').value;
+
+                // 3. Consulta la lista de usuarios en localStorage
+                var usuariosGuardados = JSON.parse(localStorage.getItem('listaUsuarios')) || [];
+
+                // 4. Busca coincidencia de correo y contraseña
+                var usuarioValido = usuariosGuardados.find(function(usuario) {
+                    return usuario.correo === correoIngresado && usuario.password === passwordIngresada;
+                });
+
+                // 5. Validación y redirección
+                if (usuarioValido) {
+                    // Guarda la sesión del usuario actual
+                    localStorage.setItem('usuarioSesion', JSON.stringify(usuarioValido));
+
+                    alert('¡Bienvenido/a, ' + usuarioValido.nombre + '!');
+
+                    // Redirige según el rol (Administrador o Cliente)
+                    if (usuarioValido.rol === 'administrador') {
+                        window.location.href = 'homeAdministrador.html';
+                    } else {
+                        window.location.href = 'index.html';
+                    }
+                } else {
+                    alert('Error: Correo electrónico o contraseña incorrectos.');
+                }
+            });
+        }
+    });
+</script>
 </body>
 </html>
