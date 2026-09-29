@@ -1,61 +1,25 @@
 <!DOCTYPE html>
-<!-- Declara que el documento es HTML5 -->
 <html lang="es">
-<!-- El idioma de la página es español -->
-
 <head>
-    <!-- ============================================================
-    CABECERA (META DATOS Y RECURSOS EXTERNOS)
-    ============================================================ -->
-
-    <!-- Codificación de caracteres: permite usar tildes y la ñ correctamente -->
     <meta charset="UTF-8">
-    
-    <!-- Viewport: Hace que el sitio sea responsive en móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Título que aparece en la pestaña del navegador (se actualiza con JS) -->
     <title>Ferretería don Juan - Detalle Producto</title>
-
-    <!-- ============================================================
-    RECURSOS EXTERNOS (CDN)
-    ============================================================ -->
-
-    <!-- Bootstrap 5 CSS: Sistema de grillas, componentes y diseño responsive -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Material Icons: Íconos de Google -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
-    <!-- Bootstrap Icons: Íconos de Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    
-    <!-- CSS personalizado: Estilos propios de la ferretería -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-    <!-- ============================================================
-    CONTENEDOR PRINCIPAL
-    ============================================================ -->
     <div class="container">
-
-        <!-- ============================================================
-        ENCABEZADO (HEADER)
-        ============================================================ -->
         <header>
-            <!-- Título principal: Ícono + nombre de la tienda + página actual -->
             <h1>
                 <i class="material-icons">construction</i>
                 <span id="logo-tienda">Ferretería don Juan</span>
                 - Detalle Producto
             </h1>
-            <!-- Subtítulo / eslogan de la tienda -->
             <p>Materiales de construcción, herramientas y ferretería general</p>
 
-            <!-- ============================================================
-            MENÚ DE NAVEGACIÓN
-            ============================================================ -->
             <nav class="nav-menu">
                 <a href="homePrincipal.html"><i class="bi bi-house"></i> Inicio</a>
                 <a href="productos.html"><i class="bi bi-tools"></i> Productos</a>
@@ -65,39 +29,29 @@
             </nav>
         </header>
 
-        <!-- ============================================================
-        SECCIÓN: DETALLE DEL PRODUCTO (DINÁMICO CON JS)
-        ============================================================ -->
-        <!-- Los IDs permiten que JavaScript actualice el contenido -->
         <section id="detalle-producto">
             <div class="row">
-                
-                <!-- Columna izquierda: Imagen del producto -->
                 <div class="col-md-5">
-                    <!-- La imagen se carga dinámicamente con JavaScript -->
                     <img id="producto-imagen" src="" alt="Producto" 
                          class="img-fluid" 
                          style="border-radius: 8px; border: 1px solid #ddd; width: 100%;">
                 </div>
                 
-                <!-- Columna derecha: Información del producto -->
                 <div class="col-md-7">
-                    <!-- Nombre del producto (JS) -->
                     <h2 id="producto-nombre" style="color: #D84315;"></h2>
                     
-                    <!-- Código del producto (JS) -->
                     <p class="text-muted">Código: <strong id="producto-codigo"></strong></p>
                     
-                    <!-- Badges de estado (fijos: En Stock, Oferta) -->
+                    <!-- CAMBIO: se agregó id="badge-stock" al span para poder cambiar su color dinámicamente -->
                     <div class="mb-3">
-                        <span class="badge bg-success">En Stock</span>
+                        <span class="badge bg-success" id="badge-stock">
+                        <i class="bi bi-check-circle"></i> Stock: <span id="producto-stock">0</span> unidades
+                        </span>
                         <span class="badge bg-warning text-dark">Oferta</span>
                     </div>
 
-                    <!-- Precio del producto (JS) -->
                     <h3 style="color: #EF6C00; font-size: 2rem;" id="producto-precio"></h3>
                     
-                    <!-- Precio antiguo y ahorro (JS) -->
                     <p class="text-muted">
                         <s id="producto-precio-antiguo"></s> 
                         <span class="text-success" id="producto-ahorro"></span>
@@ -105,27 +59,22 @@
 
                     <hr>
 
-                    <!-- Descripción del producto (JS) -->
                     <h5><i class="bi bi-info-circle"></i> Descripción</h5>
                     <p id="producto-descripcion"></p>
 
-                    <!-- Características del producto (JS - lista dinámica) -->
                     <h5><i class="bi bi-list-check"></i> Características</h5>
                     <ul id="producto-caracteristicas"></ul>
 
-                    <!-- Información de envío (fija) -->
                     <h5><i class="bi bi-truck"></i> Información de envío</h5>
                     <p>Envío a toda la Región de Coquimbo. Tiempo de entrega: 24-48 horas hábiles.</p>
 
                     <hr>
 
-                    <!-- Botones de acción -->
                     <div class="d-flex gap-3">
-                        <!-- Botón "Agregar al Carrito" -->
-                        <button class="btn btn-comprar" onclick="alert('Producto agregado al carrito 🛒')">
+                        <!-- CAMBIO: se reemplazó el alert() por la función agregarAlCarritoDetalle() -->
+                        <button class="btn btn-comprar" onclick="agregarAlCarritoDetalle()">
                             <i class="bi bi-cart-plus"></i> Agregar al Carrito
                         </button>
-                        <!-- Botón "Volver a Productos" -->
                         <a href="productos.html" class="btn btn-secondary">
                             <i class="bi bi-arrow-left"></i> Volver a Productos
                         </a>
@@ -134,14 +83,9 @@
             </div>
         </section>
 
-        <!-- ============================================================
-        SECCIÓN: PRODUCTOS RELACIONADOS
-        ============================================================ -->
         <section>
             <h3><i class="bi bi-link-45deg"></i> Productos Relacionados</h3>
             <div class="row">
-                
-                <!-- Producto relacionado 1: Llave Ajustable -->
                 <div class="col-md-3 mb-3">
                     <div class="card producto-card text-center">
                         <div class="card-body">
@@ -149,13 +93,11 @@
                                  style="width: 100%; height: 120px; object-fit: cover; border-radius: 4px;">
                             <h6 class="mt-2">Llave Ajustable</h6>
                             <p class="precio"><strong>$8.490</strong></p>
-                            <!-- Enlace al detalle de este producto -->
                             <a href="detalleProductos.html?producto=llave" class="btn btn-sm btn-outline-primary">Ver</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Producto relacionado 2: Set Destornilladores -->
                 <div class="col-md-3 mb-3">
                     <div class="card producto-card text-center">
                         <div class="card-body">
@@ -168,7 +110,6 @@
                     </div>
                 </div>
 
-                <!-- Producto relacionado 3: Nivel de Burbuja -->
                 <div class="col-md-3 mb-3">
                     <div class="card producto-card text-center">
                         <div class="card-body">
@@ -181,7 +122,6 @@
                     </div>
                 </div>
 
-                <!-- Producto relacionado 4: Tijeras de Corte -->
                 <div class="col-md-3 mb-3">
                     <div class="card producto-card text-center">
                         <div class="card-body">
@@ -193,42 +133,24 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- ============================================================
-        PIE DE PÁGINA (FOOTER)
-        ============================================================ -->
         <footer>
             <i class="material-icons">copyright</i>
             © 2026 - Ferretería don Juan - Todos los derechos reservados
         </footer>
-
     </div>
 
-    <!-- ============================================================
-    SCRIPTS (JAVASCRIPT)
-    ============================================================ -->
-
-    <!-- Bootstrap 5 JavaScript: Necesario para el funcionamiento del modal -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- JavaScript personalizado: Lógica del carrito, compras, etc. -->
     <script src="../funciones.js"></script>
 
-    <!-- ============================================================
-    JAVASCRIPT INTERNO (SOLO PARA DETALLE DE PRODUCTO)
-    ============================================================ -->
     <script>
-        // ============================================================
-        //  BASE DE DATOS DE PRODUCTOS (Objeto con todos los productos)
-        // ============================================================
-        // Cada producto tiene: nombre, código, precio, imagen, descripción y características
         const productos = {
             martillo: {
                 nombre: "Martillo de Carpintero",
                 codigo: "MART-001",
+                stock: 15,
                 precio: "$12.990",
                 precioAntiguo: "$15.990",
                 ahorro: "Ahorras $3.000",
@@ -240,11 +162,12 @@
                     "<strong>Peso:</strong> 1.2 kg",
                     "<strong>Longitud:</strong> 35 cm",
                     "<strong>Garantía:</strong> 2 años"
-                ]
-            },
+                ]      
+            } ,
             llave: {
                 nombre: "Llave Ajustable",
                 codigo: "LLAV-002",
+                stock: 10,
                 precio: "$8.490",
                 precioAntiguo: "$10.990",
                 ahorro: "Ahorras $2.500",
@@ -260,6 +183,7 @@
             destornillador: {
                 nombre: "Set de Destornilladores",
                 codigo: "DEST-003",
+                stock: 15,
                 precio: "$15.990",
                 precioAntiguo: "$19.990",
                 ahorro: "Ahorras $4.000",
@@ -275,6 +199,7 @@
             cinta: {
                 nombre: "Cinta Métrica",
                 codigo: "CINT-004",
+                stock: 15,
                 precio: "$5.990",
                 precioAntiguo: "$7.990",
                 ahorro: "Ahorras $2.000",
@@ -290,6 +215,7 @@
             nivel: {
                 nombre: "Nivel de Burbuja",
                 codigo: "NIVE-005",
+                stock: 10,
                 precio: "$7.490",
                 precioAntiguo: "$9.990",
                 ahorro: "Ahorras $2.500",
@@ -305,6 +231,7 @@
             tijeras: {
                 nombre: "Tijeras de Corte",
                 codigo: "TIJE-006",
+                stock: 15,
                 precio: "$9.990",
                 precioAntiguo: "$12.990",
                 ahorro: "Ahorras $3.000",
@@ -316,32 +243,39 @@
                     "<strong>Uso:</strong> Metal, plástico y materiales duros",
                     "<strong>Garantía:</strong> 2 años"
                 ]
-            }
+            }  
         };
+        // INICIALIZAR STOCK EN LOCALSTORAGE (solo la primera vez)
+if (!localStorage.getItem('stockProductos')) {
+    var stockInicial = {};
+    for (var key in productos) {
+        stockInicial[key] = productos[key].stock;
+    }
+    localStorage.setItem('stockProductos', JSON.stringify(stockInicial));
+}
 
-        // ============================================================
-        //  FUNCIÓN: OBTENER PRODUCTO DE LA URL
-        // ============================================================
-        // Lee el parámetro "producto" de la URL (ej: ?producto=martillo)
+        // CAMBIO: bloque nuevo. Inicializa el stock en localStorage solo la primera vez.
+        if (!localStorage.getItem('stockProductos')) {
+            var stockInicial = {};
+            for (var key in productos) {
+                stockInicial[key] = productos[key].stock;
+            }
+            localStorage.setItem('stockProductos', JSON.stringify(stockInicial));
+        }
+
         function obtenerProducto() {
-            // URLSearchParams extrae los parámetros de la URL
             const urlParams = new URLSearchParams(window.location.search);
-            const productoId = urlParams.get('producto'); // Obtiene el valor de "producto"
+            const productoId = urlParams.get('producto');
             
-            // Si existe y está en la base de datos, lo devuelve
             if (productoId && productos[productoId]) {
                 return productos[productoId];
             }
-            return null; // Si no existe, devuelve null
+            return null;
         }
 
-        // ============================================================
-        //  FUNCIÓN: CARGAR DATOS EN LA PÁGINA
-        // ============================================================
         function cargarDetalle() {
-            const producto = obtenerProducto(); // Obtiene el producto
+            const producto = obtenerProducto();
             
-            // Si el producto no existe, muestra un mensaje de error
             if (!producto) {
                 document.getElementById('detalle-producto').innerHTML = `
                     <div class="alert alert-danger">
@@ -353,51 +287,76 @@
                 return;
             }
 
-            // ============================================================
-            //  ACTUALIZAR CADA ELEMENTO DEL HTML CON LOS DATOS DEL PRODUCTO
-            // ============================================================
-            
-            // Imagen
             document.getElementById('producto-imagen').src = producto.imagen;
             document.getElementById('producto-imagen').alt = producto.nombre;
             
-            // Nombre
             document.getElementById('producto-nombre').textContent = producto.nombre;
             
-            // Código
             document.getElementById('producto-codigo').textContent = producto.codigo;
+
+           // LEER STOCK ACTUAL DESDE LOCALSTORAGE
+var productoId = new URLSearchParams(window.location.search).get('producto');
+var stockGuardado = JSON.parse(localStorage.getItem('stockProductos')) || {};
+var stockActual = stockGuardado[productoId] !== undefined ? stockGuardado[productoId] : producto.stock;
+
+document.getElementById('producto-stock').textContent = stockActual;
+
+// SI EL STOCK ES 0, CAMBIAR BADGE A ROJO
+if (stockActual <= 0) {
+    var badgeStock = document.getElementById('badge-stock');
+    badgeStock.classList.remove('bg-success');
+    badgeStock.classList.add('bg-danger');
+    badgeStock.innerHTML = '<i class="bi bi-x-circle"></i> Agotado';
+}
+
+// GUARDAR ID DEL PRODUCTO EN EL SECTION
+document.getElementById('detalle-producto').setAttribute('data-producto-id', productoId);
+
             
-            // Precios
             document.getElementById('producto-precio').textContent = producto.precio;
             document.getElementById('producto-precio-antiguo').textContent = producto.precioAntiguo;
             document.getElementById('producto-ahorro').textContent = producto.ahorro;
             
-            // Descripción
             document.getElementById('producto-descripcion').textContent = producto.descripcion;
 
-            // ============================================================
-            //  CREAR LISTA DE CARACTERÍSTICAS DINÁMICAMENTE
-            // ============================================================
             const listaCaracteristicas = document.getElementById('producto-caracteristicas');
-            listaCaracteristicas.innerHTML = ''; // Limpia la lista
+            listaCaracteristicas.innerHTML = '';
             
-            // Recorre cada característica y la agrega como un <li>
             producto.caracteristicas.forEach(function(caracteristica) {
                 const li = document.createElement('li');
-                li.innerHTML = caracteristica; // Usa innerHTML porque tiene etiquetas <strong>
+                li.innerHTML = caracteristica;
                 listaCaracteristicas.appendChild(li);
             });
 
-            // ============================================================
-            //  ACTUALIZAR EL TÍTULO DE LA PESTAÑA
-            // ============================================================
             document.title = `Ferretería don Juan - ${producto.nombre}`;
         }
 
-        // ============================================================
-        //  EJECUTAR LA FUNCIÓN AL CARGAR LA PÁGINA
-        // ============================================================
-        // window.onload asegura que se ejecute cuando el DOM esté listo
+        // AGREGAR AL CARRITO DESDE DETALLE (con descuento de stock)
+function agregarAlCarritoDetalle() {
+    var productoId = document.getElementById('detalle-producto').getAttribute('data-producto-id');
+    var stockGuardado = JSON.parse(localStorage.getItem('stockProductos')) || {};
+    var stockActual = stockGuardado[productoId];
+    
+    if (stockActual === undefined || stockActual <= 0) {
+        alert('Lo sentimos, este producto está agotado.');
+        return;
+    }
+    
+    stockGuardado[productoId] = stockActual - 1;
+    localStorage.setItem('stockProductos', JSON.stringify(stockGuardado));
+    
+    document.getElementById('producto-stock').textContent = stockGuardado[productoId];
+    
+    if (stockGuardado[productoId] === 0) {
+        var badgeStock = document.getElementById('badge-stock');
+        badgeStock.classList.remove('bg-success');
+        badgeStock.classList.add('bg-danger');
+        badgeStock.innerHTML = '<i class="bi bi-x-circle"></i> Agotado';
+    }
+    
+    alert('Producto agregado al carrito.\nStock restante: ' + stockGuardado[productoId]);
+}
+
         window.onload = cargarDetalle;
     </script>
 </body>

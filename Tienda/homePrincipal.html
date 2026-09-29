@@ -176,6 +176,10 @@
                             
                             <!-- Descripción corta que ocupa el espacio disponible -->
                             <p class="card-text flex-grow-1">Acero forjado, mango de madera.</p>
+
+                            <p id="stock-martillo" style="color: #28a745; font-weight: bold; font-size: 0.9rem; margin-bottom: 5px;">
+                                <i class="bi bi-check-circle"></i> Stock: 15 unidades
+                            </p>
                             
                             <!-- Precio: oferta en naranjo y precio original tachado -->
                             <p class="precio">
@@ -199,6 +203,11 @@
                             <img src="img/llave_ajustable.webp" alt="Llave Ajustable" class="producto-imagen">
                             <h5 class="card-title mt-2">Llave Ajustable</h5>
                             <p class="card-text flex-grow-1">Acero cromado, 12 pulgadas.</p>
+
+                            <p id="stock-llave" style="color: #28a745; font-weight: bold; font-size: 0.9rem; margin-bottom: 5px;">
+                                <i class="bi bi-check-circle"></i> Stock: 10 unidades
+                            </p>
+
                             <p class="precio">
                                 <strong style="color: #EF6C00; font-size: 1.3rem;">$6.990</strong>
                                 <span style="text-decoration: line-through; color: #999; margin-left: 10px;">$8.490</span>
@@ -216,6 +225,9 @@
                             <img src="img/nivel_burbuja.webp" alt="Nivel de Burbuja" class="producto-imagen">
                             <h5 class="card-title mt-2">Nivel de Burbuja</h5>
                             <p class="card-text flex-grow-1">Aluminio con 3 viales.</p>
+                            <p id="stock-nivel" style="color: #28a745; font-weight: bold; font-size: 0.9rem; margin-bottom: 5px;">
+                                <i class="bi bi-check-circle"></i> Stock: 10 unidades
+                            </p>
                             <p class="precio">
                                 <strong style="color: #EF6C00; font-size: 1.3rem;">$5.990</strong>
                                 <span style="text-decoration: line-through; color: #999; margin-left: 10px;">$7.490</span>
@@ -249,5 +261,35 @@
     
     <!-- JavaScript personalizado: Lógica del carrito, validación de formularios, etc. -->
     <script src="../funciones.js"></script>
+
+
+    <script>
+    // ACTUALIZAR STOCK DE LAS OFERTAS DEL MES DESDE LOCALSTORAGE
+    document.addEventListener('DOMContentLoaded', function() {
+        var productosFijos = {
+            'stock-martillo': 'martillo',
+            'stock-llave': 'llave',
+            'stock-nivel': 'nivel'
+        };
+
+        var stockGuardado = JSON.parse(localStorage.getItem('stockProductos')) || {};
+
+        for (var elementoId in productosFijos) {
+            var productoKey = productosFijos[elementoId];
+            var elemento = document.getElementById(elementoId);
+            if (elemento && stockGuardado[productoKey] !== undefined) {
+                var stock = stockGuardado[productoKey];
+                if (stock > 0) {
+                    elemento.innerHTML = '<i class="bi bi-check-circle"></i> Stock: ' + stock + ' unidades';
+                    elemento.style.color = '#28a745';
+                } else {
+                    elemento.innerHTML = '<i class="bi bi-x-circle"></i> Agotado';
+                    elemento.style.color = '#dc3545';
+                }
+            }
+        }
+    });
+</script>
+
 </body>
 </html>

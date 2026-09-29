@@ -14,17 +14,50 @@ function comprarProducto(boton) {
     var precioTexto = productoCard.querySelector('.precio').textContent;
     var precio = parseInt(precioTexto.replace(/[^0-9]/g, ''));
 
+    // MAPEO: nombre del producto -> clave del stock en localStorage
+    var mapaProductos = {
+        'Martillo de Carpintero': 'martillo',
+        'Llave Ajustable': 'llave',
+        'Set de Destornilladores': 'destornillador',
+        'Cinta Métrica': 'cinta',
+        'Nivel de Burbuja': 'nivel',
+        'Tijeras de Corte': 'tijeras'
+    };
+
+    var productoKey = mapaProductos[nombre];
+    var stockGuardado = JSON.parse(localStorage.getItem('stockProductos')) || {};
+
     var index = carrito.findIndex(function(item) {
         return item.nombre === nombre;
     });
 
     if (index !== -1) {
+        // ELIMINAR del carrito (devolver stock)
         carrito.splice(index, 1);
         boton.textContent = 'Comprar';
         boton.style.backgroundColor = '#EF6C00';
         boton.style.color = 'white';
+        
+        // DEVOLVER 1 unidad al stock
+        if (productoKey && stockGuardado[productoKey] !== undefined) {
+            stockGuardado[productoKey] = stockGuardado[productoKey] + 1;
+            localStorage.setItem('stockProductos', JSON.stringify(stockGuardado));
+            actualizarStockEnPantalla(productoKey, stockGuardado[productoKey]);
+        }
+        
         alert('Producto removido del carrito 🗑️');
     } else {
+        // AGREGAR al carrito (descontar stock)
+        if (productoKey && stockGuardado[productoKey] !== undefined) {
+            if (stockGuardado[productoKey] <= 0) {
+                alert('❌ Lo sentimos, este producto está agotado.');
+                return;
+            }
+            stockGuardado[productoKey] = stockGuardado[productoKey] - 1;
+            localStorage.setItem('stockProductos', JSON.stringify(stockGuardado));
+            actualizarStockEnPantalla(productoKey, stockGuardado[productoKey]);
+        }
+        
         carrito.push({ nombre: nombre, precio: precio });
         boton.textContent = 'Comprado ✓';
         boton.style.backgroundColor = '#28a745';
@@ -33,6 +66,21 @@ function comprarProducto(boton) {
     }
 
     actualizarContador();
+}
+
+// FUNCIÓN AUXILIAR: ACTUALIZAR EL STOCK EN PANTALLA
+function actualizarStockEnPantalla(productoKey, nuevoStock) {
+    var elementoId = 'stock-' + productoKey;
+    var elemento = document.getElementById(elementoId);
+    if (elemento) {
+        if (nuevoStock > 0) {
+            elemento.innerHTML = '<i class="bi bi-check-circle"></i> Stock: ' + nuevoStock + ' unidades';
+            elemento.style.color = '#28a745';
+        } else {
+            elemento.innerHTML = '<i class="bi bi-x-circle"></i> Agotado';
+            elemento.style.color = '#dc3545';
+        }
+    }
 }
 
 // ============================================================
@@ -91,6 +139,26 @@ function verCarrito() {
 function eliminarDelCarrito(index) {
     var productoEliminado = carrito[index];
     carrito.splice(index, 1);
+
+    // MAPEO: nombre -> clave de stock
+    var mapaProductos = {
+        'Martillo de Carpintero': 'martillo',
+        'Llave Ajustable': 'llave',
+        'Set de Destornilladores': 'destornillador',
+        'Cinta Métrica': 'cinta',
+        'Nivel de Burbuja': 'nivel',
+        'Tijeras de Corte': 'tijeras'
+    };
+
+    var productoKey = mapaProductos[productoEliminado.nombre];
+    var stockGuardado = JSON.parse(localStorage.getItem('stockProductos')) || {};
+
+    // DEVOLVER 1 unidad al stock
+    if (productoKey && stockGuardado[productoKey] !== undefined) {
+        stockGuardado[productoKey] = stockGuardado[productoKey] + 1;
+        localStorage.setItem('stockProductos', JSON.stringify(stockGuardado));
+        actualizarStockEnPantalla(productoKey, stockGuardado[productoKey]);
+    }
 
     var botones = document.querySelectorAll('.btn-comprar');
     for (var i = 0; i < botones.length; i++) {

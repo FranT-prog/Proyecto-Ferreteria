@@ -130,6 +130,10 @@
                             
                             <!-- Descripción (ocupa el espacio disponible con flex-grow-1) -->
                             <p class="card-text flex-grow-1">Martillo de acero forjado con mango de madera.</p>
+
+                            <p id="stock-martillo" style="color: #28a745; font-weight: bold; font-size: 0.9rem; margin-bottom: 5px;">
+                                <i class="bi bi-check-circle"></i> Stock: 15 unidades
+                                </p>
                             
                             <!-- Precio del producto -->
                             <p class="precio"><strong>$12.990</strong></p>
@@ -158,6 +162,9 @@
                             <img src="img/llave_ajustable.webp" alt="Llave Ajustable" class="producto-imagen">
                             <h5 class="card-title mt-2">Llave Ajustable</h5>
                             <p class="card-text flex-grow-1">Llave ajustable de acero cromado, 12 pulgadas.</p>
+                            <p id="stock-llave" style="color: #28a745; font-weight: bold; font-size: 0.9rem; margin-bottom: 5px;">
+                                <i class="bi bi-check-circle"></i> Stock: 10 unidades
+                            </p>
                             <p class="precio"><strong>$8.490</strong></p>
                             <div class="d-flex gap-2">
                                 <a href="detalleProductos.html?producto=llave" class="btn btn-sm btn-outline-primary flex-fill">Ver detalle</a>
@@ -176,6 +183,11 @@
                             <img src="img/destornillador.webp" alt="Set de Destornilladores" class="producto-imagen">
                             <h5 class="card-title mt-2">Set de Destornilladores</h5>
                             <p class="card-text flex-grow-1">Set de 6 destornilladores de precisión con puntas intercambiables.</p>
+                            
+                            <p id="stock-destornillador" style="color: #28a745; font-weight: bold; font-size: 0.9rem; margin-bottom: 5px;">
+                                <i class="bi bi-check-circle"></i> Stock: 15 unidades
+                            </p>
+
                             <p class="precio"><strong>$15.990</strong></p>
                             <div class="d-flex gap-2">
                                 <a href="detalleProductos.html?producto=destornillador" class="btn btn-sm btn-outline-primary flex-fill">Ver detalle</a>
@@ -194,6 +206,11 @@
                             <img src="img/cinta metrica.webp" alt="Cinta Métrica" class="producto-imagen">
                             <h5 class="card-title mt-2">Cinta Métrica</h5>
                             <p class="card-text flex-grow-1">Cinta métrica de acero con bloqueo automático.</p>
+
+                            <p id="stock-cinta" style="color: #28a745; font-weight: bold; font-size: 0.9rem; margin-bottom: 5px;">
+                                <i class="bi bi-check-circle"></i> Stock: 15 unidades
+                            </p>
+
                             <p class="precio"><strong>$5.990</strong></p>
                             <div class="d-flex gap-2">
                                 <a href="detalleProductos.html?producto=cinta" class="btn btn-sm btn-outline-primary flex-fill">Ver detalle</a>
@@ -212,6 +229,11 @@
                             <img src="img/nivel_burbuja.webp" alt="Nivel de Burbuja" class="producto-imagen">
                             <h5 class="card-title mt-2">Nivel de Burbuja</h5>
                             <p class="card-text flex-grow-1">Nivel de burbuja de aluminio con 3 viales.</p>
+                            
+                            <p id="stock-nivel" style="color: #28a745; font-weight: bold; font-size: 0.9rem; margin-bottom: 5px;">
+                                <i class="bi bi-check-circle"></i> Stock: 10 unidades
+                            </p>
+                            
                             <p class="precio"><strong>$7.490</strong></p>
                             <div class="d-flex gap-2">
                                 <a href="detalleProductos.html?producto=nivel" class="btn btn-sm btn-outline-primary flex-fill">Ver detalle</a>
@@ -230,6 +252,12 @@
                             <img src="img/tijeras.webp" alt="Tijeras de Corte" class="producto-imagen">
                             <h5 class="card-title mt-2">Tijeras de Corte</h5>
                             <p class="card-text flex-grow-1">Tijeras para metal y plástico, mango ergonómico.</p>
+                            
+                            <p id="stock-tijeras" style="color: #28a745; font-weight: bold; font-size: 0.9rem; margin-bottom: 5px;">
+                                <i class="bi bi-check-circle"></i> Stock: 15 unidades
+                            </p>
+
+                            
                             <p class="precio"><strong>$9.990</strong></p>
                             <div class="d-flex gap-2">
                                 <a href="detalleProductos.html?producto=tijeras" class="btn btn-sm btn-outline-primary flex-fill">Ver detalle</a>
@@ -304,6 +332,12 @@
 
     <!-- Script para mostrar los productos guardados por el admin -->
     <script>
+        // FUNCIÓN AUXILIAR: OBTENER STOCK REAL DESDE LOCALSTORAGE
+        function obtenerStockReal(productoId, stockPorDefecto) {
+            var stockGuardado = JSON.parse(localStorage.getItem('stockProductos')) || {};
+            return stockGuardado[productoId] !== undefined ? stockGuardado[productoId] : stockPorDefecto;
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             var contenedorProductos = document.getElementById('contenedor-productos');
 
@@ -321,12 +355,17 @@
 
                     // Recorrer cada producto guardado y crear su tarjeta HTML
                     productosGuardados.forEach(function(producto) {
+                        // CAMBIO: se lee el stock real desde localStorage
+                        var stockReal = obtenerStockReal(producto.codigo, producto.stock);
+
                         var tarjetaHTML = `
                             <div class="producto-card" style="border: 1px solid #ddd; padding: 15px; width: 250px; text-align: center; border-radius: 8px; background-color: white;">
                                 <img src="${producto.imagen}" alt="${producto.nombre}" style="width: 220px; height: 220px; object-fit: cover; margin-bottom: 10px;">
                                 <h3 style="font-size: 1.1rem; margin-bottom: 5px; color: #333;">${producto.nombre}</h3>
                                 <p style="color: #666; font-size: 0.9rem; margin-bottom: 5px;">Código: ${producto.codigo}</p>
-                                <p style="color: #666; font-size: 0.9rem; margin-bottom: 10px;">Stock: ${producto.stock}</p>
+                                <p style="font-weight: bold; font-size: 0.9rem; margin-bottom: 10px; color: ${stockReal > 0 ? '#28a745' : '#dc3545'};">
+                                    ${stockReal > 0 ? 'Stock: ' + stockReal + ' unidades' : 'Agotado'}
+                                </p>
                                 <p style="font-size: 1.3rem; color: #EF6C00; font-weight: bold; margin-bottom: 15px;">$${producto.precio}</p>
                                 <button class="btn-enviar" style="width: 100%; padding: 10px; background-color: #EF6C00; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Agregar al Carrito</button>
                             </div>
@@ -335,6 +374,35 @@
                         // Inyectar la tarjeta en la página
                         contenedorProductos.innerHTML += tarjetaHTML;
                     });
+                }
+            }
+        });
+
+        // ACTUALIZAR STOCK DE LAS 6 TARJETAS FIJAS DESDE LOCALSTORAGE
+        document.addEventListener('DOMContentLoaded', function() {
+            var productosFijos = {
+                'stock-martillo': 'martillo',
+                'stock-llave': 'llave',
+                'stock-destornillador': 'destornillador',
+                'stock-cinta': 'cinta',
+                'stock-nivel': 'nivel',
+                'stock-tijeras': 'tijeras'
+            };
+
+            var stockGuardado = JSON.parse(localStorage.getItem('stockProductos')) || {};
+
+            for (var elementoId in productosFijos) {
+                var productoKey = productosFijos[elementoId];
+                var elemento = document.getElementById(elementoId);
+                if (elemento && stockGuardado[productoKey] !== undefined) {
+                    var stock = stockGuardado[productoKey];
+                    if (stock > 0) {
+                        elemento.textContent = 'Stock: ' + stock + ' unidades';
+                        elemento.style.color = '#28a745';
+                    } else {
+                        elemento.textContent = 'Agotado';
+                        elemento.style.color = '#dc3545';
+                    }
                 }
             }
         });
