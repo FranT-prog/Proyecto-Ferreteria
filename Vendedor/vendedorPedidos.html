@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pedidos - Vendedor</title>
+    <!-- ============================================================
+    RECURSOS EXTERNOS (CDN)
+    ============================================================ -->
+
+    <!-- Bootstrap 5 CSS: Sistema de grillas, componentes y diseño responsive -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Material Icons: Íconos de Google (ej: construction) -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Bootstrap Icons: Íconos de Bootstrap (ej: bi-house, bi-cart) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- CSS personalizado: Estilos propios de la ferretería (colores, sombras, etc.) -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        .admin-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .admin-table th, .admin-table td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        .admin-table th { background-color: #333; color: white; }
+        .admin-table tr:nth-child(even) { background-color: #f2f2f2; }
+        .status-select { padding: 5px; border-radius: 4px; border: 1px solid #ccc; font-weight: bold; }
+        .btn-update { background-color: #28a745; color: white; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="logo-tienda">
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Vendedor - Ferretería Don Juan</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .vendedor-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .panel-section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        .vendedor-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .vendedor-table th, .vendedor-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        .vendedor-table th {
+            background-color: #EF6C00;
+            color: white;
+        }
+
+        .vendedor-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .input-stock {
+            width: 70px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn-update {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .btn-update:hover {
+            background-color: #218838;
+        }
+
+        .status-select {
+            padding: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- ENCABEZADO -->
+        <header>
+            <h1 id="logo-tienda">Ferretería Don Juan</h1>
+            <p>Panel de Operaciones - Mesón de Atención</p>
+        </header>
+
+        <!-- MENÚ DE NAVEGACIÓN (Versión Vendedor) -->
+        <nav class="nav-menu">
+            <a href="vendedor.html" style="font-weight: bold; color: #EF6C00;">Inicio Vendedor</a>
+            <!-- El vendedor no tiene acceso a gestión de usuarios -->
+        </nav>
+
+        <div class="user-actions" style="text-align: right; padding: 15px 20px 0 0; margin-bottom: 10px;">
+            <span id="nombre-vendedor" style="color: #333; font-weight: bold; font-size: 0.95rem; margin-right: 15px;">👤 Hola, Vendedor</span>
+            <button onclick="cerrarSesion()" style="background: none; border: none; color: #D84315; text-decoration: underline; font-weight: bold; cursor: pointer; font-size: 0.95rem;">Cerrar sesión</button>
+        </div>
+
+        <section class="vendedor-layout">
+            
+            <!-- SECCIÓN 1: GESTIÓN RÁPIDA DE INVENTARIO -->
+            <div class="panel-section">
+                <h2>📦 Actualización Rápida de Inventario</h2>
+                <p style="color: #555; margin-bottom: 15px;">Ajusta el stock físico inmediatamente después de una venta en mesón.</p>
+                <table class="vendedor-table">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Stock Actual</th>
+                            <th>Nuevo Stock</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-inventario-vendedor">
+                        <!-- JavaScript cargará los productos aquí -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- SECCIÓN 2: GESTIÓN DE PEDIDOS -->
+            <div class="panel-section">
+                <h2>🛒 Estado de Pedidos (Contratistas y Clientes)</h2>
+                <p style="color: #555; margin-bottom: 15px;">Gestiona los pedidos entrantes para evitar que el teléfono colapse.</p>
+                <table class="vendedor-table">
+                    <thead>
+                        <tr>
+                            <th>ID Pedido</th>
+                            <th>Cliente</th>
+                            <th>Tipo Entrega</th>
+                            <th>Total</th>
+                            <th>Estado Actual</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-pedidos-vendedor">
+                        <!-- JavaScript cargará los pedidos aquí -->
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Ferretería Don Juan. Sistema Interno.</p>
+        </footer>
+    </div>
+
+    <!-- SCRIPT DE CONTROL PARA EL VENDEDOR -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. VERIFICACIÓN DE SESIÓN (Opcional pero recomendado)
+            var sesionActual = JSON.parse(localStorage.getItem('usuarioSesion'));
+            if (!sesionActual || (sesionActual.rol !== 'vendedor' && sesionActual.rol !== 'administrador')) {
+                alert('Acceso denegado. Debes iniciar sesión como vendedor.');
+                window.location.href = 'login.html';
+                return;
+            }
+            document.getElementById('nombre-vendedor').innerText = '👤 Hola, ' + sesionActual.nombre;
+
+            // 2. CARGAR INVENTARIO
+            function cargarInventario() {
+                var tbody = document.getElementById('tabla-inventario-vendedor');
+                var productos = JSON.parse(localStorage.getItem('listaProductos')) || [];
+                tbody.innerHTML = '';
+
+                if (productos.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No hay productos registrados.</td></tr>';
+                    return;
+                }
+
+                productos.forEach(function(producto, index) {
+                    var fila = `
+                        <tr>
+                            <td>${producto.codigo}</td>
+                            <td>${producto.nombre}</td>
+                            <td>$${producto.precio}</td>
+                            <td style="font-weight:bold; color:${producto.stock < 10 ? 'red' : 'black'}">${producto.stock}</td>
+                            <td><input type="number" id="nuevo-stock-${index}" class="input-stock" value="${producto.stock}" min="0"></td>
+                            <td><button class="btn-update" onclick="actualizarStock(${index})">Actualizar</button></td>
+                        </tr>
+                    `;
+                    tbody.innerHTML += fila;
+                });
+            }
+
+            // Función para actualizar stock en localStorage
+            window.actualizarStock = function(index) {
+                var productos = JSON.parse(localStorage.getItem('listaProductos')) || [];
+                var nuevoStock = document.getElementById('nuevo-stock-' + index).value;
+                
+                if (nuevoStock !== "") {
+                    productos[index].stock = parseInt(nuevoStock);
+                    localStorage.setItem('listaProductos', JSON.stringify(productos));
+                    alert('Stock de ' + productos[index].nombre + ' actualizado correctamente.');
+                    cargarInventario();
+                }
+            };
+
+            // 3. CARGAR PEDIDOS (Simulación)
+            // Como aún no tienes módulo de carrito, crearemos pedidos de prueba si no existen
+            function inicializarPedidosPrueba() {
+                var pedidos = JSON.parse(localStorage.getItem('listaPedidos'));
+                if (!pedidos) {
+                    pedidos = [
+                        { id: 'PED-1001', cliente: 'Constructora Alfa (Contratista)', entrega: 'Despacho', total: 145000, estado: 'Pendiente' },
+                        { id: 'PED-1002', cliente: 'Juan Pérez (Particular)', entrega: 'Retiro en Tienda', total: 25000, estado: 'Preparado' }
+                    ];
+                    localStorage.setItem('listaPedidos', JSON.stringify(pedidos));
+                }
+            }
+
+            function cargarPedidos() {
+                inicializarPedidosPrueba();
+                var tbody = document.getElementById('tabla-pedidos-vendedor');
+                var pedidos = JSON.parse(localStorage.getItem('listaPedidos')) || [];
+                tbody.innerHTML = '';
+
+                pedidos.forEach(function(pedido, index) {
+                    var fila = `
+                        <tr>
+                            <td>${pedido.id}</td>
+                            <td>${pedido.cliente}</td>
+                            <td>${pedido.entrega}</td>
+                            <td>$${pedido.total}</td>
+                            <td>
+                                <select id="estado-pedido-${index}" class="status-select">
+                                    <option value="Pendiente" ${pedido.estado === 'Pendiente' ? 'selected' : ''}>Pendiente</option>
+                                    <option value="Preparado" ${pedido.estado === 'Preparado' ? 'selected' : ''}>Preparado</option>
+                                    <option value="Despachado" ${pedido.estado === 'Despachado' ? 'selected' : ''}>Despachado / Entregado</option>
+                                </select>
+                            </td>
+                            <td><button class="btn-update" onclick="actualizarPedido(${index})">Guardar Estado</button></td>
+                        </tr>
+                    `;
+                    tbody.innerHTML += fila;
+                });
+            }
+
+            // Función para actualizar el estado del pedido
+            window.actualizarPedido = function(index) {
+                var pedidos = JSON.parse(localStorage.getItem('listaPedidos')) || [];
+                var nuevoEstado = document.getElementById('estado-pedido-' + index).value;
+                
+                pedidos[index].estado = nuevoEstado;
+                localStorage.setItem('listaPedidos', JSON.stringify(pedidos));
+                alert('El estado del pedido ' + pedidos[index].id + ' ha cambiado a: ' + nuevoEstado);
+                cargarPedidos();
+            };
+
+            // 4. FUNCIÓN CERRAR SESIÓN
+            window.cerrarSesion = function() {
+                localStorage.removeItem('usuarioSesion');
+                window.location.href = 'login.html';
+            };
+
+            // Inicializar vistas
+            cargarInventario();
+            cargarPedidos();
+        });
+    </script>
+</body>
+</html>
